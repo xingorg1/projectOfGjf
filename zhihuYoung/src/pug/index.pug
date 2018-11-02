@@ -1,0 +1,18 @@
+extends ../node_modules/yi-frames-ui/m-widget/src/pug/layout.pug
+block pugConfig
+	-const pugConfig={titleText:`高仿知乎h5活动页面 - 平行世界的你`, cssName:`style`, confName:`index`, isNotSpa: false, column:'1', bodyClassName:[''], hrefUrl:'../'};
+block mainLeft
+	.main
+		.orientation
+			.orient-txt
+				i.icon.icon-orient-iphone
+				span.orient-text 为了更好的体验，请使用竖屏锁屏浏览
+		.loading
+			.loading-box
+				i.icon.icon-loading
+				.loading-progress 
+					.loading-progress-width
+				span.loading-progress-number 0%
+				div.loading-text 正在奋力加载中
+				div.loading-end-btn 开始
+		video.video#myVideo(src='../images/assets/video.mp4' x5-video-player-type="h5" x-webkit-airplay="true" airplay="allow" playsinline="" webkit-playsinline="" style="width: 100%; height: 100%; object-fit: cover;") 您的浏览器不支持video标签

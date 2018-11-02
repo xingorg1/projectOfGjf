@@ -1,0 +1,174 @@
+@charset "utf-8";
+/*
+ * @Author: @Guojufeng 
+ * @Date: 2018-11-02 11:25:34 
+ * @Last Modified by: @Guojufeng
+ * @Last Modified time: 2018-11-02 15:37:12
+ */
+@import './common';
+$assets: "../../images/assets/";
+$bg: "../../images/bg/";
+$choose: "../../images/choose/";
+$common: "../../images/common/";
+$loading: "../../images/loading/";
+$result: "../../images/result/";
+$scene: "../../images/scene/";
+$txt: "../../images/txt/";
+
+.fillScreen {
+	// 全屏覆盖
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+}
+
+.verticalCenter {
+	// 垂直居中
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	transform: translate(0, -50%);
+}
+
+/* 横屏检测 */
+.orientation {
+	display: none;
+	z-index: 3;
+	@extend .fillScreen;
+	color: #fff;
+	font-size: .4rem;
+	background: #000;
+}
+
+.orient-txt {
+	@extend .verticalCenter;
+
+	.icon-orient-iphone {
+		width: 1rem;
+		height: 1.63rem;
+		margin-bottom: .2rem;
+		background: url(#{$common}iphone.png) no-repeat;
+		background-size: 100% 100%;
+		transform-origin: 50% 50%;
+		animation: orientIphone 1.5s linear infinite;
+	}
+
+	.orient-text {
+		display: block;
+	}
+}
+
+@keyframes orientIphone {
+
+	0%,
+	10%,
+	100% {
+		transform: rotate(0deg);
+	}
+
+	50%,
+	75% {
+		transform: rotate(90deg);
+	}
+}
+
+@media (orientation: landscape) {
+	.orientation {
+		display: block;
+	}
+}
+
+/* loading */
+.loading {
+	@extend .fillScreen;
+	z-index: 2;
+	color: #fff;
+	font-size: .24rem;
+	background: #232a32;
+
+	.loading-box {
+		@extend .verticalCenter;
+		margin-top: -1rem;
+	}
+
+	.icon-loading {
+		display: block;
+		width: 2rem;
+		height: 2rem;
+		margin: 0 auto;
+		background: url(#{$loading}loading.gif) no-repeat;
+		background-size: 100% 100%;
+	}
+
+	.loading-progress {
+		display: inline-block;
+		vertical-align: middle;
+		width: 2rem;
+		height: 0.04rem;
+		overflow: hidden;
+		background: #3b424a;
+		border-radius: .4rem;
+	}
+
+	.loading-progress-width {
+		width: 0;
+		height: 100%;
+		background: #b5b4b5;
+	}
+
+	.loading-progress-number {
+		margin-left: .1rem;
+		vertical-align: middle;
+		display: inline-block;
+	}
+
+	.loading-text {
+
+		&:after {
+			content: "";
+			font-size: .34rem;
+			letter-spacing: 0.04rem;
+			padding-left: 0.06rem;
+			// display: inline-block;
+			// width: .5rem;
+			animation: loadingDot 2.5s linear infinite;
+		}
+	}
+	.loading-end-btn{
+		display: none;
+		text-indent: -9999px;
+		width: 1.42rem;
+		height: .56rem;
+		margin: 0.1rem auto;
+		background: url(#{$loading}btn.png) no-repeat;
+		background-size: 100% 100%;
+	}
+}
+
+@keyframes loadingDot {
+	0%,
+	100% {
+			content: "";
+	}
+
+	30% {
+			content: ".";
+	}
+
+	60% {
+			content: "..";
+	}
+
+	90% {
+			content: "...";
+	}
+}
+/* 视频 */
+.myVideo{
+	width: 100%;
+	height: 100%;
+}
