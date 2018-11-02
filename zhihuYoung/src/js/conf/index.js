@@ -30,8 +30,10 @@ $(function () {
     // 插入video并开始播放
     if(myVideo.readyState){
       console.log("视频准备就绪")
+      myVideo.play();//开始播放、paused暂停播放
+    }else{
+      // 重新加载
     }
-    myVideo.play();//开始播放、paused暂停播放
     console.log(myVideo.currentTime);//资源当前播放时间
     console.log(myVideo.duration);//资源时长
   })
