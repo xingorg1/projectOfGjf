@@ -126,14 +126,16 @@
 ## video的各种问题
 ### video常用的属性和方法（w3c的video标签）
 ### 方法：
-#### 点击播放
 1. play() chick事件（或其他条件）执行播放功能
 
 2. pause() chick事件（或其他条件）暂停视频播放
 
 * 这俩方法使用jq的```$('.video')```不起作用，但是改成````document.getElementById('myVideo');```就可以了
+### 属性：
+1. currentTime 资源当前播放时间
 
-### 可监听的事件
+2. duration 资源时长
+### 可监听的事件：
 1. canplaythrough && readyState==3 加载完成
 
 2. canplay  && readyState==2 可以播放 

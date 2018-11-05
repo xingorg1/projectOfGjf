@@ -3,17 +3,17 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-02 15:37:12
+ * @Last Modified time: 2018-11-05 15:11:44
  */
 @import './common';
 $assets: "../../images/assets/";
-$bg: "../../images/bg/";
+$begin: "../../images/begin/";
+$bg: "../../images/begin/bg/";
 $choose: "../../images/choose/";
 $common: "../../images/common/";
 $loading: "../../images/loading/";
 $result: "../../images/result/";
 $scene: "../../images/scene/";
-$txt: "../../images/txt/";
 
 .fillScreen {
 	// 全屏覆盖
@@ -168,7 +168,97 @@ $txt: "../../images/txt/";
 	}
 }
 /* 视频 */
-.myVideo{
+.video{
 	width: 100%;
 	height: 100%;
+	transition: all 1s ease-in-out;
+	&.hide{
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+/* 音频 */
+.music-btn{
+	/* 背景设置突破常规写法:
+	宽高不是定位图片的宽高，而是任性的整数，
+	然后使用bg-size设置图片的宽高，
+	使用bg-position定位图片的位置 */
+	position: absolute;
+	right: 0;
+	z-index: 1;
+	width: 1rem;
+	height: 1rem;
+	background: url(#{$common}music_on.png) center no-repeat;
+	background-size: .4rem .4rem;
+	animation: musicRotate 3s linear infinite;
+	&.off{
+		animation: none;
+		background-image: url(#{$common}music_off.png);
+	}
+}
+@keyframes musicRotate{
+	from{
+		transform: rotate(0);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+/* .page1 */
+@mixin rank(){
+  @for $title from 1 through 7 {
+    .title-png0#{$title}{
+			transition-delay: #{0.5 + 0.1 * $title}s;
+      background: url(#{$begin}#{$title}.png) center no-repeat;
+      background-size: 100% 100%;
+		}
+  }
+}
+.page1{
+	display: none;
+	overflow: hidden;
+	position: relative;
+	background: rebeccapurple;
+	.bg{
+	}
+	canvas{
+	
+	}
+	.title{
+		position: absolute;
+		left: 50%;
+		top: 10%;
+		width: 4.35rem;
+		height: 1.63rem;
+		margin-left: -2.17rem;
+		&.show{
+			.title-png{
+				opacity: 1;
+				top: 0;
+			}
+		}
+	}
+	.title-png{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		transition: all 1.25s ease-in-out;
+		&:nth-child(odd){
+			top: -10%;
+		}
+		&:nth-child(even){
+			top: 10%;
+		}
+	}
+	@include rank();
+	.txt{
+		@include bgImg(5.13,.8,'#{$begin}btn.png');
+		position: absolute;
+		left: 50%;
+		bottom: 7%;
+		margin-left: -2.56rem;
+	}
+	
 }

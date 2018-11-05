@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:42 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-02 14:22:30
+ * @Last Modified time: 2018-11-05 11:12:45
  */
 
 /* 公用css */
@@ -12,22 +12,12 @@
   margin: 0;
   padding: 0;
 }
-body{
-  font-family: "Microsoft YaHei";
-}
 
-html,
-body,
-main,
-section {
-    width:100%;
-  height: 100%;
-  overflow: hidden;
-  font-size: .24rem;
-
-}
-html,body,.main{
+html,body,.main,section{
   min-height: 100vh;
+  height: 100%;
+  font-size: .24rem;
+  font-family: "Microsoft YaHei";
 }
 .clearfix {
   *zoom: 1;
@@ -41,10 +31,18 @@ html,body,.main{
 }
 
 .hide{
-    display: none;
+  display: none;
 }
-
+.show{
+  display: block;
+}
 .icon{
   display: inline-block;
   vertical-align: middle;
+}
+@mixin bgImg($w,$h,$img) {
+  width: #{$w}rem;
+	height: #{$h}rem;
+	background: url(#{$img}) center no-repeat;
+	background-size: 100% 100%;
 }
