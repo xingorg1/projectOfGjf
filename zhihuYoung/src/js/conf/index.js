@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-05 09:35:14 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-05 15:11:06
+ * @Last Modified time: 2018-11-05 17:32:53
  */
 
 /* global $ */
@@ -15,7 +15,7 @@ $(function () {
     alert('添加微信观看提示');
   }
   /* begin 预加载 */
-  var deBug = false, //是否是开发时快速查看测试的效果
+  var deBug = true, //是否是开发时快速查看测试的效果
     canvas1Img = [],
     timer1 = null;
   if (!deBug) {
@@ -23,7 +23,7 @@ $(function () {
   } else {
     $('video').hide();
     $('.loading-end-btn').show();
-    let imgUrl = "../../images/begin/bg/",
+    let imgUrl = '../../images/begin/bg/',
       imgArr = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 117, 120, 123, 126, 129, 132, 135, 138, 141, 144, 147];
     canvas1Img = utils.prestrain(imgArr, imgUrl, 'jpg', function () {});
     $('.title').addClass('show');
@@ -33,9 +33,9 @@ $(function () {
     /* 使用javascript对图片进行预加载 */
     let num = 0,
       progress = 0; //预备变量、预加载page1所需的图片
-    let imgUrl = "../../images/begin/bg/",
+    let imgUrl = '../../images/begin/bg/',
       imgArr = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 117, 120, 123, 126, 129, 132, 135, 138, 141, 144, 147],
-      musicUrl = "../../images/assets/",
+      musicUrl = '../../images/assets/',
       musicArr = ['bicycle', 'bird', 'car', 'cat', 'choose', 'click', 'fly', 'stage', 'train', 'walk'],
       countNum = musicArr.length + imgArr.length;
 
@@ -98,8 +98,8 @@ $(function () {
     /* canvas绘制page1的背景 */
     let canvas1 = document.getElementById('canvas1');
     canvas1 && utils.canvasWH(canvas1);
-    let context1 = canvas1.getContext('2d');
-    var _i = 0;
+    let context1 = canvas1.getContext('2d'),
+      _i = 0;
     context1.drawImage(canvas1Img[_i], 0, 0, utils.oW, utils.oH);
     timer1 = setInterval(() => {
       _i++;
@@ -114,8 +114,18 @@ $(function () {
   });
   $('.page1 .txt').on('click', () => {
     /* 销毁page1、canvas1、动画定时器、视频等 */
-    $('.page1').fadeOut();
+    $('.loading').remove();
+    $('.video').remove();
     clearInterval(timer1);
     timer1 = null;
+    $('.page1').remove();
+    $('.page2').show();
+  });
+  $('.sex-box li').on('click',function(){
+    $(this).addClass('cur');
+    setTimeout(()=>{
+      $('.choose-sex').fadeOut();
+      $('.choose-person').fadeIn();
+    },500);
   })
 });

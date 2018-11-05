@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-05 15:11:44
+ * @Last Modified time: 2018-11-05 17:43:21
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -218,12 +218,7 @@ $scene: "../../images/scene/";
 	display: none;
 	overflow: hidden;
 	position: relative;
-	background: rebeccapurple;
-	.bg{
-	}
-	canvas{
-	
-	}
+	background: #080b12;
 	.title{
 		position: absolute;
 		left: 50%;
@@ -260,5 +255,137 @@ $scene: "../../images/scene/";
 		bottom: 7%;
 		margin-left: -2.56rem;
 	}
-	
+}
+/* page2 */
+.page2{
+	overflow: hidden;
+	color: #8b8ea0;
+	background: #141223;
+	.choose-sex{
+		height: 100%;
+		position: relative;
+	}
+	.h1{
+		padding: .45rem .2rem;
+		text-align: center;
+	}
+	// .sex-box{
+	// 	margin: 0 auto .14rem;
+	// 	@include bgImg(5.9,4.5,'#{$choose}sex_box.png');
+	// }
+	.sex-box{
+		height: calc(100% - 0.26rem - 0.68rem);
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		li{
+			// *注意这种弹性式布局的处理方法
+			width: 100%;
+			position: relative;
+			-webkit-box-flex: 1;
+			transition: all .5s;
+			margin-bottom: .14rem;
+		}
+		.bg{
+			@extend .fillScreen;
+			background: url(#{$choose}sex_box.png) no-repeat;
+			background-size: 100% 100%;
+			transform: scale(0.92);
+			opacity: 0.2;
+			transition: all 1s;
+		}
+		.icon{
+			@include bgImg(3.59,3.98,'#{$choose}boy.png');
+			position: absolute;
+			left: 50%;
+			margin-left: -1.995rem;
+			top: 50%;
+			margin-top: -1.99rem;
+			animation: filter 1s infinite alternate;
+			filter: brightness(50%) grayscale(50%);
+			&::before{
+				content: "";
+				opacity: 1;
+				position: absolute;
+				@include bgImg(3.59,3.98,'#{$choose}boy_shadow.png');
+				animation: shadowTwinkle 1s linear infinite alternate;//使用alternate，很多时候大部分的动画都可以执行前半部分然后利用alternate执行后半部分。比如这个让灯光先暗下去再亮起来的动画，可以只写让灯光暗下去的动画，利用alternate执行亮起来。
+			}
+		}
+		.female{
+			margin-bottom: .4rem;
+			.icon{
+				@include bgImg(3.56,3.84,'#{$choose}girl.png');
+				margin-left: -1.98rem;
+				margin-top: -1.92rem;
+				animation: filter 1s infinite alternate-reverse;
+				&::before{
+					@include bgImg(3.56,3.84,'#{$choose}girl_shadow.png');
+					animation-direction: alternate-reverse;
+				}
+			}
+		}
+		.cur{
+			.bg{
+				opacity: 1;
+			}
+		}
+	}
+	.choose-person{
+		overflow: scroll;
+    height: 100%;
+	}
+	.choose-scroll{
+		overflow: scroll;
+		.bg{
+			@include bgImg(1,32.09,'#{$choose}bg.jpg');
+			// background-position: top left;
+			width: 100%;
+		}
+	}
+	.choose-tip{
+		position: absolute;
+		bottom: 10%;
+		left: 0;
+		right: 0;
+		text-align: center;
+		color: #95a5bd;
+		&::after{
+			content: "";
+			display: block;
+			position: absolute;
+			left: 50%;
+			top: .35rem;
+			margin-left: -.2rem;
+			filter: brightness(500%);
+			@include bgImg(.41,.19,'#{$choose}arrow.png');
+			animation: arrow .5s linear infinite alternate;
+		}
+	}
+	.choose-input{
+		
+	}
+}
+@keyframes filter {
+	0% {
+			-webkit-filter: brightness(50%) grayscale(50%)
+	}
+
+	100% {
+			-webkit-filter: brightness(100%) grayscale(0)
+	}
+}
+@keyframes shadowTwinkle{
+	0% {
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+@keyframes arrow{
+	from{
+		top: 0.35rem;
+	}
+	to{
+		top: 0.45rem;
+	}
 }

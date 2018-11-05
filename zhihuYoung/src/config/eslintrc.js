@@ -8,7 +8,7 @@ module.exports={
 	parser:'babel-eslint',
 	rules:{
 		// 强制使用一致的换行风格
-		'linkebreak-style':[1,'windows'],
+		// 'linkebreak-style':[1,'windows'],
 		//强制使用单引号
 		 'quotes': [ 1, 'single'],
 		// 要求或禁止使用分号而不是 ASI

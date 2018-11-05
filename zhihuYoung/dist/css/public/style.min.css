@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-05 15:11:44
+ * @Last Modified time: 2018-11-05 17:43:21
  */
 /*
  * @Author: @Guojufeng 
@@ -41,7 +41,7 @@ html, body, .main, section {
   display: inline-block;
   vertical-align: middle; }
 
-.fillScreen, .orientation, .loading {
+.fillScreen, .orientation, .loading, .page2 .sex-box .bg {
   position: absolute;
   top: 0;
   right: 0;
@@ -225,7 +225,7 @@ html, body, .main, section {
   display: none;
   overflow: hidden;
   position: relative;
-  background: rebeccapurple; }
+  background: #080b12; }
   .page1 .title {
     position: absolute;
     left: 50%;
@@ -292,3 +292,145 @@ html, body, .main, section {
     left: 50%;
     bottom: 7%;
     margin-left: -2.56rem; }
+
+/* page2 */
+.page2 {
+  overflow: hidden;
+  color: #8b8ea0;
+  background: #141223; }
+  .page2 .choose-sex {
+    height: 100%;
+    position: relative; }
+  .page2 .h1 {
+    padding: .45rem .2rem;
+    text-align: center; }
+  .page2 .sex-box {
+    height: calc(100% - 0.26rem - 0.68rem);
+    display: -webkit-box;
+    -webkit-box-orient: vertical; }
+    .page2 .sex-box li {
+      width: 100%;
+      position: relative;
+      -webkit-box-flex: 1;
+      -webkit-transition: all .5s;
+      transition: all .5s;
+      margin-bottom: .14rem; }
+    .page2 .sex-box .bg {
+      background: url(../../images/choose/sex_box.png) no-repeat;
+      background-size: 100% 100%;
+      -webkit-transform: scale(0.92);
+              transform: scale(0.92);
+      opacity: 0.2;
+      -webkit-transition: all 1s;
+      transition: all 1s; }
+    .page2 .sex-box .icon {
+      width: 3.59rem;
+      height: 3.98rem;
+      background: url(../../images/choose/boy.png) center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      left: 50%;
+      margin-left: -1.995rem;
+      top: 50%;
+      margin-top: -1.99rem;
+      -webkit-animation: filter 1s infinite alternate;
+              animation: filter 1s infinite alternate;
+      -webkit-filter: brightness(50%) grayscale(50%);
+              filter: brightness(50%) grayscale(50%); }
+      .page2 .sex-box .icon::before {
+        content: "";
+        opacity: 1;
+        position: absolute;
+        width: 3.59rem;
+        height: 3.98rem;
+        background: url(../../images/choose/boy_shadow.png) center no-repeat;
+        background-size: 100% 100%;
+        -webkit-animation: shadowTwinkle 1s linear infinite alternate;
+                animation: shadowTwinkle 1s linear infinite alternate; }
+    .page2 .sex-box .female {
+      margin-bottom: .4rem; }
+      .page2 .sex-box .female .icon {
+        width: 3.56rem;
+        height: 3.84rem;
+        background: url(../../images/choose/girl.png) center no-repeat;
+        background-size: 100% 100%;
+        margin-left: -1.98rem;
+        margin-top: -1.92rem;
+        animation: filter 1s infinite alternate-reverse; }
+        .page2 .sex-box .female .icon::before {
+          width: 3.56rem;
+          height: 3.84rem;
+          background: url(../../images/choose/girl_shadow.png) center no-repeat;
+          background-size: 100% 100%;
+          animation-direction: alternate-reverse; }
+    .page2 .sex-box .cur .bg {
+      opacity: 1; }
+  .page2 .choose-person {
+    overflow: scroll;
+    height: 100%; }
+  .page2 .choose-scroll {
+    overflow: scroll; }
+    .page2 .choose-scroll .bg {
+      width: 1rem;
+      height: 32.09rem;
+      background: url(../../images/choose/bg.jpg) center no-repeat;
+      background-size: 100% 100%;
+      width: 100%; }
+  .page2 .choose-tip {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #95a5bd; }
+    .page2 .choose-tip::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: .35rem;
+      margin-left: -.2rem;
+      -webkit-filter: brightness(500%);
+              filter: brightness(500%);
+      width: 0.41rem;
+      height: 0.19rem;
+      background: url(../../images/choose/arrow.png) center no-repeat;
+      background-size: 100% 100%;
+      -webkit-animation: arrow .5s linear infinite alternate;
+              animation: arrow .5s linear infinite alternate; }
+
+@-webkit-keyframes filter {
+  0% {
+    -webkit-filter: brightness(50%) grayscale(50%); }
+  100% {
+    -webkit-filter: brightness(100%) grayscale(0); } }
+
+@keyframes filter {
+  0% {
+    -webkit-filter: brightness(50%) grayscale(50%); }
+  100% {
+    -webkit-filter: brightness(100%) grayscale(0); } }
+
+@-webkit-keyframes shadowTwinkle {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes shadowTwinkle {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes arrow {
+  from {
+    top: 0.35rem; }
+  to {
+    top: 0.45rem; } }
+
+@keyframes arrow {
+  from {
+    top: 0.35rem; }
+  to {
+    top: 0.45rem; } }

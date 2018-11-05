@@ -18,10 +18,7 @@
   </head>
   <body class="yi-frames">
     <div class="main">
-      <div class="orientation">
-        <div class="orient-txt"><i class="icon icon-orient-iphone"></i><span class="orient-text">为了更好的体验，请使用竖屏锁屏浏览</span></div>
-      </div>
-      <div class="loading">
+      <div class="loading hide">
         <div class="loading-box"><i class="icon icon-loading"></i>
           <div class="loading-progress"> 
             <div class="loading-progress-width"></div>
@@ -31,7 +28,6 @@
         </div>
       </div>
       <video class="video" id="myVideo" src="../images/assets/video.mp4" x5-video-player-type="h5" x-webkit-airplay="true" airplay="allow" playsinline="" webkit-playsinline="">您的浏览器不支持video标签</video>
-      <div class="music-btn hide"></div>
       <section class="page1">
         <div class="bg">
           <canvas id="canvas1">您的浏览器不支持canvas</canvas>
@@ -47,6 +43,32 @@
         </div>
         <div class="txt"></div>
       </section>
+      <section class="page2">
+        <div class="choose-sex">
+          <p class="h1">请选择你的性别</p>
+          <ul class="sex-box">
+            <li class="male">
+              <div class="bg"></div>
+              <div class="icon"></div>
+            </li>
+            <li class="female">
+              <div class="bg"></div>
+              <div class="icon"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="choose-person">
+          <div class="choose-scroll">
+            <div class="bg"></div>
+          </div>
+          <div class="choose-tip">上滑选择你的人物</div>
+          <div class="choose-input"></div>
+        </div>
+      </section>
+      <div class="orientation">
+        <div class="orient-txt"><i class="icon icon-orient-iphone"></i><span class="orient-text">为了更好的体验，请使用竖屏锁屏浏览</span></div>
+      </div>
+      <div class="music-btn hide"></div>
     </div>
     <script src="../js/common/common.min.js"></script>
     <script src="../js/conf/index.min.js"></script>
