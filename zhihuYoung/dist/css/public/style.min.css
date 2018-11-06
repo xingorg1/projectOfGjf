@@ -3,13 +3,13 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-05 17:43:21
+ * @Last Modified time: 2018-11-06 16:34:21
  */
 /*
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:42 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-05 11:12:45
+ * @Last Modified time: 2018-11-06 15:22:04
  */
 /* 公用css */
 * {
@@ -21,6 +21,9 @@ html, body, .main, section {
   height: 100%;
   font-size: .24rem;
   font-family: "Microsoft YaHei"; }
+
+ul, li {
+  list-style: none; }
 
 .clearfix {
   *zoom: 1; }
@@ -41,7 +44,7 @@ html, body, .main, section {
   display: inline-block;
   vertical-align: middle; }
 
-.fillScreen, .orientation, .loading, .page2 .sex-box .bg {
+.fillScreen, .orientation, .loading, .page2 .sex-box .bg, .spotlight {
   position: absolute;
   top: 0;
   right: 0;
@@ -364,40 +367,155 @@ html, body, .main, section {
           background-size: 100% 100%;
           animation-direction: alternate-reverse; }
     .page2 .sex-box .cur .bg {
-      opacity: 1; }
-  .page2 .choose-person {
-    overflow: scroll;
-    height: 100%; }
-  .page2 .choose-scroll {
-    overflow: scroll; }
-    .page2 .choose-scroll .bg {
-      width: 1rem;
-      height: 32.09rem;
-      background: url(../../images/choose/bg.jpg) center no-repeat;
-      background-size: 100% 100%;
-      width: 100%; }
-  .page2 .choose-tip {
+      opacity: 1;
+      -webkit-transform: scale(0.86);
+              transform: scale(0.86); }
+
+.choose-person {
+  overflow: scroll;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0; }
+
+.choose-scroll {
+  overflow: scroll; }
+  .choose-scroll .bg {
+    width: 1rem;
+    height: 32.09rem;
+    background: url(../../images/choose/bg.jpg) center no-repeat;
+    background-size: 100% 100%;
+    width: 100%; }
+  .choose-scroll .user-list {
     position: absolute;
-    bottom: 10%;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: #95a5bd; }
-    .page2 .choose-tip::after {
-      content: "";
-      display: block;
+    top: 0;
+    z-index: 1; }
+    .choose-scroll .user-list li {
       position: absolute;
-      left: 50%;
-      top: .35rem;
-      margin-left: -.2rem;
-      -webkit-filter: brightness(500%);
-              filter: brightness(500%);
-      width: 0.41rem;
-      height: 0.19rem;
-      background: url(../../images/choose/arrow.png) center no-repeat;
-      background-size: 100% 100%;
-      -webkit-animation: arrow .5s linear infinite alternate;
-              animation: arrow .5s linear infinite alternate; }
+      width: 1.0348rem;
+      height: 3.12rem; }
+  .choose-scroll .user-list0 {
+    left: 2.3rem;
+    top: 6.63rem; }
+  .choose-scroll .user-list1 {
+    left: 4.6rem;
+    top: 9.42rem; }
+  .choose-scroll .user-list2 {
+    left: 1.3rem;
+    top: 10.83rem; }
+  .choose-scroll .user-list3 {
+    left: 5rem;
+    top: 13.84rem; }
+  .choose-scroll .user-list4 {
+    left: 1.86rem;
+    top: 15.5rem; }
+  .choose-scroll .user-list5 {
+    left: 3.85rem;
+    top: 17.88rem; }
+  .choose-scroll .user-list6 {
+    left: .93rem;
+    top: 19.65rem; }
+  .choose-scroll .user-list7 {
+    left: 5.56rem;
+    top: 21.69rem; }
+  .choose-scroll .user-list8 {
+    left: 2.6rem;
+    top: 23.5rem; }
+  .choose-scroll .user-list9 {
+    left: 4.65rem;
+    top: 26.06rem; }
+  .choose-scroll .male .user-list0 {
+    background: url(../../images/choose/boy_0.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list0 {
+    background: url(../../images/choose/girl_0.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list1 {
+    background: url(../../images/choose/boy_1.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list1 {
+    background: url(../../images/choose/girl_1.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list2 {
+    background: url(../../images/choose/boy_2.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list2 {
+    background: url(../../images/choose/girl_2.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list3 {
+    background: url(../../images/choose/boy_3.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list3 {
+    background: url(../../images/choose/girl_3.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list4 {
+    background: url(../../images/choose/boy_4.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list4 {
+    background: url(../../images/choose/girl_4.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list5 {
+    background: url(../../images/choose/boy_5.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list5 {
+    background: url(../../images/choose/girl_5.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list6 {
+    background: url(../../images/choose/boy_6.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list6 {
+    background: url(../../images/choose/girl_6.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list7 {
+    background: url(../../images/choose/boy_7.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list7 {
+    background: url(../../images/choose/girl_7.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list8 {
+    background: url(../../images/choose/boy_8.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list8 {
+    background: url(../../images/choose/girl_8.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .male .user-list9 {
+    background: url(../../images/choose/boy_9.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-scroll .female .user-list9 {
+    background: url(../../images/choose/girl_9.png) no-repeat;
+    background-size: 100% 100%; }
+
+.spotlight {
+  z-index: 1;
+  background: -webkit-radial-gradient(circle closest-side, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+  background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)); }
+
+.choose-tip {
+  position: fixed;
+  z-index: 1;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #95a5bd;
+  -webkit-filter: brightness(150%);
+          filter: brightness(150%); }
+  .choose-tip::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: .35rem;
+    margin-left: -.2rem;
+    -webkit-filter: brightness(500%);
+            filter: brightness(500%);
+    width: 0.41rem;
+    height: 0.19rem;
+    background: url(../../images/choose/arrow.png) center no-repeat;
+    background-size: 100% 100%;
+    -webkit-animation: arrow .5s linear infinite alternate;
+            animation: arrow .5s linear infinite alternate; }
 
 @-webkit-keyframes filter {
   0% {

@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:42 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-05 11:12:45
+ * @Last Modified time: 2018-11-06 15:22:04
  */
 /* 公用css */
 * {
@@ -15,6 +15,9 @@ html, body, .main, section {
   height: 100%;
   font-size: .24rem;
   font-family: "Microsoft YaHei"; }
+
+ul, li {
+  list-style: none; }
 
 .clearfix {
   *zoom: 1; }

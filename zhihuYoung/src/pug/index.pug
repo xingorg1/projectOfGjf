@@ -39,7 +39,10 @@ block mainLeft
 			.choose-person
 				.choose-scroll
 					.bg
-
+					ul.user-list.male
+						- for (var x = 0; x < 10; x++)
+							li(class='user-list'+x)
+					.spotlight
 				.choose-tip 上滑选择你的人物
 				.choose-input
 		.orientation
