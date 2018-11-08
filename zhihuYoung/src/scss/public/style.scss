@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-06 16:34:21
+ * @Last Modified time: 2018-11-07 15:14:05
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -269,10 +269,6 @@ $scene: "../../images/scene/";
 		padding: .45rem .2rem;
 		text-align: center;
 	}
-	// .sex-box{
-	// 	margin: 0 auto .14rem;
-	// 	@include bgImg(5.9,4.5,'#{$choose}sex_box.png');
-	// }
 	.sex-box{
 		height: calc(100% - 0.26rem - 0.68rem);
 		display: -webkit-box;
@@ -332,17 +328,21 @@ $scene: "../../images/scene/";
 	}
 }
 .choose-person{
-	overflow: scroll;
+	overflow: hidden;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	right: 0;
-	left: 0;
+  left: 0;
+  // display: none;
 }
 
 .choose-scroll{
-	overflow: scroll;
-	// position: relative;
+  position: relative;
+  &.no-move{
+    overflow: hidden;
+    height: 100%;
+  }
 	.bg{
 		@include bgImg(1,32.09,'#{$choose}bg.jpg');
 		// background-position: top left;
@@ -407,8 +407,18 @@ $scene: "../../images/scene/";
 }
 .spotlight{
 	@extend .fillScreen;
+	width: 10rem;
+	height: 32.09rem;
 	z-index: 1;
-	background: radial-gradient(circle closest-side,rgba(0,0,0,0,), rgba(0,0,0,0.1),rgba(0,0,0,0.5),rgba(0,0,0,0.8));
+	transform: translate3d(0px, 0px, 0px);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 1s linear;
+  background: radial-gradient(circle closest-side,rgba(0,0,0,0,), rgba(0,0,0,0.1),rgba(0,0,0,0.5),rgba(0,0,0,0.8));
+  &.show{
+    opacity: 1;
+    visibility: visible;
+  }
 }
 .choose-tip{
 	position: fixed;
@@ -431,8 +441,66 @@ $scene: "../../images/scene/";
 		animation: arrow .5s linear infinite alternate;
 	}
 }
-.choose-input{
-	
+.choose-fill-form{
+  position: fixed;
+  z-index: 2;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transition: all 1s;
+  transform: scale(0);
+  visibility: hidden;
+  opacity: 0;
+  &.show{
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+	.choose-input{
+    padding: 0 .8rem;
+    height: .8rem;
+    line-height: .8rem;
+    margin: 0 auto;
+    input{
+      font-size: .26rem;
+      height: 100%;
+      width: 100%;
+      border-radius: .08rem;
+      padding: 0 .2rem;
+      box-sizing: border-box;
+      border: .02rem solid #b4b6b8;
+      background: #424d6b;
+      box-shadow: 0 .07rem .14rem 0 #23356A;
+      color: #becfed;
+      letter-spacing: .03rem;
+      &::placeholder,::-webkit-input-placeholder{
+        color: #becfed;
+        letter-spacing: .03rem;
+      }
+    }
+	}
+	.choose-btn{
+    padding: 0 .7rem;
+    margin: .2rem auto 0;
+    overflow: hidden;
+    div{
+      width: 2.62rem;
+      height: .93rem;
+      text-indent: -9999px;
+    }
+	}
+	.choose-btn1 {
+    float: left;
+    margin-right: .2rem;
+    background: url(#{$choose}btn_repeat.png) no-repeat;
+    background-size: 100% 100%;
+	}
+	.choose-btn2{
+    float: right;
+    background: url(#{$choose}btn_success.png) no-repeat;
+    background-size: 100% 100%;
+	}
 }
 @keyframes filter {
 	0% {

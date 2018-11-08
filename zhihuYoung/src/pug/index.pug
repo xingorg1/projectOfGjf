@@ -1,52 +1,57 @@
 extends ../node_modules/yi-frames-ui/m-widget/src/pug/layout.pug
 block pugConfig
-	-const pugConfig={titleText:`高仿知乎h5活动页面 - 平行世界的你`, cssName:`style`, confName:`index`, isNotSpa: false, column:'1', bodyClassName:[''], hrefUrl:'../'};
+  -const pugConfig={titleText:`高仿知乎h5活动页面 - 平行世界的你`, cssName:`style`, confName:`index`, isNotSpa: false, column:'1', bodyClassName:[''], hrefUrl:'../'};
 block mainLeft
-	.main
-		.loading.hide
-			.loading-box
-				i.icon.icon-loading
-				.loading-progress 
-					.loading-progress-width
-				span.loading-progress-number 0%
-				div.loading-text 正在奋力加载中
-				div.loading-end-btn 开始
-		video.video#myVideo(src='../images/assets/video.mp4' x5-video-player-type="h5" x-webkit-airplay="true" airplay="allow" playsinline="" webkit-playsinline="") 您的浏览器不支持video标签
-		section.page1
-			.bg
-				canvas#canvas1() 您的浏览器不支持canvas
-			.title
-				.title-png.title-png01
-				.title-png.title-png02
-				.title-png.title-png03
-				.title-png.title-png04
-				.title-png.title-png05
-				.title-png.title-png06
-				.title-png.title-png07
-			.txt
-		section.page2
-			.choose-sex
-				p.h1 请选择你的性别
-				//- .sex-box.male
-				//- .sex-box.female
-				ul.sex-box
-					li.male
-						.bg
-						.icon
-					li.female
-						.bg
-						.icon
-			.choose-person
-				.choose-scroll
-					.bg
-					ul.user-list.male
-						- for (var x = 0; x < 10; x++)
-							li(class='user-list'+x)
-					.spotlight
-				.choose-tip 上滑选择你的人物
-				.choose-input
-		.orientation
-			.orient-txt
-				i.icon.icon-orient-iphone
-				span.orient-text 为了更好的体验，请使用竖屏锁屏浏览
-		.music-btn.hide
+  .main
+    .loading
+      .loading-box
+        i.icon.icon-loading
+        .loading-progress 
+          .loading-progress-width
+        span.loading-progress-number 0%
+        div.loading-text 正在奋力加载中
+        div.loading-end-btn 开始
+    video.video#myVideo(src='../images/assets/video.mp4' x5-video-player-type="h5" x-webkit-airplay="true" airplay="allow" playsinline="" webkit-playsinline="") 您的浏览器不支持video标签
+    section.page1
+      .bg
+        canvas#canvas1() 您的浏览器不支持canvas
+      .title
+        .title-png.title-png01
+        .title-png.title-png02
+        .title-png.title-png03
+        .title-png.title-png04
+        .title-png.title-png05
+        .title-png.title-png06
+        .title-png.title-png07
+      .txt
+    section.page2
+      .choose-sex
+        p.h1 请选择你的性别
+        //- .sex-box.male
+        //- .sex-box.female
+        ul.sex-box
+          li.male
+            .bg
+            .icon
+          li.female
+            .bg
+            .icon
+      .choose-person
+        .choose-scroll
+          .bg
+          ul.user-list.male
+            - for (var x = 0; x < 10; x++)
+              li(class='user-list'+x)
+          .spotlight
+        .choose-tip 上滑选择你的人物
+        .choose-fill-form
+          .choose-input
+            input(type='text' placeholder='请填写你的名字' maxlength='10')
+          .choose-btn
+            .choose-btn1 重新选择
+            .choose-btn2 确定
+    .orientation
+      .orient-txt
+        i.icon.icon-orient-iphone
+        span.orient-text 为了更好的体验，请使用竖屏锁屏浏览
+    .music-btn.hide

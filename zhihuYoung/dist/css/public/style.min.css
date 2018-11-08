@@ -3,13 +3,13 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-06 16:34:21
+ * @Last Modified time: 2018-11-07 15:14:05
  */
 /*
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:42 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-06 15:22:04
+ * @Last Modified time: 2018-11-07 11:42:24
  */
 /* 公用css */
 * {
@@ -36,9 +36,6 @@ ul, li {
 
 .hide {
   display: none; }
-
-.show {
-  display: block; }
 
 .icon {
   display: inline-block;
@@ -372,7 +369,7 @@ ul, li {
               transform: scale(0.86); }
 
 .choose-person {
-  overflow: scroll;
+  overflow: hidden;
   height: 100%;
   position: absolute;
   top: 0;
@@ -380,7 +377,10 @@ ul, li {
   left: 0; }
 
 .choose-scroll {
-  overflow: scroll; }
+  position: relative; }
+  .choose-scroll.no-move {
+    overflow: hidden;
+    height: 100%; }
   .choose-scroll .bg {
     width: 1rem;
     height: 32.09rem;
@@ -487,9 +487,20 @@ ul, li {
     background-size: 100% 100%; }
 
 .spotlight {
+  width: 10rem;
+  height: 32.09rem;
   z-index: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
   background: -webkit-radial-gradient(circle closest-side, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
   background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)); }
+  .spotlight.show {
+    opacity: 1;
+    visibility: visible; }
 
 .choose-tip {
   position: fixed;
@@ -516,6 +527,67 @@ ul, li {
     background-size: 100% 100%;
     -webkit-animation: arrow .5s linear infinite alternate;
             animation: arrow .5s linear infinite alternate; }
+
+.choose-fill-form {
+  position: fixed;
+  z-index: 2;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  visibility: hidden;
+  opacity: 0; }
+  .choose-fill-form.show {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+  .choose-fill-form .choose-input {
+    padding: 0 .8rem;
+    height: .8rem;
+    line-height: .8rem;
+    margin: 0 auto; }
+    .choose-fill-form .choose-input input {
+      font-size: .26rem;
+      height: 100%;
+      width: 100%;
+      border-radius: .08rem;
+      padding: 0 .2rem;
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: .02rem solid #b4b6b8;
+      background: #424d6b;
+      -webkit-box-shadow: 0 .07rem .14rem 0 #23356A;
+              box-shadow: 0 .07rem .14rem 0 #23356A;
+      color: #becfed;
+      letter-spacing: .03rem; }
+      .choose-fill-form .choose-input input::-webkit-input-placeholder, .choose-fill-form .choose-input input ::-webkit-input-placeholder {
+        color: #becfed;
+        letter-spacing: .03rem; }
+      .choose-fill-form .choose-input input::placeholder, .choose-fill-form .choose-input input ::-webkit-input-placeholder {
+        color: #becfed;
+        letter-spacing: .03rem; }
+  .choose-fill-form .choose-btn {
+    padding: 0 .7rem;
+    margin: .2rem auto 0;
+    overflow: hidden; }
+    .choose-fill-form .choose-btn div {
+      width: 2.62rem;
+      height: .93rem;
+      text-indent: -99.99rem; }
+  .choose-fill-form .choose-btn1 {
+    float: left;
+    margin-right: .2rem;
+    background: url(../../images/choose/btn_repeat.png) no-repeat;
+    background-size: 100% 100%; }
+  .choose-fill-form .choose-btn2 {
+    float: right;
+    background: url(../../images/choose/btn_success.png) no-repeat;
+    background-size: 100% 100%; }
 
 @-webkit-keyframes filter {
   0% {

@@ -1,6 +1,13 @@
 export let utils = {
   oW: document.documentElement.clientWidth,
   oH: document.documentElement.clientHeight,
+  myRequestAnimFrame: function(){
+    console.log(1)
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+		function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element) {
+			return window.setTimeout(callback, 1000 / 60);
+		};
+  },
   canvasWH: function(canvas){
     canvas.width = this.oW;
     canvas.height = this.oH;
