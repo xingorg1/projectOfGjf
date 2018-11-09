@@ -16,137 +16,137 @@
 ```
 ```js
 <script>
-    (function () {
-      var b = document.createElement("meta");
-      b.setAttribute("name", "viewport");
-      var c = window.devicePixelRatio,
-        a = c ? 1 / c : 1;
-      window.screen.availWidth == document.documentElement.offsetWidth && (c = a = 1);
-      document.documentElement.setAttribute("data-dpr", c || 1);
-      window.navigator.userAgent.match(/android/i) ? b.setAttribute("content", "width=device-width, initial-scale=" +
-        a +
-        ", maximum-scale=" + a + ", minimum-scale=" + a + ", user-scalable=no") : b.setAttribute("content",
-        "initial-scale=" + a + ", maximum-scale=" + a + ", minimum-scale=" + a + ", user-scalable=no");
-      document.head.appendChild(b)
-    })();
-    var dpr = document.documentElement.getAttribute("data-dpr") || 1,
-      width = document.documentElement.offsetWidth,
-      fontSize = 100 / 750 * width;
-    document.querySelector("html").style.fontSize = fontSize + "px";
-    window.addEventListener("resize", function () {
-      var a = 100 / 750 * document.querySelector("html").offsetWidth;
-      document.querySelector("html").style.fontSize = a + "px"
-    });
-  </script>
+  (function () {
+    var b = document.createElement("meta");
+    b.setAttribute("name", "viewport");
+    var c = window.devicePixelRatio,
+      a = c ? 1 / c : 1;
+    window.screen.availWidth == document.documentElement.offsetWidth && (c = a = 1);
+    document.documentElement.setAttribute("data-dpr", c || 1);
+    window.navigator.userAgent.match(/android/i) ? b.setAttribute("content", "width=device-width, initial-scale=" +
+      a +
+      ", maximum-scale=" + a + ", minimum-scale=" + a + ", user-scalable=no") : b.setAttribute("content",
+      "initial-scale=" + a + ", maximum-scale=" + a + ", minimum-scale=" + a + ", user-scalable=no");
+    document.head.appendChild(b)
+  })();
+  var dpr = document.documentElement.getAttribute("data-dpr") || 1,
+    width = document.documentElement.offsetWidth,
+    fontSize = 100 / 750 * width;
+  document.querySelector("html").style.fontSize = fontSize + "px";
+  window.addEventListener("resize", function () {
+    var a = 100 / 750 * document.querySelector("html").offsetWidth;
+    document.querySelector("html").style.fontSize = a + "px"
+  });
+</script>
 ```
 
 ## 检测是不是手机看，让其横屏
     
-    这个的止步点在于，什么时候检测分辨率？
-    
-    我发现我开关控制台左上角的模拟器按钮，在不用刷新页面的情况下他都能检测的到不是竖屏观看，然后就提醒我横屏手机。
-    
-    难道是开了定时器？不应该
+这个的止步点在于，什么时候检测分辨率？
 
-    是不是有什么事件可以监听window的屏宽？
+我发现我开关控制台左上角的模拟器按钮，在不用刷新页面的情况下他都能检测的到不是竖屏观看，然后就提醒我横屏手机。
 
-    有没有可能是用的css的@media！！某个分辨率下让其显示？
+难道是开了定时器？不应该
 
-    这种猜测倒果然没错，跑回去看人家的效果，果然就是用的@media哈哈好开心。
+是不是有什么事件可以监听window的屏宽？
 
-    虽然media的原理被我想到了，但是他的处理方法还是不太一样：
-    
-    他用了这个：
+有没有可能是用的css的@media！！某个分辨率下让其显示？
+
+这种猜测倒果然没错，跑回去看人家的效果，果然就是用的@media哈哈好开心。
+
+虽然media的原理被我想到了，但是他的处理方法还是不太一样：
+
+他用了这个：
 ```css
     @media (orientation: landscape)
 ```
-    结果一百度，w3c还在真有这个东西的介绍：
+结果一百度，w3c还在真有这个东西的介绍：
 
-    orientation(方向，定向): 监听输出设备的可是宽度是否大于或等于高度；
+orientation(方向，定向): 监听输出设备的可是宽度是否大于或等于高度；
 
-    两个参数：
+两个参数：
 
-        portrait(肖像/描写)：高度 >= 宽度
+    portrait(肖像/描写)：高度 >= 宽度
 
-        landscape(风景画/景色/山水画)： 除protrait之外的所有情况都是这个
+    landscape(风景画/景色/山水画)： 除protrait之外的所有情况都是这个
 
-    所以，当他设置orientation：landscape时，就是只要宽度大于高度就会起作用！比自己设置一个定死的值还要好用！
+所以，当他设置orientation：landscape时，就是只要宽度大于高度就会起作用！比自己设置一个定死的值还要好用！
        
 
 ## 检测是不是微信环境看，不是的话不让看
-    此问题我的解决思路是利用ua判断微信环境即可，具体的关键知识点如：
+此问题我的解决思路是利用ua判断微信环境即可，具体的关键知识点如：
 ```js
-    window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) === 'micromessenger'
+  window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) === 'micromessenger'
 ```
 
 
 ## 预加载、懒加载和进度条
 这三个配合起来，就是目前这种动画的优化处理方式
 ### 1.预加载图片等资源
-    预期效果：loading的时候加载视频和部分图片，等到看第2页的时候加载第三页的效果。
+预期效果：loading的时候加载视频和部分图片，等到看第2页的时候加载第三页的效果。
 
-    实现思路：多个图片地址拼成数组，new Image并设置src实现预加载
+实现思路：多个图片地址拼成数组，new Image并设置src实现预加载
     
-    ```js
-      let musicArr = ['bicycle', 'bird', 'car', 'cat', 'choose', 'click', 'fly', 'stage', 'train', 'walk'],
-          newArr = [];
+```js
+  let musicArr = ['bicycle', 'bird', 'car', 'cat', 'choose', 'click', 'fly', 'stage', 'train', 'walk'],
+      newArr = [];
 
-      musicArr.forEach((ele)=>{
-        var img = new Image();
-        img.src = ele;
-        <!-- newArr.push(img); -->
-      })
-    ```
+  musicArr.forEach((ele)=>{
+    var img = new Image();
+    img.src = ele;
+    <!-- newArr.push(img); -->
+  })
+```
 
 ### 2.预加载时展示的进度条效果
-    预期效果： 加载图片的进度以进度条甚至百分比文案的方式展示给用户，防止用户跳出
+预期效果： 加载图片的进度以进度条甚至百分比文案的方式展示给用户，防止用户跳出
 
-    实现思路：css动画监听进度条的宽度。js监听资源的onload、onerror事件、complete属性，并记录总数。
+实现思路：css动画监听进度条的宽度。js监听资源的onload、onerror事件、complete属性，并记录总数。
 
-    基本实现代码：index.js中的```initPreLoad()```方法，配合抽离出来的utils.js中的```prestrain()```方法。
+基本实现代码：index.js中的```initPreLoad()```方法，配合抽离出来的utils.js中的```prestrain()```方法。
 
-    ```onload```：监听本图片加载成功，则已加载（确切的说被处理）的图片数目+1，所有被处理图片的总数+1；
+```onload```：监听本图片加载成功，则已加载（确切的说被处理）的图片数目+1，所有被处理图片的总数+1；
 
-    ```error```：监听本图片加载失败，则加载失败（确切的说被处理）的图片数目+1，所有被处理图片的总数+1；
+```error```：监听本图片加载失败，则加载失败（确切的说被处理）的图片数目+1，所有被处理图片的总数+1；
 
-    ```complete```：监听本缓存图片准备完毕，也是加载成功的一种，则已加载（确切的说被处理）的图片数目+1，所有被处理图片的总数+1；
+```complete```：监听本缓存图片准备完毕，也是加载成功的一种，则已加载（确切的说被处理）的图片数目+1，所有被处理图片的总数+1；
 
-    记录数目为了后边的进度条计算百分比使用。
+记录数目为了后边的进度条计算百分比使用。
 
-    进度条计算百分比的js算法：当前加载进度 = parseInt(所有被处理图片总数/需要加载图片总数 * 100)
+进度条计算百分比的js算法：当前加载进度 = parseInt(所有被处理图片总数/需要加载图片总数 * 100)
 
-    文字逐增变化的css动画实现：配合jq的```animate()方法```，
-      
-      1、设置第一个参数的count为计算得来的当前加载进度，
+文字逐增变化的css动画实现：配合jq的```animate()方法```，
+  
+  1、设置第一个参数的count为计算得来的当前加载进度，
 
-      2、step方法中做极值的处理。
+  2、step方法中做极值的处理。
 
-    ```js
-      $('.loading-progress-number').animate({
-        count: progress
-      }, {
-        duration: 150,
-        step: function () {
-          if (isNaN(this.count)) {
-            this.count = 0;
-            return;
-          }
-          let boxText = Math.ceil(Number(this.count));
-          if (boxText >= 100) {
-            boxText = 100;
-            $('.loading-text').css('display', 'none');
-            $('.loading-end-btn').css('display', 'block');
-          }
-          $('.loading-progress-number').text(`${boxText}%`);
-          $('.loading-progress-width').css('width', `${boxText}%`);
-        }
-      })
+```js
+  $('.loading-progress-number').animate({
+    count: progress
+  }, {
+    duration: 150,
+    step: function () {
+      if (isNaN(this.count)) {
+        this.count = 0;
+        return;
+      }
+      let boxText = Math.ceil(Number(this.count));
+      if (boxText >= 100) {
+        boxText = 100;
+        $('.loading-text').css('display', 'none');
+        $('.loading-end-btn').css('display', 'block');
+      }
+      $('.loading-progress-number').text(`${boxText}%`);
+      $('.loading-progress-width').css('width', `${boxText}%`);
     }
-    ```
+  })
+}
+```
 
 
 ### 3.懒加载 **(未解决)**
-    不属于本次项目所有效果
+不属于本次项目所有效果
 
 ## video的各种问题
 ### video常用的属性和方法（w3c的video标签）
@@ -192,7 +192,7 @@
 
 ## 动画问题：
 ###  "即将进入平行世界"文案后边的“...”动画
-  首先，我能理解他后边点点是通过animation制作的帧动画，对应关键帧上边让伪类的内容展示对应个数的点：
+首先，我能理解他后边点点是通过animation制作的帧动画，对应关键帧上边让伪类的内容展示对应个数的点：
   ```css
     @keyframes ellipseAni{
         0%,100%{
@@ -252,7 +252,7 @@
 
 
 
-### 兼容适配问题
+## 兼容适配问题
 
   1. 安卓中隐藏视频控件使用canvas
 
