@@ -1,13 +1,7 @@
-# 【专栏】站在巨人的肩膀上看世界 — — 仿做高级的h5项目
-#### 原作传送门：
+# 说明
+仿做h5项目 - #[《平行世界的你》](http://static.adcode.cn/20180508-zhihu-young/index.html?from=singlemessage&isappinstalled=0)
+# 要解决的问题(自己需要学习的知识点)
 
-[《平行世界的你》](http://static.adcode.cn/20180508-zhihu-young/index.html?from=singlemessage&isappinstalled=0)
-
-#### 我的demo地址：
-
-[《project from xing.org1^》](https://xingorg1.github.io/projectOfGjf/)
-
-# 以下总结要解决的问题(自己需要学习的知识点)
 ## 移动端适配方案（rem写法及转换）
 ```html
   <meta http-equiv="Expires" content="0" />
