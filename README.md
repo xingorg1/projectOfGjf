@@ -87,7 +87,7 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
 
 
 ## 预加载、懒加载和进度条
-这三个配合起来，就是目前这种动画的优化处理方式
+  这三个配合起来，就是目前这种动画的优化处理方式
 ### 1.预加载图片等资源
 预期效果：loading的时候加载视频和部分图片，等到看第2页的时候加载第三页的效果。
 
@@ -192,9 +192,9 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
 * 在安卓中，可以使用canvas的drawImage()方法绘制视频，虽然不如原生视频的效果流畅，但是终究能够解决不要控件的这个硬性问题。毕竟这种一镜到底的动画，当用户暂停了视频，后边的工作就白做了。
 
 ## music的各种问题
-### 背景音乐的添加
+### 背景音乐的init预加载和后期多段交互音乐的预加载
     他这个找不到音乐资源的加载，但是按开关还能暂停/播放音乐。不知如何处理的？
-### 音乐的分段加载（每出现一段音乐都可以在media里看到）
+### 背景音乐的播放控制
 
 ## 动画问题：
 ###  "即将进入平行世界"文案后边的“...”动画
@@ -232,7 +232,64 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
 ### css里的缓动动画 - 符合运动规律的动画【贝塞尔曲线】
 
 
-## canvas序列帧
+## canvas序列帧制作动画
+【动画就是将物体的运动以每秒24格的时间分格法逐一分解、绘制并拍摄记录成序列图片，再以每秒24格的播放速度播放出来，利用人的“视觉暂留”原理产生连续运动的视觉效果】
+
+简单来说，就是通过一直切换一张一张不同的序列图片连续交替出现，让静止的图像看上去像是播放的动态影像。
+
+### 实现关键：就是定时器```setInterval```和```setTimeout```或者更强大的```window.requestAnimationFrame```
+推荐两篇偶像的深入剖析文：[定时器](https://www.cnblogs.com/xiaohuochai/p/5773183.html)和[requestAnimationFrame](https://www.cnblogs.com/xiaohuochai/p/5777186.html)
+
+### 封装的requestAnimationFrame：
+```js
+window.requestAnimFrame = (function() {
+	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+		function(callback,element) {
+			return window.setTimeout(callback, 1000 / 60);//1000ms/60.最佳循环间隔
+		};
+})();
+```
+
+那每一次定时器我们要做什么呢？就是切换并重新绘制图片。
+### canvas.drawImage()方法绘制图像
+[这一页就够用了](http://www.w3school.com.cn/html5/canvas_drawimage.asp)
+
+### 思路代码：
+```js
+  var canvas1Img = [],
+    timer1 = null,
+    canvas1 = document.getElementById('canvas1'),
+    context1 = canvas1.getContext('2d'),
+    _i = 0;
+  /* canvas序列帧技术绘制page1的背景 - 需优化定时器*/
+  canvas1 && utils.canvasWH(canvas1);
+  context1.drawImage(canvas1Img[_i], 0, 0, utils.oW, utils.oH);
+  /* 使用requestAnimationFrame的写法，这里进行过封装
+  function frameAni(){
+    _i++;
+    if (_i >= canvas1Img.length) {
+      _i = 0;
+    }
+    context1.clearRect(0, 0, utils.oW, utils.oH);
+    context1.drawImage(canvas1Img[_i], 0, 0, utils.oW, utils.oH);
+    console.log(canvas1Img[_i]);
+    window.requestAnimFrame(frameAni);
+  }
+  frameAni(); */
+  timer1 = setInterval(() => {
+    _i++;
+    if (_i >= canvas1Img.length) {//canvas1Img是预加载时存放的所有图片对象的数组
+      _i = 0;
+    }
+    context1.clearRect(0, 0, utils.oW, utils.oH);//再次绘制时要把上次绘制的清除，就像要擦黑板一样。
+    context1.drawImage(canvas1Img[_i], 0, 0, utils.oW, utils.oH);
+    console.log(canvas1Img[_i]);
+  }, 100);
+```
+### 序列帧优化（雪碧图）
+  因为需要切换多张不同的图片达到序列帧效果，那势必要多次去请求图像。为了优化，当图像尺寸比较小时可以考虑制作成雪碧图样式。
+
+  那样每次重新drawImage的时候，只需要改变开始绘制的坐标值就行了，而不是直接替换图片链接。
 
 ## css里某些效果的特殊处理思路
 
@@ -242,15 +299,66 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
 ### 2、**alternate-reverse**
 两个性别的闪光特效，是交替间隔的
 
-### filter属性
-**grayscale(100%)**
+### filter属性 [文档看这里，我就不搬过来了](http://www.runoob.com/cssref/css3-pr-filter.html)
+**grayscale(0-100%)**: 灰度图片。
 
-**brightness(50%)**
+0为纯灰色，100%为纯灰色。当然也可以是0-1的小数。
 
-### calc属性值
-## 模拟超出滚动效果
+有点设计学里边，将图像颜色的饱和度降值的意思。
+
+兼容性上，ie不支持。用在移动端可以放心一点了。
+
+
+**brightness(50%)**：改变图片的明暗效果
+
+这个效果在项目中，多用在颜色比较暗的文字上，用了比较暗的颜色值，但是用了这个属性颜色值提亮了。我想这不是原作为了用而用，设计稿上应该就是这个颜色值然后添加了提亮度的蒙版吧。
+
+只想说，学过设计的再来了解这个函数的各个属性值，真的好easy，甚至连效果都不用做都能想象出来长啥样。我想也是因为css的魔性，我才从设计转到前端的吧。只想玩视觉上的东西，而代码改变的视觉又有崇高的魔力。
+
+这段时间听施展讲武则天的历史，一句话让我很是深刻，当你忘了你要去往何方，那就回头看看来时的路。再来走一遍。学前端学到迷茫，项目都能做，但是问我问题就是不能达到理想。想放弃，现在学到这里，又想到了为什么走到这里。或许喜欢前端是始于颜值（css）但是现在陷在js的才华和魔力里无法自拔。因为太累，拔不动了哈哈哈哈哈哈哈哈哈哈
+
+言归正传，filter还有好多属性啊：
+
+**blur** 管模糊效果的，以实现摘了眼镜看世界的你看到的画面
+
+**opacity** 透明度
+
+**hue-rotate** 跟色相有关
+
+**saturate** 调颜色饱和度，比如让红色更红，会让浅粉色变成纯红那样
+
+记个大概，知道有这么个东西，少占点大脑内存，用到的时候再过来找。
+
+### calc属性值实现元素的高随着手机响应
+
+## 模拟滚动效果（选择喜欢的角色处）
+### 思路
+#### 监听触摸事件(监听鼠标事件同理)
+
+  start时、鼠标按下记录当前鼠标的x y位置（这个效果特殊，只需要监听y轴位置即可）
+
+  move时、鼠标移动获取新的y值，如果大于start的y值就是向下移动(元素的scrolltop/offsetTop增加),反之向上(元素scrolltop/offsetTop减少)【实验时企图设置$(this)[0].offsetTop失败，说是可读属性不能赋值】
+
+  [借助原著的启发，最后利用css3的translate属性对元素进行上下移动]
+
+#### 问题亮点：
+
+  拿目标元素的位置scrollTop
+
+  拿事件的鼠标位置touches【jq on绑定的时候，e返回的不是事件event，而是目标元素$(this)】
+
+  注意碰撞检测
+### 1、移动端使用的touch事件
+
+### 2、pc端的mousewheel事件
+
+### 3、核心是让长图滚动的值scrollTop=角色所在的offsetTop值
+
+
 
 ## 追光灯效果的实现【背景透明度的径向渐变+translate的位移】
+### 1、css-实现聚焦效果
+### 2、js-控制translate位移实现灯光追踪效果
 
 
 
@@ -258,7 +366,7 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
 
 
 
-## 兼容适配问题
+## get到的兼容适配问题
 
   1. 安卓中隐藏视频控件使用canvas
 
@@ -274,4 +382,6 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
 5、 人物走路的合成图也是，点击选择了人物才加载指定人物的背影图
 
 ## 拥有很多名单的json文件
+
+# 最后提炼原作的js，研究大神的处理方式，对比与自己不同的地方，总结优缺点、拓宽新思路和新编程风格。
 

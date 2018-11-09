@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-07 15:14:05
+ * @Last Modified time: 2018-11-09 20:36:50
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -355,8 +355,15 @@ $scene: "../../images/scene/";
 		li{
 			position: absolute;
 			width: 1.0348rem;
-			height: 3.12rem;
-		}
+      height: 3.12rem;
+      transition: all 1s;
+      transform: scale(1);
+      filter: grayscale(1);
+    }
+    .cur{
+      filter: grayscale(0);
+      transform: scale(1.1);
+    }
 	}
 	// .male{
 	// 	.user-list0{
@@ -407,13 +414,13 @@ $scene: "../../images/scene/";
 }
 .spotlight{
 	@extend .fillScreen;
-	width: 10rem;
+	width: 15rem;
 	height: 32.09rem;
 	z-index: 1;
 	transform: translate3d(0px, 0px, 0px);
 	opacity: 0;
 	visibility: hidden;
-	transition: all 1s linear;
+	transition: all 1s;
   background: radial-gradient(circle closest-side,rgba(0,0,0,0,), rgba(0,0,0,0.1),rgba(0,0,0,0.5),rgba(0,0,0,0.8));
   &.show{
     opacity: 1;

@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-07 15:14:05
+ * @Last Modified time: 2018-11-09 20:36:50
  */
 /*
  * @Author: @Guojufeng 
@@ -394,7 +394,18 @@ ul, li {
     .choose-scroll .user-list li {
       position: absolute;
       width: 1.0348rem;
-      height: 3.12rem; }
+      height: 3.12rem;
+      -webkit-transition: all 1s;
+      transition: all 1s;
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-filter: grayscale(1);
+              filter: grayscale(1); }
+    .choose-scroll .user-list .cur {
+      -webkit-filter: grayscale(0);
+              filter: grayscale(0);
+      -webkit-transform: scale(1.1);
+              transform: scale(1.1); }
   .choose-scroll .user-list0 {
     left: 2.3rem;
     top: 6.63rem; }
@@ -487,15 +498,15 @@ ul, li {
     background-size: 100% 100%; }
 
 .spotlight {
-  width: 10rem;
+  width: 15rem;
   height: 32.09rem;
   z-index: 1;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: all 1s linear;
-  transition: all 1s linear;
+  -webkit-transition: all 1s;
+  transition: all 1s;
   background: -webkit-radial-gradient(circle closest-side, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
   background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)); }
   .spotlight.show {
