@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>guojufeng的项目列表</title>
   <style>
-    *{
+    * {
       margin: 0;
       padding: 0;
     }
-    body{
+
+    body {
       color: #333;
       background: #f1f1f1;
     }
-    .main{
+
+    .main {
       margin: 45px 20px;
       min-height: 500px;
       overflow: hidden;
@@ -22,29 +25,41 @@
       background: #fff;
       border-radius: 25px;
     }
-    
-    h1{
+
+    h1 {
       padding: 10px 0 20px;
       text-align: center;
-      
+
       background: lightgreen;
     }
-    ul,li{
+
+    ul,
+    li {
       list-style: none;
     }
-    ul{
-      padding: 0 20px;
+
+    ul {
+      padding: 0 20px 45px;
       overflow: hidden;
     }
-    li{
+
+    li {
       margin-top: -1px;
       padding: 20px 0;
       border-top: 1px dotted #eee;
     }
-    .title{
+
+    .title:hover .orange {
       /* padding-left: 30px; */
+      color: #08c4ff;
     }
-    .title:before{
+
+    .title:hover:before {
+      /* padding-left: 30px; */
+      background: #08c4ff;
+    }
+
+    .title:before {
       content: "";
       display: inline-block;
       width: 5px;
@@ -53,22 +68,25 @@
       /* background: #4abb4a; */
       vertical-align: -2px;
     }
-    
-    a{
-    }
-    .orange{
+
+    a {}
+
+    .orange {
       font-size: 16px;
       color: #ff6000;
       /* color: #4abb4a; */
     }
-    .blue{
+
+    .blue {
       text-decoration: none;
       color: #02c3ff;
     }
-    b{
+
+    b {
       cursor: pointer;
     }
-    .describe{
+
+    .describe {
       margin-top: 10px;
       padding: 10px;
       font-size: 14px;
@@ -78,37 +96,85 @@
       background: #f5f5f5;
       border-radius: 5px;
     }
-    strong{
+
+    strong {
       letter-spacing: normal;
+    }
+
+    .pending .orange,
+    .pending .describe {
+      color: #eee;
+    }
+
+    .pending .title:before {
+      /* padding-left: 30px; */
+      background: #eee;
+    }
+
+    @media screen and (min-width: 750px) {
+      /* ul{
+        overflow: hidden;
+      }
+      li{
+        float: left;
+        width: 48%;
+        overflow: hidden;
+      }
+      li:nth-child(even){ */
+      /* float: right; */
+      /* } */
     }
   </style>
 </head>
+
 <body>
   <div class="main">
-    <h1>my project</h1>
+    <h1>project from xing.org1^</h1>
     <ul>
       <li>
         <div class="title">
-          <a  class="orange" href="zhihuYoung/dist//html/index.html"><b>平行世界的你></b></a>
+          <a class="orange" href="zhihuYoung/dist//html/index.html"><b>平行世界的你></b></a>
         </div>
         <div class="describe">
           <p>
-              仿做知乎的一个h5项目 - [<a class="blue" href="http://static.adcode.cn/20180508-zhihu-young/index.html?from=singlemessage&isappinstalled=0">平行世界的你</a>]。
+            仿做知乎的一个h5项目 - [<a class="blue" href="http://static.adcode.cn/20180508-zhihu-young/index.html?from=singlemessage&isappinstalled=0">平行世界的你</a>]。
           </p>
           <p>
             要解决的问题(自己需要学习的知识点)很多，主要是练习了<strong>video</strong>的各种方法、事件还有<strong>canvas</strong>怎么操作图画完成一个互动性很强的游戏类型的h5页面。
           </p>
         </div>
       </li>
-      <li>
+      <li class="pending">
         <div class="title">
-          <a  class="orange" href=""><b>pending></b></a>
+          <a class="orange" href=""><b>pending></b></a>
         </div>
-          <div class="describe">
-              pending
-          </div>
-        </li>
+        <div class="describe">
+          pending
+        </div>
+      </li>
+      <!-- <li>
+        <div class="title">
+          <a class="orange" href="zhihuYoung/dist//html/index.html"><b>平行世界的你></b></a>
+        </div>
+        <div class="describe">
+          <p>
+            仿做知乎的一个h5项目 - [<a class="blue" href="http://static.adcode.cn/20180508-zhihu-young/index.html?from=singlemessage&isappinstalled=0">平行世界的你</a>]。
+          </p>
+          <p>
+            要解决的问题(自己需要学习的知识点)很多，主要是练习了<strong>video</strong>的各种方法、事件还有<strong>canvas</strong>怎么操作图画完成一个互动性很强的游戏类型的h5页面。
+          </p>
+        </div>
+      </li>
+      <li class="pending">
+        <div class="title">
+          <a class="orange" href=""><b>pending></b></a>
+        </div>
+        <div class="describe">
+          pending
+        </div>
+      </li> -->
     </ul>
   </div>
 </body>
+
 </html>
