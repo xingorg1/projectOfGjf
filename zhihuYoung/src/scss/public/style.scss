@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-09 20:36:50
+ * @Last Modified time: 2018-11-14 18:50:12
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -183,8 +183,9 @@ $scene: "../../images/scene/";
 	宽高不是定位图片的宽高，而是任性的整数，
 	然后使用bg-size设置图片的宽高，
 	使用bg-position定位图片的位置 */
-	position: absolute;
-	right: 0;
+	position: fixed;
+  right: 0;
+  top: 0;
 	z-index: 1;
 	width: 1rem;
 	height: 1rem;
@@ -253,7 +254,14 @@ $scene: "../../images/scene/";
 		position: absolute;
 		left: 50%;
 		bottom: 7%;
-		margin-left: -2.56rem;
+    margin-left: -2.56rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s 0.6s;
+    &.show{
+      opacity: 1;
+      visibility: visible;
+    }
 	}
 }
 /* page2 */
@@ -334,7 +342,7 @@ $scene: "../../images/scene/";
 	top: 0;
 	right: 0;
   left: 0;
-  // display: none;
+  display: none;
 }
 
 .choose-scroll{
@@ -509,6 +517,7 @@ $scene: "../../images/scene/";
     background-size: 100% 100%;
 	}
 }
+
 @keyframes filter {
 	0% {
 			-webkit-filter: brightness(50%) grayscale(50%)
@@ -534,6 +543,190 @@ $scene: "../../images/scene/";
 		top: 0.45rem;
 	}
 }
+
+/* page3 */
+@mixin bgImgList {
+  @for $var from 0 to 5 {
+    .bg#{$var}{
+      background: url(#{$scene}bg_#{$var}.jpg) no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}
+.page3{
+  display: none;
+  .page3-ani{
+    
+  }
+  .bg{
+    // position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: all 1s;
+    @include bgImgList();
+    div{
+      height: 19.34rem;
+    }
+    .bg1{
+
+    }
+
+  }
+  // 第五页
+  .stage{
+    position: absolute;
+    top: 21.8rem;
+    left: 0;
+    right: 0;
+    height: 6.63rem;
+    background: url(#{$scene}stage.gif) no-repeat;
+    background-size: 100% 100%;
+    &::after{
+      content: "";
+      position: absolute;
+      top: -1.8rem;
+      right: 0;
+      bottom: 0;
+      left: -2.1rem;
+      width: 9rem;
+      height: 9rem;
+      background: radial-gradient(25%, rgb(255, 244, 147) , 50%, rgba(0,0,0,0));
+      background: radial-gradient(closest-side, rgba(255, 254, 179, 0.5),rgba(0,0,0,0),rgba(0,0,0,0));
+      animation: flash 1s infinite alternate;
+    }
+    @keyframes flash{
+      from{
+        opacity: 0;
+      }
+      to{
+        opacity: 1;
+      }
+    }
+  }
+  // 第六页
+  .moon{
+    position: absolute;
+    top: 11.7rem;
+    left: 1.5rem;
+    width: 3.93rem;
+    height: 3.86rem;
+    background: url(#{$scene}moon.png) no-repeat;
+    background-size: 100% 100%;
+    &.ani{
+      animation: moonUp 3s;
+    }
+    @keyframes moonUp{
+      from{
+        top: 11.7rem;
+        left: 1.5rem;
+      }
+      to{
+        top: 9.7rem;
+        left: 2.85rem;
+      }
+    }
+    
+  }
+  .mountain{
+    // display: none;
+    position: absolute;
+    top: 1069px;
+    left: 0;
+    right: 0;
+    height: 7.1rem;
+    background: url(#{$scene}buildingFix_3.png) no-repeat;
+    background-size: 100% 100%;
+  }
+  .train{
+    position: absolute;
+    width: 12rem;
+    height: 8.4rem;
+    background: url(#{$scene}train.png) no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(-4deg);
+    &.ani{
+      animation: train 3s; 
+    }
+    @keyframes train{
+      from {
+        top: 918px;
+        left: -970.1px;
+      }
+      to {
+        top: 1358px;
+        left: -125px;
+      }
+    }
+  }
+  
+  // 问题
+  .page3-question{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    transition: all 1s;
+    opacity: 0;
+    visibility: hidden;
+    &.show{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .question{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4.86rem;
+    -webkit-transform: translate3d(-50%,-50%,0);
+    transition: all 1s;
+    // opacity: 0;
+    // visibility: hidden;
+    &.show{
+      opacity: 1;
+      visibility: visible;
+    }
+    h3{    
+      width: 4.26rem;
+      padding: .22rem .3rem;
+      line-height: .34rem;
+      font-size: .24rem;
+      color: #CDE1FF;
+      letter-spacing: 0.04rem;
+      background: linear-gradient(to bottom,#19336B,#23356A);
+      background: -webkit-linear-gradient(top,#19336B,#23356A);
+      border: .02rem solid #999BC5;
+      box-shadow: 0 0.07rem 0.14rem 0 #23356A;
+      border-radius: .06rem;
+    }
+    .question-list{
+      width: 100%;
+      margin-top: .24rem;
+      li{
+        width: 4.26rem;
+        margin-bottom: 0.14rem;
+        padding: .22rem .3rem;
+        line-height: .34rem;
+        font-size: .24rem;
+        letter-spacing: 0.04rem;
+        color: #CDE1FF;
+        letter-spacing: 0.04rem;
+        background: #23356a;
+        opacity: 0.6;
+        border: .02rem solid #999BC5;
+        box-shadow: 0 0.07rem 0.14rem 0 #23356A;
+        border-radius: .06rem;
+        &.cur{
+          filter: brightness(180%);
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
 	
 }

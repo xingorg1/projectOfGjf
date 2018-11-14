@@ -17,7 +17,7 @@
     "type": "mobile"
   },
   "dev": {
-    "port": 3000,
+    "port": 9000,
     "browsersyncstream": true,
     "webpackWatch": true,
     "pretty": true,
