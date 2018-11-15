@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-14 18:50:12
+ * @Last Modified time: 2018-11-15 20:27:15
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -16,447 +16,499 @@ $result: "../../images/result/";
 $scene: "../../images/scene/";
 
 .fillScreen {
-	// 全屏覆盖
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	text-align: center;
+  // 全屏覆盖
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
 }
 
 .verticalCenter {
-	// 垂直居中
-	position: absolute;
-	top: 50%;
-	left: 0;
-	right: 0;
-	transform: translate(0, -50%);
+  // 垂直居中
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translate(0, -50%);
 }
 
 /* 横屏检测 */
 .orientation {
-	display: none;
-	z-index: 3;
-	@extend .fillScreen;
-	color: #fff;
-	font-size: .4rem;
-	background: #000;
+  display: none;
+  z-index: 3;
+  @extend .fillScreen;
+  color: #fff;
+  font-size: .4rem;
+  background: #000;
 }
 
 .orient-txt {
-	@extend .verticalCenter;
+  @extend .verticalCenter;
 
-	.icon-orient-iphone {
-		width: 1rem;
-		height: 1.63rem;
-		margin-bottom: .2rem;
-		background: url(#{$common}iphone.png) no-repeat;
-		background-size: 100% 100%;
-		transform-origin: 50% 50%;
-		animation: orientIphone 1.5s linear infinite;
-	}
+  .icon-orient-iphone {
+    width: 1rem;
+    height: 1.63rem;
+    margin-bottom: .2rem;
+    background: url(#{$common}iphone.png) no-repeat;
+    background-size: 100% 100%;
+    transform-origin: 50% 50%;
+    animation: orientIphone 1.5s linear infinite;
+  }
 
-	.orient-text {
-		display: block;
-	}
+  .orient-text {
+    display: block;
+  }
 }
 
 @keyframes orientIphone {
 
-	0%,
-	10%,
-	100% {
-		transform: rotate(0deg);
-	}
+  0%,
+  10%,
+  100% {
+    transform: rotate(0deg);
+  }
 
-	50%,
-	75% {
-		transform: rotate(90deg);
-	}
+  50%,
+  75% {
+    transform: rotate(90deg);
+  }
 }
 
 @media (orientation: landscape) {
-	.orientation {
-		display: block;
-	}
+  .orientation {
+    display: block;
+  }
 }
 
 /* loading */
 .loading {
-	@extend .fillScreen;
-	z-index: 2;
-	color: #fff;
-	font-size: .24rem;
-	background: #232a32;
+  @extend .fillScreen;
+  z-index: 2;
+  color: #fff;
+  font-size: .24rem;
+  background: #232a32;
 
-	.loading-box {
-		@extend .verticalCenter;
-		margin-top: -1rem;
-	}
+  .loading-box {
+    @extend .verticalCenter;
+    margin-top: -1rem;
+  }
 
-	.icon-loading {
-		display: block;
-		width: 2rem;
-		height: 2rem;
-		margin: 0 auto;
-		background: url(#{$loading}loading.gif) no-repeat;
-		background-size: 100% 100%;
-	}
+  .icon-loading {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto;
+    background: url(#{$loading}loading.gif) no-repeat;
+    background-size: 100% 100%;
+  }
 
-	.loading-progress {
-		display: inline-block;
-		vertical-align: middle;
-		width: 2rem;
-		height: 0.04rem;
-		overflow: hidden;
-		background: #3b424a;
-		border-radius: .4rem;
-	}
+  .loading-progress {
+    display: inline-block;
+    vertical-align: middle;
+    width: 2rem;
+    height: 0.04rem;
+    overflow: hidden;
+    background: #3b424a;
+    border-radius: .4rem;
+  }
 
-	.loading-progress-width {
-		width: 0;
-		height: 100%;
-		background: #b5b4b5;
-	}
+  .loading-progress-width {
+    width: 0;
+    height: 100%;
+    background: #b5b4b5;
+  }
 
-	.loading-progress-number {
-		margin-left: .1rem;
-		vertical-align: middle;
-		display: inline-block;
-	}
+  .loading-progress-number {
+    margin-left: .1rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
 
-	.loading-text {
+  .loading-text {
 
-		&:after {
-			content: "";
-			font-size: .34rem;
-			letter-spacing: 0.04rem;
-			padding-left: 0.06rem;
-			// display: inline-block;
-			// width: .5rem;
-			animation: loadingDot 2.5s linear infinite;
-		}
-	}
-	.loading-end-btn{
-		display: none;
-		text-indent: -9999px;
-		width: 1.42rem;
-		height: .56rem;
-		margin: 0.1rem auto;
-		background: url(#{$loading}btn.png) no-repeat;
-		background-size: 100% 100%;
-	}
+    &:after {
+      content: "";
+      font-size: .34rem;
+      letter-spacing: 0.04rem;
+      padding-left: 0.06rem;
+      // display: inline-block;
+      // width: .5rem;
+      animation: loadingDot 2.5s linear infinite;
+    }
+  }
+
+  .loading-end-btn {
+    display: none;
+    text-indent: -9999px;
+    width: 1.42rem;
+    height: .56rem;
+    margin: 0.1rem auto;
+    background: url(#{$loading}btn.png) no-repeat;
+    background-size: 100% 100%;
+  }
 }
 
 @keyframes loadingDot {
-	0%,
-	100% {
-			content: "";
-	}
 
-	30% {
-			content: ".";
-	}
+  0%,
+  100% {
+    content: "";
+  }
 
-	60% {
-			content: "..";
-	}
+  30% {
+    content: ".";
+  }
 
-	90% {
-			content: "...";
-	}
+  60% {
+    content: "..";
+  }
+
+  90% {
+    content: "...";
+  }
 }
+
 /* 视频 */
-.video{
-	width: 100%;
-	height: 100%;
-	transition: all 1s ease-in-out;
-	&.hide{
-		visibility: hidden;
-		opacity: 0;
-	}
+.video {
+  width: 100%;
+  height: 100%;
+  transition: all 1s ease-in-out;
+
+  &.hide {
+    visibility: hidden;
+    opacity: 0;
+  }
 }
+
 /* 音频 */
-.music-btn{
-	/* 背景设置突破常规写法:
+.music-btn {
+  /* 背景设置突破常规写法:
 	宽高不是定位图片的宽高，而是任性的整数，
 	然后使用bg-size设置图片的宽高，
 	使用bg-position定位图片的位置 */
-	position: fixed;
+  position: fixed;
   right: 0;
   top: 0;
-	z-index: 1;
-	width: 1rem;
-	height: 1rem;
-	background: url(#{$common}music_on.png) center no-repeat;
-	background-size: .4rem .4rem;
-	animation: musicRotate 3s linear infinite;
-	&.off{
-		animation: none;
-		background-image: url(#{$common}music_off.png);
-	}
-}
-@keyframes musicRotate{
-	from{
-		transform: rotate(0);
-	}
-	to{
-		transform: rotate(360deg);
-	}
-}
-/* .page1 */
-@mixin rank(){
-  @for $title from 1 through 7 {
-    .title-png0#{$title}{
-			transition-delay: #{0.5 + 0.1 * $title}s;
-      background: url(#{$begin}#{$title}.png) center no-repeat;
-      background-size: 100% 100%;
-		}
+  z-index: 1;
+  width: 1rem;
+  height: 1rem;
+  background: url(#{$common}music_on.png) center no-repeat;
+  background-size: .4rem .4rem;
+  animation: musicRotate 3s linear infinite;
+
+  &.off {
+    animation: none;
+    background-image: url(#{$common}music_off.png);
   }
 }
-.page1{
-	display: none;
-	overflow: hidden;
-	position: relative;
-	background: #080b12;
-	.title{
-		position: absolute;
-		left: 50%;
-		top: 10%;
-		width: 4.35rem;
-		height: 1.63rem;
-		margin-left: -2.17rem;
-		&.show{
-			.title-png{
-				opacity: 1;
-				top: 0;
-			}
-		}
-	}
-	.title-png{
-		position: absolute;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		transition: all 1.25s ease-in-out;
-		&:nth-child(odd){
-			top: -10%;
-		}
-		&:nth-child(even){
-			top: 10%;
-		}
-	}
-	@include rank();
-	.txt{
-		@include bgImg(5.13,.8,'#{$begin}btn.png');
-		position: absolute;
-		left: 50%;
-		bottom: 7%;
+
+@keyframes musicRotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .page1 */
+@mixin rank() {
+  @for $title from 1 through 7 {
+    .title-png0#{$title} {
+      transition-delay: #{0.5 + 0.1 * $title}s;
+      background: url(#{$begin}#{$title}.png) center no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+.page1 {
+  display: none;
+  overflow: hidden;
+  position: relative;
+  background: #080b12;
+
+  .title {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    width: 4.35rem;
+    height: 1.63rem;
+    margin-left: -2.17rem;
+
+    &.show {
+      .title-png {
+        opacity: 1;
+        top: 0;
+      }
+    }
+  }
+
+  .title-png {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 1.25s ease-in-out;
+
+    &:nth-child(odd) {
+      top: -10%;
+    }
+
+    &:nth-child(even) {
+      top: 10%;
+    }
+  }
+
+  @include rank();
+
+  .txt {
+    @include bgImg(5.13, .8, '#{$begin}btn.png');
+    position: absolute;
+    left: 50%;
+    bottom: 7%;
     margin-left: -2.56rem;
     opacity: 0;
     visibility: hidden;
     transition: all 1s 0.6s;
-    &.show{
+
+    &.show {
       opacity: 1;
       visibility: visible;
     }
-	}
+  }
 }
+
 /* page2 */
-.page2{
-	overflow: hidden;
-	color: #8b8ea0;
-	background: #141223;
-	.choose-sex{
-		height: 100%;
-		position: relative;
-	}
-	.h1{
-		padding: .45rem .2rem;
-		text-align: center;
-	}
-	.sex-box{
-		height: calc(100% - 0.26rem - 0.68rem);
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		li{
-			// *注意这种弹性式布局的处理方法
-			width: 100%;
-			position: relative;
-			-webkit-box-flex: 1;
-			transition: all .5s;
-			margin-bottom: .14rem;
-		}
-		.bg{
-			@extend .fillScreen;
-			background: url(#{$choose}sex_box.png) no-repeat;
-			background-size: 100% 100%;
-			transform: scale(0.92);
-			opacity: 0.2;
-			transition: all 1s;
-		}
-		.icon{
-			@include bgImg(3.59,3.98,'#{$choose}boy.png');
-			position: absolute;
-			left: 50%;
-			margin-left: -1.995rem;
-			top: 50%;
-			margin-top: -1.99rem;
-			animation: filter 1s infinite alternate;
-			filter: brightness(50%) grayscale(50%);
-			&::before{
-				content: "";
-				opacity: 1;
-				position: absolute;
-				@include bgImg(3.59,3.98,'#{$choose}boy_shadow.png');
-				animation: shadowTwinkle 1s linear infinite alternate;//使用alternate，很多时候大部分的动画都可以执行前半部分然后利用alternate执行后半部分。比如这个让灯光先暗下去再亮起来的动画，可以只写让灯光暗下去的动画，利用alternate执行亮起来。
-			}
-		}
-		.female{
-			margin-bottom: .4rem;
-			.icon{
-				@include bgImg(3.56,3.84,'#{$choose}girl.png');
-				margin-left: -1.98rem;
-				margin-top: -1.92rem;
-				animation: filter 1s infinite alternate-reverse;
-				&::before{
-					@include bgImg(3.56,3.84,'#{$choose}girl_shadow.png');
-					animation-direction: alternate-reverse;
-				}
-			}
-		}
-		.cur{
-			.bg{
-				opacity: 1;
-				transform: scale(0.86);
-			}
-		}
-	}
+.page2 {
+  overflow: hidden;
+  color: #8b8ea0;
+  background: #141223;
+
+  .choose-sex {
+    height: 100%;
+    position: relative;
+  }
+
+  .h1 {
+    padding: .45rem .2rem;
+    text-align: center;
+  }
+
+  .sex-box {
+    height: calc(100% - 0.26rem - 0.68rem);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    li {
+      // *注意这种弹性式布局的处理方法
+      width: 100%;
+      position: relative;
+      -webkit-box-flex: 1;
+      transition: all .5s;
+      margin-bottom: .14rem;
+    }
+
+    .bg {
+      @extend .fillScreen;
+      background: url(#{$choose}sex_box.png) no-repeat;
+      background-size: 100% 100%;
+      transform: scale(0.92);
+      opacity: 0.2;
+      transition: all 1s;
+    }
+
+    .icon {
+      @include bgImg(3.59, 3.98, '#{$choose}boy.png');
+      position: absolute;
+      left: 50%;
+      margin-left: -1.995rem;
+      top: 50%;
+      margin-top: -1.99rem;
+      animation: filter 1s infinite alternate;
+      filter: brightness(50%) grayscale(50%);
+
+      &::before {
+        content: "";
+        opacity: 1;
+        position: absolute;
+        @include bgImg(3.59, 3.98, '#{$choose}boy_shadow.png');
+        animation: shadowTwinkle 1s linear infinite alternate; //使用alternate，很多时候大部分的动画都可以执行前半部分然后利用alternate执行后半部分。比如这个让灯光先暗下去再亮起来的动画，可以只写让灯光暗下去的动画，利用alternate执行亮起来。
+      }
+    }
+
+    .female {
+      margin-bottom: .4rem;
+
+      .icon {
+        @include bgImg(3.56, 3.84, '#{$choose}girl.png');
+        margin-left: -1.98rem;
+        margin-top: -1.92rem;
+        animation: filter 1s infinite alternate-reverse;
+
+        &::before {
+          @include bgImg(3.56, 3.84, '#{$choose}girl_shadow.png');
+          animation-direction: alternate-reverse;
+        }
+      }
+    }
+
+    .cur {
+      .bg {
+        opacity: 1;
+        transform: scale(0.86);
+      }
+    }
+  }
 }
-.choose-person{
-	overflow: hidden;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	right: 0;
+
+.choose-person {
+  overflow: hidden;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
   left: 0;
   display: none;
 }
 
-.choose-scroll{
+.choose-scroll {
   position: relative;
-  &.no-move{
+
+  &.no-move {
     overflow: hidden;
     height: 100%;
   }
-	.bg{
-		@include bgImg(1,32.09,'#{$choose}bg.jpg');
-		// background-position: top left;
-		width: 100%;
-	}
-	.user-list{
-		position: absolute;
-		top: 0;
-		z-index: 1;
-		li{
-			position: absolute;
-			width: 1.0348rem;
+
+  .bg {
+    @include bgImg(1, 32.09, '#{$choose}bg.jpg');
+    // background-position: top left;
+    width: 100%;
+  }
+
+  .user-list {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+
+    li {
+      position: absolute;
+      width: 1.0348rem;
       height: 3.12rem;
       transition: all 1s;
       transform: scale(1);
       filter: grayscale(1);
     }
-    .cur{
+
+    .cur {
       filter: grayscale(0);
       transform: scale(1.1);
     }
-	}
-	// .male{
-	// 	.user-list0{
-	// 		background: url(#{choose}boy_0)
-	// 	}
-	// }
-	.user-list0{
-		left: 2.3rem;
-		top: 6.63rem;
-	}
-	.user-list1{
-		left: 4.6rem;
+  }
+
+  // .male{
+  // 	.user-list0{
+  // 		background: url(#{choose}boy_0)
+  // 	}
+  // }
+  .user-list0 {
+    left: 2.3rem;
+    top: 6.63rem;
+  }
+
+  .user-list1 {
+    left: 4.6rem;
     top: 9.42rem;
-	}
-	.user-list2{
-		left: 1.3rem;
+  }
+
+  .user-list2 {
+    left: 1.3rem;
     top: 10.83rem;
-	}
-	.user-list3{
-		left: 5rem;
+  }
+
+  .user-list3 {
+    left: 5rem;
     top: 13.84rem;
-	}
-	.user-list4{
-		left: 1.86rem;
+  }
+
+  .user-list4 {
+    left: 1.86rem;
     top: 15.5rem;
-	}
-	.user-list5{
-		left: 3.85rem;
+  }
+
+  .user-list5 {
+    left: 3.85rem;
     top: 17.88rem;
-	}
-	.user-list6{
-		left: .93rem;
+  }
+
+  .user-list6 {
+    left: .93rem;
     top: 19.65rem;
-	}
-	.user-list7{
-		left: 5.56rem;
+  }
+
+  .user-list7 {
+    left: 5.56rem;
     top: 21.69rem;
-	}
-	.user-list8{
-		left: 2.6rem;
+  }
+
+  .user-list8 {
+    left: 2.6rem;
     top: 23.5rem;
-	}
-	.user-list9{
-		left: 4.65rem;
+  }
+
+  .user-list9 {
+    left: 4.65rem;
     top: 26.06rem
-	}
-	@include userList();
+  }
+
+  @include userList();
 }
-.spotlight{
-	@extend .fillScreen;
-	width: 15rem;
-	height: 32.09rem;
-	z-index: 1;
-	transform: translate3d(0px, 0px, 0px);
-	opacity: 0;
-	visibility: hidden;
-	transition: all 1s;
-  background: radial-gradient(circle closest-side,rgba(0,0,0,0,), rgba(0,0,0,0.1),rgba(0,0,0,0.5),rgba(0,0,0,0.8));
-  &.show{
+
+.spotlight {
+  @extend .fillScreen;
+  width: 15rem;
+  height: 32.09rem;
+  z-index: 1;
+  transform: translate3d(0px, 0px, 0px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s;
+  background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0, ), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+
+  &.show {
     opacity: 1;
     visibility: visible;
   }
 }
-.choose-tip{
-	position: fixed;
-	z-index: 1;
-	bottom: 10%;
-	left: 0;
-	right: 0;
-	text-align: center;
-	color: #95a5bd;
-	filter: brightness(150%);
-	&::after{
-		content: "";
-		display: block;
-		position: absolute;
-		left: 50%;
-		top: .35rem;
-		margin-left: -.2rem;
-		filter: brightness(500%);
-		@include bgImg(.41,.19,'#{$choose}arrow.png');
-		animation: arrow .5s linear infinite alternate;
-	}
+
+.choose-tip {
+  position: fixed;
+  z-index: 1;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #95a5bd;
+  filter: brightness(150%);
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: .35rem;
+    margin-left: -.2rem;
+    filter: brightness(500%);
+    @include bgImg(.41, .19, '#{$choose}arrow.png');
+    animation: arrow .5s linear infinite alternate;
+  }
 }
-.choose-fill-form{
+
+.choose-fill-form {
   position: fixed;
   z-index: 2;
   bottom: 10%;
@@ -467,17 +519,20 @@ $scene: "../../images/scene/";
   transform: scale(0);
   visibility: hidden;
   opacity: 0;
-  &.show{
+
+  &.show {
     visibility: visible;
     opacity: 1;
     transform: scale(1);
   }
-	.choose-input{
+
+  .choose-input {
     padding: 0 .8rem;
     height: .8rem;
     line-height: .8rem;
     margin: 0 auto;
-    input{
+
+    input {
       font-size: .26rem;
       height: 100%;
       width: 100%;
@@ -489,100 +544,275 @@ $scene: "../../images/scene/";
       box-shadow: 0 .07rem .14rem 0 #23356A;
       color: #becfed;
       letter-spacing: .03rem;
-      &::placeholder,::-webkit-input-placeholder{
+
+      &::placeholder,
+      ::-webkit-input-placeholder {
         color: #becfed;
         letter-spacing: .03rem;
       }
     }
-	}
-	.choose-btn{
+  }
+
+  .choose-btn {
     padding: 0 .7rem;
     margin: .2rem auto 0;
     overflow: hidden;
-    div{
+
+    div {
       width: 2.62rem;
       height: .93rem;
       text-indent: -9999px;
     }
-	}
-	.choose-btn1 {
+  }
+
+  .choose-btn1 {
     float: left;
     margin-right: .2rem;
     background: url(#{$choose}btn_repeat.png) no-repeat;
     background-size: 100% 100%;
-	}
-	.choose-btn2{
+  }
+
+  .choose-btn2 {
     float: right;
     background: url(#{$choose}btn_success.png) no-repeat;
     background-size: 100% 100%;
-	}
+  }
 }
 
 @keyframes filter {
-	0% {
-			-webkit-filter: brightness(50%) grayscale(50%)
-	}
+  0% {
+    -webkit-filter: brightness(50%) grayscale(50%)
+  }
 
-	100% {
-			-webkit-filter: brightness(100%) grayscale(0)
-	}
+  100% {
+    -webkit-filter: brightness(100%) grayscale(0)
+  }
 }
-@keyframes shadowTwinkle{
-	0% {
-		opacity: 0;
-	}
-	100%{
-		opacity: 1;
-	}
+
+@keyframes shadowTwinkle {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
-@keyframes arrow{
-	from{
-		top: 0.35rem;
-	}
-	to{
-		top: 0.45rem;
-	}
+
+@keyframes arrow {
+  from {
+    top: 0.35rem;
+  }
+
+  to {
+    top: 0.45rem;
+  }
 }
 
 /* page3 */
 @mixin bgImgList {
   @for $var from 0 to 5 {
-    .bg#{$var}{
+    .bg#{$var} {
       background: url(#{$scene}bg_#{$var}.jpg) no-repeat;
       background-size: 100% 100%;
     }
   }
 }
-.page3{
+
+.page3 {
   display: none;
-  .page3-ani{
-    
-  }
-  .bg{
+
+  .page3-ani {}
+
+  .bg {
     // position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     transition: all 1s;
     @include bgImgList();
-    div{
+
+    div {
       height: 19.34rem;
     }
-    .bg1{
 
-    }
+    .bg1 {}
 
   }
-  // 第五页
-  .stage{
+
+  //第三页
+  .car1,
+  .car2 {
     position: absolute;
-    top: 21.8rem;
+    left: 3.1rem;
+    width: 2.24rem;
+    height: 1.78rem;
+    background: url(#{$scene}car.png) no-repeat;
+    background-size: 100% 100%;
+    animation: car1 2s linear infinite;
+    animation-fill-mode: forwards;
+  }
+
+  .car1.ani {
+    // top: 41.3rem;
+    // left: 4.4rem;
+  }
+  
+  .car2.ani {
+    animation-name: car2;
+    animation-delay: 1s;
+    // top: 37.3rem;
+    // left: 4.4rem;
+    // animation: car2 2s linear infinite;
+    // animation-fill-mode: forwards;
+  }
+  @keyframes car1 {
+    from {
+      top: 40rem;
+      left: 4.4rem;
+    }
+
+    to {
+      top: 42.8rem;
+      left: -.4rem;
+    }
+  }
+
+  @keyframes car2 {
+    from {
+      top: 37.3rem;
+      left: 4.4rem;
+    }
+
+    to {
+      top: 40.3rem;
+      left: -.4rem;
+    }
+  }
+  .meijia{
+    position: absolute;
+    top: 34.97rem;
+    right: .15rem;
+    /* width: 4.48rem;
+    height: 6rem; */
+    width: 2.54rem;
+    height: 8.85rem;
+    background: url(#{$scene}buildingFix_0.png) no-repeat;
+    background-size: 100% 100%;
+    transform: scale(1.25,1);
+  }
+  .pig {
+    position: absolute;
+    top: 37.3rem;
+    left: .1rem;
+    width: 1.32rem;
+    height: 1.86rem;
+    background: url(#{$scene}liu.gif) no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .pigeon2 {
+    position: absolute;
+    top: 39.1rem;
+    left: .8rem;
+    width: 2.25rem;
+    height: 2.01rem;
+    background: url(#{$scene}bird_0.png) no-repeat;
+    background-size: 100% 100%;
+    animation: pigeon2 1s linear infinite alternate;
+  }
+
+  @keyframes pigeon2 {
+
+    /* 这里有个技巧，就是位移不一定都要只移动top、left值，也可以用translate的x、y */
+    from {
+      // top: 39.1rem;
+      // left: .8rem;
+      transform: scale(1.1) translate(0, 0);
+    }
+
+    to {
+      // top: 39rem;
+      // left: .9rem;
+      transform: scale(1.1) translate(-.1rem, .1rem);
+    }
+  }
+
+  // 4-5
+  .biycle {
+    position: absolute;
+    top: 30.6rem;
+    left: 3.8rem;
+    width: 1.6rem;
+    height: 2.41rem;
+    background: url(#{$scene}bicycle_0.png) no-repeat;
+    background-size: 100% 100%;
+    transform: scale(1.1);
+
+    &.ani {
+      animation: biycle 8s linear infinite;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes biycle {
+      from {
+        top: 30.6rem;
+        left: 3.8rem;
+      }
+
+      to {
+        top: 32.6rem;
+        left: -.7rem;
+      }
+    }
+  }
+
+  .biycle-house {
+    position: absolute;
+    top: 32.84rem;
+    left: .198rem;
+    width: 2.18rem;
+    height: 3.45rem;
+    background: url(#{$scene}buildingFix_2.png) no-repeat;
+    background-size: 100% 100%;
+    transform: scale(1.1) rotate(-2deg);
+  }
+
+  // 第五页
+  .cat2 {
+    position: absolute;
+    top: 27.62rem;
+    left: -.5rem;
+    width: 2.2rem;
+    height: 2.21rem;
+    background: url(#{$scene}cat_1.png) no-repeat;
+    background-size: 100% 100%;
+    transform: scale(1.1);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url(#{$scene}cat_1_flash.png) no-repeat;
+      background-size: 100% 100%;
+      animation: flash 1s ease-in-out infinite alternate;
+    }
+  }
+
+  .stage {
+    position: absolute;
+    top: 21.72rem;
     left: 0;
     right: 0;
+    z-index: 1;
     height: 6.63rem;
     background: url(#{$scene}stage.gif) no-repeat;
     background-size: 100% 100%;
-    &::after{
+
+    &::before {
       content: "";
       position: absolute;
       top: -1.8rem;
@@ -591,21 +821,23 @@ $scene: "../../images/scene/";
       left: -2.1rem;
       width: 9rem;
       height: 9rem;
-      background: radial-gradient(25%, rgb(255, 244, 147) , 50%, rgba(0,0,0,0));
-      background: radial-gradient(closest-side, rgba(255, 254, 179, 0.5),rgba(0,0,0,0),rgba(0,0,0,0));
+      background: radial-gradient(closest-side, rgba(255, 254, 223, 0.4), rgba(255, 244, 223, .1), rgba(0, 0, 0, 0));
       animation: flash 1s infinite alternate;
     }
-    @keyframes flash{
-      from{
+
+    @keyframes flash {
+      from {
         opacity: 0;
       }
-      to{
+
+      to {
         opacity: 1;
       }
     }
   }
+
   // 第六页
-  .moon{
+  .moon {
     position: absolute;
     top: 11.7rem;
     left: 1.5rem;
@@ -613,22 +845,27 @@ $scene: "../../images/scene/";
     height: 3.86rem;
     background: url(#{$scene}moon.png) no-repeat;
     background-size: 100% 100%;
-    &.ani{
-      animation: moonUp 3s;
+
+    &.ani {
+      animation: moonUp 3s infinite;
+      animation-fill-mode: forwards;
     }
-    @keyframes moonUp{
-      from{
+
+    @keyframes moonUp {
+      from {
         top: 11.7rem;
         left: 1.5rem;
       }
-      to{
+
+      to {
         top: 9.7rem;
         left: 2.85rem;
       }
     }
-    
+
   }
-  .mountain{
+
+  .mountain {
     // display: none;
     position: absolute;
     top: 1069px;
@@ -638,74 +875,85 @@ $scene: "../../images/scene/";
     background: url(#{$scene}buildingFix_3.png) no-repeat;
     background-size: 100% 100%;
   }
-  .train{
+
+  .train {
     position: absolute;
     width: 12rem;
     height: 8.4rem;
     background: url(#{$scene}train.png) no-repeat;
     background-size: 100% 100%;
     transform: rotate(-4deg);
-    &.ani{
-      animation: train 3s; 
+
+    &.ani {
+      animation: train 3s infinite;
+      animation-fill-mode: forwards;
     }
-    @keyframes train{
+
+    @keyframes train {
       from {
         top: 918px;
         left: -970.1px;
       }
+
       to {
         top: 1358px;
         left: -125px;
       }
     }
   }
-  
+
   // 问题
-  .page3-question{
+  .page3-question {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     transition: all 1s;
     opacity: 0;
     visibility: hidden;
-    &.show{
+
+    &.show {
       opacity: 1;
       visibility: visible;
     }
   }
-  .question{
+
+  .question {
     position: absolute;
     left: 50%;
     top: 50%;
     width: 4.86rem;
-    -webkit-transform: translate3d(-50%,-50%,0);
+    -webkit-transform: translate3d(-50%, -50%, 0);
     transition: all 1s;
+
     // opacity: 0;
     // visibility: hidden;
-    &.show{
+    &.show {
       opacity: 1;
       visibility: visible;
     }
-    h3{    
+
+    h3 {
       width: 4.26rem;
       padding: .22rem .3rem;
       line-height: .34rem;
       font-size: .24rem;
       color: #CDE1FF;
       letter-spacing: 0.04rem;
-      background: linear-gradient(to bottom,#19336B,#23356A);
-      background: -webkit-linear-gradient(top,#19336B,#23356A);
+      background: linear-gradient(to bottom, #19336B, #23356A);
+      background: -webkit-linear-gradient(top, #19336B, #23356A);
       border: .02rem solid #999BC5;
       box-shadow: 0 0.07rem 0.14rem 0 #23356A;
       border-radius: .06rem;
     }
-    .question-list{
+
+    .question-list {
       width: 100%;
       margin-top: .24rem;
-      li{
+
+      li {
         width: 4.26rem;
         margin-bottom: 0.14rem;
         padding: .22rem .3rem;
@@ -719,7 +967,8 @@ $scene: "../../images/scene/";
         border: .02rem solid #999BC5;
         box-shadow: 0 0.07rem 0.14rem 0 #23356A;
         border-radius: .06rem;
-        &.cur{
+
+        &.cur {
           filter: brightness(180%);
         }
       }
@@ -727,6 +976,4 @@ $scene: "../../images/scene/";
   }
 }
 
-@media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
-	
-}
+@media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {}

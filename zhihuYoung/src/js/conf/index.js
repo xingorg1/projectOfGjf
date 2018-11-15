@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-05 09:35:14 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-14 18:50:45
+ * @Last Modified time: 2018-11-15 18:46:53
  */
 
 /* global $ */
@@ -21,7 +21,7 @@ $(function () {
     alert('添加微信观看提示');
   }
   /* begin 预加载 */
-  var deBug = false, //是否是开发时快速查看测试的效果
+  var deBug = true, //是否是开发时快速查看测试的效果
     canvas1Img = [],
     timer1 = null,
     userSex = 0,//0男1女
