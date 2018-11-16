@@ -2,20 +2,20 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-05 09:35:14 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-16 11:29:04
+ * @Last Modified time: 2018-11-16 16:59:42
  */
 
 /* global $ */
 import {
   utils
 } from './utils';
-window.requestAnimFrame = (function() {
-	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
-		function(callback,element) {
-			return window.setTimeout(callback, 1000 / 60);//1000ms/60.最佳循环间隔
-		};
+window.requestAnimFrame = (function () {
+  return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function (callback, element) {
+      return window.setTimeout(callback, 1000 / 60); //1000ms/60.最佳循环间隔
+    };
 })();
-import filter from './plugings/filter.json'
+import filter from './plugings/filter.json';
 $(function () {
   /* 判断并提示微信环境打开 */
   if (!window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) === 'micromessenger') {
@@ -25,8 +25,19 @@ $(function () {
   var deBug = false, //是否是开发时快速查看测试的效果
     canvas1Img = [],
     timer1 = null,
-    userSex = 0,//0男1女
-    userName = '';//用户姓名
+    userSex = 0, //0男1女
+    userName = ''; //用户姓名
+  function filter(value) {
+    //遍历敏感词数组filter.data
+    let len = filter.data.length;
+    for (var i = 0; i < len; i++) {
+      //判断内容中是否包括敏感词
+      if (value.indexOf(filter.data[i]) != -1) {
+        return value;//value为传入的input的value值，如果这个值是敏感词，直接返回这个敏感词，以备后用。
+      }
+    }
+    //如果不是敏感词，默认函数不返回值（即undefined），最后判断函数执行的返回值即可。
+  }
   if (!deBug) {
     initPreLoad();
     $('.page2').hide();
@@ -39,8 +50,9 @@ $(function () {
     canvas1Img = utils.prestrain(imgArr, imgUrl, 'jpg', function () {});
     $('.title').addClass('show');
     $('.page1').hide();
-    $('.page2').hide();
-    $('.page3').show();
+    $('.page1 .txt').addClass('show');
+    $('.page2').show();
+    $('.page3').hide();
   }
 
   function initPreLoad() {
@@ -90,19 +102,32 @@ $(function () {
   $('.loading-end-btn').on('click', function () {
     let myVideo = document.getElementById('myVideo');
     $('.loading').fadeOut();
+    /* 预加载做题动画所需图片
+      // 后来考虑到，预加载只是前边的图片就行了，后边这些其实在css里边可以正常加载了，播放视频的时候再加载还不如跟着css一起，在开始时加载。
+      // 但是后来发现，因为默认类名male的原因，男孩儿们的图片早就跟随css而加载了，但是女孩们的图片没有，而是当用户手动选择性别为女时，类名被切换为female，女孩们的图片才开始加载。所以关于女孩的图片还是要做预加载的。怪不得我用手机看的时候发现，女孩的图片反应慢。会看见半块头慢慢增加到脚的情况。
+      let chooseImg = ['arrow','bg','bg_0','boy','boy_shadow','btn_repeat','btn_success','girl','girl_shadow','sex_box'];
+      let chooseBoy = [];
+      */
+     
     /* 插入video并开始播放 */
     if (myVideo && myVideo.readyState) {
       myVideo.play(); //开始播放、paused暂停播放
     } else {
-      /* 视频下载失败，执行重新加载 */
+      /* 视频下载0失败，执行重新加载 */
     }
 
   });
-
+  let chooseGirl = [];
+  for(let i = 0; i < 10; i++){
+    chooseGirl.push();
+    let img = new Image();
+    img.src = '../../images/choose/girl_'+i+'.png'
+  } 
+  console.log(chooseGirl)
   $('.video').on('error', function () {
     alert('视频加载失败，请刷新重试')
   });
- 
+
   /* 视频结束 */
   $('.video').on('ended', function () {
     $(this).fadeOut();
@@ -148,20 +173,21 @@ $(function () {
     $('.page2').show();
   });
   /* 选性别 */
-  $('.sex-box li').on('click',function(){
-    if($(this)[0].className == "female"){
+  $('.sex-box li').on('click', function () {
+    if ($(this)[0].className == "female") {
       userSex = 1;
       $('.choose-scroll .user-list').removeClass('male').addClass('female')
     }
     $(this).addClass('cur');
-    setTimeout(()=>{
+    setTimeout(() => {
       $('.choose-sex').fadeOut();
       $('.choose-person').fadeIn();
-    },500);
+    }, 500);
   });
   /* 绑定事件模拟滚动效果 - 仅适用于从上往下起始的滚动 */
   touchToBottom('.choose-scroll');
-  function touchToBottom(target){
+
+  function touchToBottom(target) {
     /* 思路
       监听触摸事件
       start时、鼠标按下记录当前鼠标的x y位置（这个效果特殊，只需要监听y轴位置即可）
@@ -173,56 +199,58 @@ $(function () {
       监听鼠标事件同理
         但是同样要注意碰撞检测
      */
-    var lastY = 0,transY = 0;
-    $(target).on('touchstart',function(e){
+    var lastY = 0,
+      transY = 0;
+    $(target).on('touchstart', function (e) {
       let y = e.originalEvent.touches[0].pageY;
       lastY = y;
     });
-    $(target).on('touchmove',function(e){
+    $(target).on('touchmove', function (e) {
       let y = e.originalEvent.touches[0].pageY,
         moveY = y - lastY;
       transY += moveY;
-      if(moveY > 0 && transY > 0){
+      if (moveY > 0 && transY > 0) {
         /* 鼠标向下移动，对应元素向上回看 */
-          transY = 0;//到顶
-      }else{
+        transY = 0; //到顶
+      } else {
         /* 鼠标向上移动，对应元素向下翻看 */
-        if(Math.abs(transY) >= e.currentTarget.clientHeight - utils.oH){//触底
+        if (Math.abs(transY) >= e.currentTarget.clientHeight - utils.oH) { //触底
           transY = -(e.currentTarget.clientHeight - utils.oH) + 1;
         }
       }
       lastY = y;
-      $(this).css('transform',`translate(0px, ${transY}px)`);
+      $(this).css('transform', `translate(0px, ${transY}px)`);
     });
     /* 滚轮事件 */
-    $(target).on("mousewheel",function(e,delta){
+    $(target).on("mousewheel", function (e, delta) {
       let y = e.originalEvent.deltaY;
-      if(y > 0){
+      if (y > 0) {
         /* 向下翻滚轮 wheelDeltaY的值与之相反*/
         transY -= 100;
-        if(Math.abs(transY-100) >= e.currentTarget.clientHeight - utils.oH){//触底
+        if (Math.abs(transY - 100) >= e.currentTarget.clientHeight - utils.oH) { //触底
           transY = -(e.currentTarget.clientHeight - utils.oH) + 1;
         }
-      }else{
+      } else {
         /* 向上翻滚轮*/
         transY += 100;
-        if(Math.abs(transY)-100 <= 0){
-          transY = 0;//到顶
+        if (Math.abs(transY) - 100 <= 0) {
+          transY = 0; //到顶
         }
       }
-      $(this).css('transform',`translate(0px, ${transY}px)`);
+      $(this).css('transform', `translate(0px, ${transY}px)`);
     });
   }
   /* 选人物 - 点击后出现追光、输入框等 */
-  $('.choose-scroll .user-list li').on('click',function(e){
+  $('.choose-scroll .user-list li').on('click', function (e) {
     // 清空上一次填过的内容
     $('.choose-input').find('input').val("");
     // 追光动画等
-    let t = $(this)[0],mark = $('.spotlight')[0];
+    let t = $(this)[0],
+      mark = $('.spotlight')[0];
     $(this).addClass('cur').siblings('li').removeClass('cur');
-    var a = t.offsetTop + t.clientHeight/2 - mark.clientHeight/2;
-    var b = t.offsetLeft + t.clientWidth/2  - mark.clientWidth/2;
-    $('.spotlight').addClass('show').css('transform',`translate3d(${b}px, ${a}px, 0)`);
+    var a = t.offsetTop + t.clientHeight / 2 - mark.clientHeight / 2;
+    var b = t.offsetLeft + t.clientWidth / 2 - mark.clientWidth / 2;
+    $('.spotlight').addClass('show').css('transform', `translate3d(${b}px, ${a}px, 0)`);
     /* 
       原理就是让spotlight的中心点等于当前元素（装着每一个小人全身像的li元素）所在父元素位置的中心点。
       当前元素的中心点计算：
@@ -236,26 +264,29 @@ $(function () {
     $('.choose-tip').fadeOut();
     $('.choose-fill-form').addClass('show');
   });
-  
+
   /* 出现追光后，阻止滚轮和鼠标移动事件 */
-  $('.spotlight').on('touchstart touchmove mousewheel',function(e){
+  $('.spotlight').on('touchstart touchmove mousewheel', function (e) {
     return false;
   });
   /* 重新选择 */
-  $('.choose-btn1').on('click',function(){
-    $('.spotlight').removeClass('show').css('transform',`translate3d(0,0,0)`);//归零 - 优化原作露怯的地方
+  $('.choose-btn1').on('click', function () {
+    $('.spotlight').removeClass('show').css('transform', `translate3d(0,0,0)`); //归零 - 优化原作露怯的地方
     $('.choose-scroll .user-list li').removeClass('cur');
     $('.choose-tip').fadeIn();
     $('.choose-fill-form').removeClass('show');
     $('.choose-scroll').removeClass('no-move');
   });
-  $('.choose-btn2').on('click',function(){
+  $('.choose-btn2').on('click', function () {
     var name = $('.choose-input').find('input').val();
-    if(name){
-      if(filter.data.indexOf(name) > -1){
+    if (name) {
+      // if(filter.data.indexOf(name) > -1){//不能检测敏感词2这样的
+      //   alert('含有非法敏感词，请重新输入。');
+      //   $('.choose-input').find('input').val('');
+      if (filter(name)) {
         alert('含有非法敏感词，请重新输入。');
         $('.choose-input').find('input').val('');
-      }else{
+      } else {
         /* 存入名字 */
         userName = name;
         console.log(userName);
@@ -263,10 +294,11 @@ $(function () {
         $('.page2').remove();
         $('.page3').fadeIn();
       }
-    }else{
+    } else {
       alert('请输入你的名字！')
     }
   });
   /* page3的自动上滑 */
   // $('.page3 .bg').css('translateY','100px');
+  
 });
