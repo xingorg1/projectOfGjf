@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-15 20:27:15
+ * @Last Modified time: 2018-11-16 11:08:12
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -622,7 +622,10 @@ $scene: "../../images/scene/";
 .page3 {
   display: none;
 
-  .page3-ani {}
+  .page3-ani {
+    position: relative;
+    overflow: hidden;
+  }
 
   .bg {
     // position: absolute;
@@ -639,8 +642,173 @@ $scene: "../../images/scene/";
     .bg1 {}
 
   }
-
+  .you{
+    position: absolute;
+    left: 50%;
+    bottom: 0rem;
+    width: .96rem;
+    height: 2.7rem;
+    margin-left: -0.48rem;
+    background: url(#{$choose}boy/0/0.png) no-repeat;
+    background-size: 100% 100%;
+  }
+  // 第一页
+  .telegraph{
+    position: absolute;
+    left: 0;
+    top: 92.79rem;
+    width: 100%;
+    height: 3.91rem;
+    background: url(#{$scene}wire_2.png) no-repeat;
+    background-size: 100% 100%;
+  }
+  .birds{
+    position: absolute;
+    left: 2.8rem;
+    top: 94.3rem;
+    width: 3.33rem;
+    height: 1.54rem;
+    background: url(#{$scene}bird_3.gif) no-repeat;
+    background-size: 100% 100%;
+    transform: scaleX(1.2);
+  }
+  .busker{
+    position: absolute;
+    left: 1.35rem;
+    top: 88.05rem;
+    width: 2.2rem;
+    height: 2.31rem;
+    background: url(#{$scene}guitar.gif) no-repeat;
+    background-size: 100% 100%;
+  }
+  .traffic-light{
+    position: absolute;
+    right: 0.4rem;
+    top: 84.65rem;
+    width: 2.8rem;
+    height: 7.2rem;
+    background: url(#{$scene}lamp_0.gif) no-repeat;
+    background-size: 100% 100%;
+  }
+  // 第二页
+  .cat1{
+    position: absolute;
+    left: 0.5rem;
+    top: 78.5rem;
+    width: 1.23rem;
+    height: 1.85rem;
+    background: url(#{$scene}cat_0.gif) no-repeat;
+    background-size: 100% 100%;
+  }
+  .zoo{
+    position: absolute;
+    right: 0.3rem;
+    top: 71.98rem;
+    width: 3.46rem;
+    height: 5.28rem;
+    background: url(#{$scene}zoo.gif) no-repeat;
+    background-size: 100% 100%;
+  }
   //第三页
+  .bus{
+    position: absolute;
+    width: 5.01rem;
+    height: 4.8rem;
+    background: url(#{$scene}bus.png) no-repeat;
+    background-size: 100% 100%;
+    &.ani{
+      animation: bus 2s ease-out infinite;
+      animation-fill-mode: forwards;
+    }
+  }
+  @keyframes bus {
+    from{
+      left: 4.9rem;
+      top: 45.9rem;
+    }
+    to{
+      left: 1rem;
+      top: 48.5rem;
+    }
+  }
+  .bus-house{
+    position: absolute;
+    right: 37px;
+    top: 4654px;
+    width: 4.48rem;
+    height: 6rem;
+    background: url(#{$scene}buildingFix_1.png) no-repeat;
+    background-size: 100% 100%;
+    transform: scaleX(1.18);
+  }
+  .pigeon1{
+    position: absolute;
+    left: 3.2rem;
+    top: 48rem;
+    width: 2.46rem;
+    height: 2.05rem;
+    background: url(#{$scene}bird_1.png) no-repeat;
+    background-size: 100% 100%;
+    animation: pigeon1 2s linear infinite alternate;
+    animation-fill-mode: forwards;
+  }
+  @keyframes pigeon1  {
+    from{
+      transform: translate(0,0);
+    }
+    to{
+      transform: translate(0.1rem,-0.2rem);
+    }
+  }
+  .bear{
+    position: absolute;
+    left: 3.7rem;
+    top: 53.7rem;
+    width: 1.32rem;
+    height: 1.86rem;
+    background: url(#{$scene}leaflet.gif) no-repeat;
+    background-size: 100% 100%;
+    &::after{
+      content: "";
+      position: absolute;
+      top: -3.3rem;
+      right: 0;
+      bottom: 0;
+      left: -2.1rem;
+      width: 9rem;
+      height: 9rem;
+      background: radial-gradient(closest-side, rgba(255, 254, 223, 0.4), rgba(255, 244, 223, .1), rgba(0, 0, 0, 0));
+      animation: flash 1s infinite alternate;
+    }
+  }
+  .traffic-light1{
+    position: absolute;
+    left: 1rem;
+    top: 51.8rem;
+    width: 1.52rem;
+    height: 2.83rem;
+    background: url(#{$scene}signal.gif) no-repeat;
+    background-size: 100% 100%;
+  }
+  .pigeon1-2{
+    position: absolute;
+    left: 0rem;
+    top: 57.5rem;
+    width: 1.79rem;
+    height: 2.54rem;
+    background: url(#{$scene}bird_2.gif) no-repeat;
+    background-size: 100% 100%;
+  }
+  .traffic-light2{
+    position: absolute;
+    left: 1rem;
+    top: 59.8rem;
+    width: 2.88rem;
+    height: 4rem;
+    background: url(#{$scene}lamp_1.gif) no-repeat;
+    background-size: 100% 100%;
+  }
+  // 第四页
   .car1,
   .car2 {
     position: absolute;
@@ -741,16 +909,13 @@ $scene: "../../images/scene/";
   // 4-5
   .biycle {
     position: absolute;
-    top: 30.6rem;
-    left: 3.8rem;
     width: 1.6rem;
     height: 2.41rem;
     background: url(#{$scene}bicycle_0.png) no-repeat;
     background-size: 100% 100%;
     transform: scale(1.1);
-
     &.ani {
-      animation: biycle 8s linear infinite;
+      animation: biycle 5s linear infinite;
       animation-fill-mode: forwards;
     }
 
@@ -761,8 +926,10 @@ $scene: "../../images/scene/";
       }
 
       to {
+        // top: 33.6rem;
+        // left: -.7rem;
         top: 32.6rem;
-        left: -.7rem;
+        left: .5rem;
       }
     }
   }

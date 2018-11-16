@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-15 20:27:15
+ * @Last Modified time: 2018-11-16 11:08:12
  */
 /*
  * @Author: @Guojufeng 
@@ -650,6 +650,9 @@ ul, li {
 /* page3 */
 .page3 {
   display: none; }
+  .page3 .page3-ani {
+    position: relative;
+    overflow: hidden; }
   .page3 .bg {
     bottom: 0;
     left: 0;
@@ -673,6 +676,175 @@ ul, li {
       background-size: 100% 100%; }
     .page3 .bg div {
       height: 19.34rem; }
+  .page3 .you {
+    position: absolute;
+    left: 50%;
+    bottom: 0rem;
+    width: .96rem;
+    height: 2.7rem;
+    margin-left: -0.48rem;
+    background: url(../../images/choose/boy/0/0.png) no-repeat;
+    background-size: 100% 100%; }
+  .page3 .telegraph {
+    position: absolute;
+    left: 0;
+    top: 92.79rem;
+    width: 100%;
+    height: 3.91rem;
+    background: url(../../images/scene/wire_2.png) no-repeat;
+    background-size: 100% 100%; }
+  .page3 .birds {
+    position: absolute;
+    left: 2.8rem;
+    top: 94.3rem;
+    width: 3.33rem;
+    height: 1.54rem;
+    background: url(../../images/scene/bird_3.gif) no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: scaleX(1.2);
+            transform: scaleX(1.2); }
+  .page3 .busker {
+    position: absolute;
+    left: 1.35rem;
+    top: 88.05rem;
+    width: 2.2rem;
+    height: 2.31rem;
+    background: url(../../images/scene/guitar.gif) no-repeat;
+    background-size: 100% 100%; }
+  .page3 .traffic-light {
+    position: absolute;
+    right: 0.4rem;
+    top: 84.65rem;
+    width: 2.8rem;
+    height: 7.2rem;
+    background: url(../../images/scene/lamp_0.gif) no-repeat;
+    background-size: 100% 100%; }
+  .page3 .cat1 {
+    position: absolute;
+    left: 0.5rem;
+    top: 78.5rem;
+    width: 1.23rem;
+    height: 1.85rem;
+    background: url(../../images/scene/cat_0.gif) no-repeat;
+    background-size: 100% 100%; }
+  .page3 .zoo {
+    position: absolute;
+    right: 0.3rem;
+    top: 71.98rem;
+    width: 3.46rem;
+    height: 5.28rem;
+    background: url(../../images/scene/zoo.gif) no-repeat;
+    background-size: 100% 100%; }
+  .page3 .bus {
+    position: absolute;
+    width: 5.01rem;
+    height: 4.8rem;
+    background: url(../../images/scene/bus.png) no-repeat;
+    background-size: 100% 100%; }
+    .page3 .bus.ani {
+      -webkit-animation: bus 2s ease-out infinite;
+              animation: bus 2s ease-out infinite;
+      -webkit-animation-fill-mode: forwards;
+              animation-fill-mode: forwards; }
+
+@-webkit-keyframes bus {
+  from {
+    left: 4.9rem;
+    top: 45.9rem; }
+  to {
+    left: 1rem;
+    top: 48.5rem; } }
+
+@keyframes bus {
+  from {
+    left: 4.9rem;
+    top: 45.9rem; }
+  to {
+    left: 1rem;
+    top: 48.5rem; } }
+  .page3 .bus-house {
+    position: absolute;
+    right: 0.37rem;
+    top: 46.54rem;
+    width: 4.48rem;
+    height: 6rem;
+    background: url(../../images/scene/buildingFix_1.png) no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: scaleX(1.18);
+            transform: scaleX(1.18); }
+  .page3 .pigeon1 {
+    position: absolute;
+    left: 3.2rem;
+    top: 48rem;
+    width: 2.46rem;
+    height: 2.05rem;
+    background: url(../../images/scene/bird_1.png) no-repeat;
+    background-size: 100% 100%;
+    -webkit-animation: pigeon1 2s linear infinite alternate;
+            animation: pigeon1 2s linear infinite alternate;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards; }
+
+@-webkit-keyframes pigeon1 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
+  to {
+    -webkit-transform: translate(0.1rem, -0.2rem);
+            transform: translate(0.1rem, -0.2rem); } }
+
+@keyframes pigeon1 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0); }
+  to {
+    -webkit-transform: translate(0.1rem, -0.2rem);
+            transform: translate(0.1rem, -0.2rem); } }
+  .page3 .bear {
+    position: absolute;
+    left: 3.7rem;
+    top: 53.7rem;
+    width: 1.32rem;
+    height: 1.86rem;
+    background: url(../../images/scene/leaflet.gif) no-repeat;
+    background-size: 100% 100%; }
+    .page3 .bear::after {
+      content: "";
+      position: absolute;
+      top: -3.3rem;
+      right: 0;
+      bottom: 0;
+      left: -2.1rem;
+      width: 9rem;
+      height: 9rem;
+      background: -webkit-radial-gradient(closest-side, rgba(255, 254, 223, 0.4), rgba(255, 244, 223, 0.1), rgba(0, 0, 0, 0));
+      background: radial-gradient(closest-side, rgba(255, 254, 223, 0.4), rgba(255, 244, 223, 0.1), rgba(0, 0, 0, 0));
+      -webkit-animation: flash 1s infinite alternate;
+              animation: flash 1s infinite alternate; }
+  .page3 .traffic-light1 {
+    position: absolute;
+    left: 1rem;
+    top: 51.8rem;
+    width: 1.52rem;
+    height: 2.83rem;
+    background: url(../../images/scene/signal.gif) no-repeat;
+    background-size: 100% 100%; }
+  .page3 .pigeon1-2 {
+    position: absolute;
+    left: 0rem;
+    top: 57.5rem;
+    width: 1.79rem;
+    height: 2.54rem;
+    background: url(../../images/scene/bird_2.gif) no-repeat;
+    background-size: 100% 100%; }
+  .page3 .traffic-light2 {
+    position: absolute;
+    left: 1rem;
+    top: 59.8rem;
+    width: 2.88rem;
+    height: 4rem;
+    background: url(../../images/scene/lamp_1.gif) no-repeat;
+    background-size: 100% 100%; }
   .page3 .car1,
   .page3 .car2 {
     position: absolute;
@@ -772,8 +944,6 @@ ul, li {
             transform: scale(1.1) translate(-0.1rem, 0.1rem); } }
   .page3 .biycle {
     position: absolute;
-    top: 30.6rem;
-    left: 3.8rem;
     width: 1.6rem;
     height: 2.41rem;
     background: url(../../images/scene/bicycle_0.png) no-repeat;
@@ -781,8 +951,8 @@ ul, li {
     -webkit-transform: scale(1.1);
             transform: scale(1.1); }
     .page3 .biycle.ani {
-      -webkit-animation: biycle 8s linear infinite;
-              animation: biycle 8s linear infinite;
+      -webkit-animation: biycle 5s linear infinite;
+              animation: biycle 5s linear infinite;
       -webkit-animation-fill-mode: forwards;
               animation-fill-mode: forwards; }
 
@@ -792,7 +962,7 @@ ul, li {
     left: 3.8rem; }
   to {
     top: 32.6rem;
-    left: -.7rem; } }
+    left: .5rem; } }
 
 @keyframes biycle {
   from {
@@ -800,7 +970,7 @@ ul, li {
     left: 3.8rem; }
   to {
     top: 32.6rem;
-    left: -.7rem; } }
+    left: .5rem; } }
   .page3 .biycle-house {
     position: absolute;
     top: 32.84rem;

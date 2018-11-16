@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-05 09:35:14 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-15 18:46:53
+ * @Last Modified time: 2018-11-16 11:29:04
  */
 
 /* global $ */
@@ -15,13 +15,14 @@ window.requestAnimFrame = (function() {
 			return window.setTimeout(callback, 1000 / 60);//1000ms/60.最佳循环间隔
 		};
 })();
+import filter from './plugings/filter.json'
 $(function () {
   /* 判断并提示微信环境打开 */
   if (!window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) === 'micromessenger') {
     alert('添加微信观看提示');
   }
   /* begin 预加载 */
-  var deBug = true, //是否是开发时快速查看测试的效果
+  var deBug = false, //是否是开发时快速查看测试的效果
     canvas1Img = [],
     timer1 = null,
     userSex = 0,//0男1女
@@ -250,18 +251,22 @@ $(function () {
   });
   $('.choose-btn2').on('click',function(){
     var name = $('.choose-input').find('input').val();
-    console.log(name)
     if(name){
-      /* 存入名字 */
-      userName = name;
-      /* 进入下一环节 */
-      $('.page2').remove();
-      $('.page3').fadeIn();
+      if(filter.data.indexOf(name) > -1){
+        alert('含有非法敏感词，请重新输入。');
+        $('.choose-input').find('input').val('');
+      }else{
+        /* 存入名字 */
+        userName = name;
+        console.log(userName);
+        /* 进入下一环节 */
+        $('.page2').remove();
+        $('.page3').fadeIn();
+      }
     }else{
       alert('请输入你的名字！')
     }
   });
   /* page3的自动上滑 */
-  
   // $('.page3 .bg').css('translateY','100px');
 });
