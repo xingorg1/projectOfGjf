@@ -19,8 +19,8 @@ export let utils = {
   },
   prestrain: function(imgArr,imgUrl,format,callback){
     /* 图片预加载 */
-    let assetsArr = [],promiseArr = [],count=0;
-    for(let i = 0; i < imgArr.length; i++){
+    let assetsArr = [],promiseArr = [],count=0,len = imgArr.length;
+    for(let i = 0; i < len; i++){
       // 这里有疑问，怎么使用promise实现加载完毕执行resolve而不是回调函数实现？是不是必须放到数组中再遍历每一个promise？
       // promiseArr.push(new Promise((resolve,reject)=>{
         if(format == "mp3"){

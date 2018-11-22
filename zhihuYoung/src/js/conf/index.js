@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-05 09:35:14 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-16 16:59:42
+ * @Last Modified time: 2018-11-22 18:00:28
  */
 
 /* global $ */
@@ -16,24 +16,33 @@ window.requestAnimFrame = (function () {
     };
 })();
 import filter from './plugings/filter.json';
+import question from './plugings/question.json';
+
 $(function () {
   /* 判断并提示微信环境打开 */
   if (!window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) === 'micromessenger') {
     alert('添加微信观看提示');
   }
   /* begin 预加载 */
-  var deBug = false, //是否是开发时快速查看测试的效果
+  var deBug = true, //是否是开发时快速查看测试的效果
     canvas1Img = [],
     timer1 = null,
+    page3Obj = {
+      img1: null,
+      img2: null,
+      timer: null
+    },
+    questionL = [],
+    questionNum = 0,
     userSex = 0, //0男1女
     userName = ''; //用户姓名
-  function filter(value) {
+  function filterFun(value) {
     //遍历敏感词数组filter.data
     let len = filter.data.length;
     for (var i = 0; i < len; i++) {
       //判断内容中是否包括敏感词
       if (value.indexOf(filter.data[i]) != -1) {
-        return value;//value为传入的input的value值，如果这个值是敏感词，直接返回这个敏感词，以备后用。
+        return value; //value为传入的input的value值，如果这个值是敏感词，直接返回这个敏感词，以备后用。
       }
     }
     //如果不是敏感词，默认函数不返回值（即undefined），最后判断函数执行的返回值即可。
@@ -52,7 +61,7 @@ $(function () {
     $('.page1').hide();
     $('.page1 .txt').addClass('show');
     $('.page2').show();
-    $('.page3').hide();
+    $('.page3').remove();
   }
 
   function initPreLoad() {
@@ -108,22 +117,36 @@ $(function () {
       let chooseImg = ['arrow','bg','bg_0','boy','boy_shadow','btn_repeat','btn_success','girl','girl_shadow','sex_box'];
       let chooseBoy = [];
       */
-     
+
     /* 插入video并开始播放 */
     if (myVideo && myVideo.readyState) {
       myVideo.play(); //开始播放、paused暂停播放
     } else {
       /* 视频下载0失败，执行重新加载 */
     }
+    /* 加载第二部分10个女孩子的正面图片 */
+    for (let i = 0; i < 10; i++) {
+      let img = new Image();
+      img.src = '../../images/choose/girl_' + i + '.png'
+    }
+    /* 加载第三部分需要的图片 */
+    let imgArr3_jpg = ['bg_0', 'bg_1', 'bg_2', 'bg_3', 'bg_4'];
+    let imgArr3_png = ['bicycle_0', 'bird_0', 'bird_1', 'buildingFix_0', 'buildingFix_1', 'buildingFix_2', 'buildingFix_3', 'bus', 'car', 'cat_1', 'cat_1_flash', 'moon', 'train', 'wire_2'];
+    let imgArr3_gif = ['bird_2', 'bird_3', 'cat_0', 'guitar', 'lamp_0', 'lamp_1', 'leaflet', 'liu', 'signal', 'stage', 'zoo'];
+    preLoad(imgArr3_jpg, 'jpg');
+    preLoad(imgArr3_png, 'png');
+    preLoad(imgArr3_gif, 'gif');
 
+    function preLoad(arr, format) {
+      let imgUrl3 = '../../images/scene/';
+      let len = arr.length;
+      for (let i = 0; i < len; i++) {
+        var img = new Image();
+        img.src = `${imgUrl3}${arr[i]}.${format}`
+      }
+    }
   });
-  let chooseGirl = [];
-  for(let i = 0; i < 10; i++){
-    chooseGirl.push();
-    let img = new Image();
-    img.src = '../../images/choose/girl_'+i+'.png'
-  } 
-  console.log(chooseGirl)
+
   $('.video').on('error', function () {
     alert('视频加载失败，请刷新重试')
   });
@@ -242,6 +265,20 @@ $(function () {
   }
   /* 选人物 - 点击后出现追光、输入框等 */
   $('.choose-scroll .user-list li').on('click', function (e) {
+    // 预加载走动人物的背影
+    var _index = $(this).attr('data-id');
+    var imgUrl = '../../images/choose/'
+    page3Obj.img1 = new Image();
+    page3Obj.img2 = new Image();
+    if (userSex == 0) {
+      // 男
+      page3Obj.img1.src = imgUrl + 'boy/' + _index + '/0.png';
+      page3Obj.img2.src = imgUrl + 'boy/' + _index + '/1.png';
+    } else {
+      // 女
+      page3Obj.img1.src = imgUrl + 'girl/' + _index + '/0.png';
+      page3Obj.img2.src = imgUrl + 'girl/' + _index + '/1.png';
+    }
     // 清空上一次填过的内容
     $('.choose-input').find('input').val("");
     // 追光动画等
@@ -283,7 +320,7 @@ $(function () {
       // if(filter.data.indexOf(name) > -1){//不能检测敏感词2这样的
       //   alert('含有非法敏感词，请重新输入。');
       //   $('.choose-input').find('input').val('');
-      if (filter(name)) {
+      if (filterFun(name)) {
         alert('含有非法敏感词，请重新输入。');
         $('.choose-input').find('input').val('');
       } else {
@@ -291,14 +328,86 @@ $(function () {
         userName = name;
         console.log(userName);
         /* 进入下一环节 */
-        $('.page2').remove();
-        $('.page3').fadeIn();
+        page3();
       }
     } else {
-      alert('请输入你的名字！')
+      alert('请输入你的名字！');
     }
   });
   /* page3的自动上滑 */
-  // $('.page3 .bg').css('translateY','100px');
-  
+  function page3() {
+    /* 加载第三部分 */
+    $('.page2').remove();
+    $('.page3').fadeIn();
+    var str = `<section class="page3"><div class="page3-ani"><div class="bg"><div class="bg0"></div><div class="bg1"></div><div class="bg2"></div><div class="bg3"></div><div class="bg4"></div></div><div class="you"><canvas id="canvas2">您的浏览器不支持canvas</canvas></div><div class="telegraph"></div><div class="birds"></div><div class="busker"></div><div class="traffic-light"></div><div class="cat1"></div><div class="zoo"></div><div class="bus ani"></div><div class="bus-house"></div><div class="pigeon1"></div><div class="bear"></div><div class="traffic-light1"></div><div class="pigeon1-2"></div><div class="traffic-light2"></div><div class="car1 ani"></div><div class="car2 ani"></div><div class="meijia"></div><div class="pigeon2"></div><div class="pig"></div><div class="biycle ani"></div><div class="biycle-house"></div><div class="cat2"></div><div class="stage"></div><div class="moon ani"></div><div class="mountain"></div><div class="train ani"></div></div><div class="page3-question"><div class="question"><h3>${question.data[0].ques}</h3><ul class="question-list"><li>${question.data[0].option[0]}</li><li>${question.data[0].option[1]}</li><li>${question.data[0].option[2]}</li><li>${question.data[0].option[3]}</li></ul></div></div></section>`
+    $('.main').append(str);
+    // setTimeout(function(){
+    /* 人物上行 */
+    let Iw = page3Obj.img1.width;
+    let Ih = page3Obj.img1.height;
+    $('.you').css({
+      'width': Iw + 'px',
+      'height': Ih + 'px'
+    });
+    let canvas2 = document.getElementById('canvas2');
+    let context2 = canvas2.getContext('2d');
+    canvas2.width = Iw;
+    canvas2.height = Ih;
+    // },0)
+    // $('.page3 .bg').css('translateY','100px');
+    walk(context2,Iw,Ih);
+    let targetXY = 600;
+    /* 递归实现人物上行 */
+    let newT = 0;
+    upup()
+    function upup(target){
+      let now = $('.you').css('transform');
+      console.log($('.you'),now,typeof now)
+      if(newT >= targetXY){
+        clearInterval(page3Obj.timer);
+        $('.page3-question').addClass('show');
+      }else{
+        newT += 20;
+        $('.you').css('transform',`matrix(1, 0, 0, 1, 0, -${newT})`);
+          setTimeout(function(){
+            upup();
+          },150);
+        }
+    }
+    // setTimeout(()=>{
+    //   clearInterval(page3Obj.timer);
+    //   setTimeout(()=>{
+    //     walk(context2,Iw,Ih);
+    //   },5000)
+    // },3000)
+  }
+  /* 人物原地行走 */
+  function walk(context2,Iw,Ih) {
+    let w = true;
+    page3Obj.timer = setInterval(function () {
+      context2.clearRect(0, 0, utils.oW, utils.oH);
+      if (w) {
+        context2.drawImage(page3Obj.img1, 0, 0, Iw, Ih);
+        w = false;
+      } else {
+        context2.drawImage(page3Obj.img2, 0, 0, Iw, Ih);
+        w = true;
+      }
+    }, 500);
+  }
+  /* 做题 */
+  $('.main').on('click','.question-list li',function(){
+    $(this).addClass('cur').siblings('li').removeClass('cur');
+    questionL.push($(this).text().substring(0,1));
+    $('.page3-question').removeClass('show');
+    /* 题号加一 */
+    questionNum ++;
+    setTimeout(function(){
+      screenToTop();
+    },1000)
+  });
+  /* 镜头上移 */
+  function screenToTop(){
+    $('.page3-ani').css('transform','translateY('+ utils.oH * questionNum +'px)');
+  }
 });

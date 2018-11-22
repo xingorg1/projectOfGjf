@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-16 15:48:57
+ * @Last Modified time: 2018-11-22 17:58:29
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -617,11 +617,15 @@ $scene: "../../images/scene/";
 }
 
 .page3 {
-  display: none;
+  // display: none;
 
   .page3-ani {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     overflow: hidden;
+    transition: all 2s;
   }
 
   .bg {
@@ -642,12 +646,18 @@ $scene: "../../images/scene/";
   .you{
     position: absolute;
     left: 50%;
-    bottom: 0rem;
+    bottom: -2.5rem;
     width: .96rem;
     height: 2.7rem;
     margin-left: -0.48rem;
-    background: url(#{$choose}boy/0/0.png) no-repeat;
-    background-size: 100% 100%;
+    transform: translateY(0px);
+    transition: transform .15s ease-out;
+    // background: url(#{$choose}boy/0/0.png) no-repeat;
+    // background-size: 100% 100%;
+    canvas{
+      width: 100%;
+      height: 100%;
+    }
   }
   // 第一页
   .telegraph{
@@ -1126,8 +1136,8 @@ $scene: "../../images/scene/";
         letter-spacing: 0.04rem;
         color: #CDE1FF;
         letter-spacing: 0.04rem;
-        background: #23356a;
-        opacity: 0.6;
+        background: rgba(35, 53, 106, 0.6);
+        // opacity: 0.6;
         border: .02rem solid #999BC5;
         box-shadow: 0 0.07rem 0.14rem 0 #23356A;
         border-radius: .06rem;
