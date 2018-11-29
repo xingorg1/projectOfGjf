@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-05 09:35:14 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-22 18:00:28
+ * @Last Modified time: 2018-11-29 20:06:46
  */
 
 /* global $ */
@@ -17,7 +17,7 @@ window.requestAnimFrame = (function () {
 })();
 import filter from './plugings/filter.json';
 import question from './plugings/question.json';
-
+import result from './plugings/result.json';
 $(function () {
   /* 判断并提示微信环境打开 */
   if (!window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) === 'micromessenger') {
@@ -30,11 +30,33 @@ $(function () {
     page3Obj = {
       img1: null,
       img2: null,
-      timer: null
+      timer: null,
+      context2: null,
+      bgTarget: [0,1500,3434,5150,6330,7600],
+      startTarget: [0,-1440,-3400,-5100,-6200],//从哪个点开始走
+      walkTarget: [
+        {
+          x: 0,
+          y: -600
+        },{
+          x: 0,
+          y: -2000
+        },{
+          x: -125,
+          y: -4000
+        },{
+          x: -280,
+          y: -5700
+        },{
+          x: 20,
+          y: -6900
+        }
+      ]//走到哪个目标点
     },
-    questionL = [],
-    questionNum = 0,
-    userSex = 0, //0男1女
+    questionL = [],//用户选择答案
+    questionNum = 0,//当前题号
+    questionLen = question.data.length,//题目个数
+    userSex = 0, //用户选择性别，0男1女
     userName = ''; //用户姓名
   function filterFun(value) {
     //遍历敏感词数组filter.data
@@ -52,7 +74,7 @@ $(function () {
     $('.page2').hide();
   } else {
     $('.loading').hide();
-    $('video').hide();
+    $('.video1').hide();
     $('.loading-end-btn').show();
     let imgUrl = '../../images/begin/bg/',
       imgArr = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 117, 120, 123, 126, 129, 132, 135, 138, 141, 144, 147];
@@ -62,6 +84,7 @@ $(function () {
     $('.page1 .txt').addClass('show');
     $('.page2').show();
     $('.page3').remove();
+    // $('.page4').addClass('show');
   }
 
   function initPreLoad() {
@@ -117,7 +140,7 @@ $(function () {
       let chooseImg = ['arrow','bg','bg_0','boy','boy_shadow','btn_repeat','btn_success','girl','girl_shadow','sex_box'];
       let chooseBoy = [];
       */
-
+     
     /* 插入video并开始播放 */
     if (myVideo && myVideo.readyState) {
       myVideo.play(); //开始播放、paused暂停播放
@@ -147,12 +170,12 @@ $(function () {
     }
   });
 
-  $('.video').on('error', function () {
+  $('.video1').on('error', function () {
     alert('视频加载失败，请刷新重试')
   });
 
   /* 视频结束 */
-  $('.video').on('ended', function () {
+  $('.video1').on('ended', function () {
     $(this).fadeOut();
     $('.page1').fadeIn();
     $('.page1 .title').addClass('show');
@@ -189,7 +212,7 @@ $(function () {
   $('.page1 .txt').on('click', () => {
     /* 销毁page1、canvas1、动画定时器、视频等 */
     $('.loading').remove();
-    $('.video').remove();
+    $('.video1').remove();
     clearInterval(timer1);
     timer1 = null;
     $('.page1').remove();
@@ -314,6 +337,7 @@ $(function () {
     $('.choose-fill-form').removeClass('show');
     $('.choose-scroll').removeClass('no-move');
   });
+  /* 确定人名输入 */
   $('.choose-btn2').on('click', function () {
     var name = $('.choose-input').find('input').val();
     if (name) {
@@ -339,48 +363,27 @@ $(function () {
     /* 加载第三部分 */
     $('.page2').remove();
     $('.page3').fadeIn();
-    var str = `<section class="page3"><div class="page3-ani"><div class="bg"><div class="bg0"></div><div class="bg1"></div><div class="bg2"></div><div class="bg3"></div><div class="bg4"></div></div><div class="you"><canvas id="canvas2">您的浏览器不支持canvas</canvas></div><div class="telegraph"></div><div class="birds"></div><div class="busker"></div><div class="traffic-light"></div><div class="cat1"></div><div class="zoo"></div><div class="bus ani"></div><div class="bus-house"></div><div class="pigeon1"></div><div class="bear"></div><div class="traffic-light1"></div><div class="pigeon1-2"></div><div class="traffic-light2"></div><div class="car1 ani"></div><div class="car2 ani"></div><div class="meijia"></div><div class="pigeon2"></div><div class="pig"></div><div class="biycle ani"></div><div class="biycle-house"></div><div class="cat2"></div><div class="stage"></div><div class="moon ani"></div><div class="mountain"></div><div class="train ani"></div></div><div class="page3-question"><div class="question"><h3>${question.data[0].ques}</h3><ul class="question-list"><li>${question.data[0].option[0]}</li><li>${question.data[0].option[1]}</li><li>${question.data[0].option[2]}</li><li>${question.data[0].option[3]}</li></ul></div></div></section>`
+    var str = `<section class="page3"><div class="page3-ani"><div class="bg"><div class="bg0"></div><div class="bg1"></div><div class="bg2"></div><div class="bg3"></div><div class="bg4"></div></div><div class="you"><canvas id="canvas2">您的浏览器不支持canvas</canvas></div><div class="telegraph"></div><div class="birds"></div><div class="busker"></div><div class="traffic-light"></div><div class="cat1"></div><div class="zoo"></div><div class="bus"></div><div class="bus-house"></div><div class="pigeon1"></div><div class="bear"></div><div class="traffic-light1"></div><div class="pigeon1-2"></div><div class="traffic-light2"></div><div class="car1"></div><div class="car2"></div><div class="meijia"></div><div class="pigeon2"></div><div class="pig"></div><div class="biycle"></div><div class="biycle-house"></div><div class="cat2"></div><div class="stage"></div><div class="moon"></div><div class="mountain"></div><div class="train"></div></div><div class="page3-question"><div class="question"><h3>${question.data[0].title}</h3><ul class="question-list"><li>${question.data[0].option[0]}</li><li>${question.data[0].option[1]}</li><li>${question.data[0].option[2]}</li><li>${question.data[0].option[3]}</li></ul></div></div></section>`
     $('.main').append(str);
-    // setTimeout(function(){
     /* 人物上行 */
-    let Iw = page3Obj.img1.width;
-    let Ih = page3Obj.img1.height;
+    // 1. 根据用户选择绘制任务行走动画
+    let Iw = page3Obj.img1.width,
+        Ih = page3Obj.img1.height;
     $('.you').css({
-      'width': Iw + 'px',
-      'height': Ih + 'px'
+      'width':  Iw+ 'px',
+      'height':  Ih+ 'px'
     });
     let canvas2 = document.getElementById('canvas2');
-    let context2 = canvas2.getContext('2d');
+    page3Obj.context2 = canvas2.getContext('2d');
     canvas2.width = Iw;
     canvas2.height = Ih;
-    // },0)
-    // $('.page3 .bg').css('translateY','100px');
-    walk(context2,Iw,Ih);
-    let targetXY = 600;
-    /* 递归实现人物上行 */
-    let newT = 0;
-    upup()
-    function upup(target){
-      let now = $('.you').css('transform');
-      console.log($('.you'),now,typeof now)
-      if(newT >= targetXY){
-        clearInterval(page3Obj.timer);
-        $('.page3-question').addClass('show');
-      }else{
-        newT += 20;
-        $('.you').css('transform',`matrix(1, 0, 0, 1, 0, -${newT})`);
-          setTimeout(function(){
-            upup();
-          },150);
-        }
-    }
-    // setTimeout(()=>{
-    //   clearInterval(page3Obj.timer);
-    //   setTimeout(()=>{
-    //     walk(context2,Iw,Ih);
-    //   },5000)
-    // },3000)
+    // 2.人物行走
+    walk(page3Obj.context2,Iw,Ih);
+    upup(page3Obj.startTarget[questionNum],page3Obj.walkTarget[questionNum]);
   }
+  // function pepol(){
+
+  // }
   /* 人物原地行走 */
   function walk(context2,Iw,Ih) {
     let w = true;
@@ -395,6 +398,22 @@ $(function () {
       }
     }, 500);
   }
+  /* 递归实现人物上行 */
+  function upup(start,target){
+    console.log('从 ' + start + ' 到 ' + target.y)
+    if(start <= target.y){
+      clearInterval(page3Obj.timer);
+      // $('.question-list li.cur').removeClass('cur');
+      $('.page3-question').addClass('show');
+    }else{
+      start -= 20;
+      $('.you').css('transform',`matrix(1, 0, 0, 1, ${target.x}, ${start})`);
+        setTimeout(function(){
+          upup(start,target);
+        },120);//120走的速度刚好，嫌慢改成了50
+      }
+  }
+  
   /* 做题 */
   $('.main').on('click','.question-list li',function(){
     $(this).addClass('cur').siblings('li').removeClass('cur');
@@ -402,12 +421,88 @@ $(function () {
     $('.page3-question').removeClass('show');
     /* 题号加一 */
     questionNum ++;
+    console.log(questionL)
     setTimeout(function(){
       screenToTop();
     },1000)
   });
   /* 镜头上移 */
   function screenToTop(){
-    $('.page3-ani').css('transform','translateY('+ utils.oH * questionNum +'px)');
+    /* 镜头上移 */
+    $('.page3-ani').css('transform','translateY('+ page3Obj.bgTarget[questionNum] +'px)');
+    if(questionNum < questionLen){
+      /* 题目修改 */
+      let ques = question.data[questionNum],//当前题目
+          optLen = ques.option.length,//题目个数
+          str = '<ul class="question-list">';
+      $('.question').find('h3').text(ques.title);
+      $('.question-list').detach('');
+      for(let i = 0; i < optLen; i++){
+        str += `<li>${ques.option[i]}</li>`;
+      }
+      str += '</ul>';
+      $('.question').append(str);
+    }
+    /* 镜头停止后要走的动画 */
+    if(questionNum == 3){
+      //展开第3个动画,第一个汽车立马动起来
+      $('.page3 .car1').addClass('ani');
+    }
+    setTimeout(()=>{
+      if(questionNum == 4){
+        //展开第4个动画,播放自行车
+        $('.page3 .biycle').addClass('ani');
+      }
+    },100);
+    setTimeout(()=>{
+      walk(page3Obj.context2,page3Obj.img1.width,page3Obj.img1.height);
+      if(questionNum <= page3Obj.startTarget.length){
+        console.log(questionNum)
+        if(questionNum == 2){
+          //展开第二个动画,播放bus
+          $('.page3 .bus').addClass('ani');
+          setTimeout(function(){
+            upup(page3Obj.startTarget[questionNum],page3Obj.walkTarget[questionNum]);
+          },500)
+        }else if(questionNum == 3){
+          //展开第3个动画,播放两个汽车
+          $('.page3 .car2').addClass('ani');
+          setTimeout(function(){
+            upup(page3Obj.startTarget[questionNum],page3Obj.walkTarget[questionNum]);
+          },1500)
+        }else if(questionNum == 4){
+          //展开第4个动画,播放自行车
+          setTimeout(function(){
+            upup(page3Obj.startTarget[questionNum],page3Obj.walkTarget[questionNum]);
+          },500)
+        }else if(questionNum == 5){
+          //展开第5个动画,封镜
+          $('.page3 .train').addClass('ani');
+          $('.page3 .moon').addClass('ani');
+          $('.main').append('<video class="video video2" id="myVideo2" src="../images/assets/run.mp4" x5-video-player-type="h5" x-webkit-airplay="true" airplay="allow" playsinline="" webkit-playsinline="" >您的浏览器不支持video标签</video>');
+          setTimeout(function(){
+            // 播放第二段视频
+            $('.page3').addClass('remove');
+            setTimeout(()=>{
+              let myVideo2 = document.getElementById('myVideo2');
+              if (myVideo2 && myVideo2.readyState) {
+                myVideo2.play(); //开始播放、paused暂停播放
+                $('.main').append('<section class="page4"><div class="page4-main"><div class="card"><canvas id="canvas3" class="canvas3">您的浏览器不支持canvas</canvas></div><div class="page4-btns"><div class="reload">重回平行世界</div><div class="about">新知青年说</div></div></div></section>');
+              }
+            },500)
+            $('.video').on('ended', function () {
+              /* run.mp4播放完毕 */
+              $('.page3').remove();
+              $('.video2').remove();
+              $('.page4').addClass('show');
+              // 执行canvas画图
+              
+            });
+          },2500);
+        }else{
+          upup(page3Obj.startTarget[questionNum],page3Obj.walkTarget[questionNum]);
+        }
+      }
+    },2000)
   }
 });

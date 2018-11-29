@@ -11,7 +11,7 @@ block mainLeft
         span.loading-progress-number 0%
         div.loading-text 正在奋力加载中
         div.loading-end-btn 开始
-    video.video#myVideo(src='../images/assets/video.mp4' x5-video-player-type="h5" x-webkit-airplay="true" airplay="allow" playsinline="" webkit-playsinline="") 您的浏览器不支持video标签
+    video.video.video1#myVideo(src='../images/assets/video.mp4' x5-video-player-type="h5" x-webkit-airplay="true" airplay="allow" playsinline="" webkit-playsinline="") 您的浏览器不支持video标签
     section.page1
       .bg
         canvas#canvas1() 您的浏览器不支持canvas
@@ -103,7 +103,13 @@ block mainLeft
             li(data-id="A").cur A.
             li(data-id="A") B.
             li(data-id="A") C.
-        
+    secion.page4
+      .page4-main
+        .card
+          canvas#canvas3.canvas3 您的浏览器不支持canvas
+        .page4-btns
+          .reload 重回平行世界
+          .about  新知青年说
     .orientation
       .orient-txt
         i.icon.icon-orient-iphone

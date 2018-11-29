@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-22 17:58:29
+ * @Last Modified time: 2018-11-29 20:05:49
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -618,7 +618,11 @@ $scene: "../../images/scene/";
 
 .page3 {
   // display: none;
-
+  transition: all 1s;
+  &.remove{
+    opacity: 0;
+    visibility: hidden;
+  }
   .page3-ani {
     position: absolute;
     bottom: 0;
@@ -724,7 +728,7 @@ $scene: "../../images/scene/";
     background: url(#{$scene}bus.png) no-repeat;
     background-size: 100% 100%;
     &.ani{
-      animation: bus 2s ease-out infinite;
+      animation: bus 2s ease-out;
       animation-fill-mode: forwards;
     }
   }
@@ -824,22 +828,15 @@ $scene: "../../images/scene/";
     height: 1.78rem;
     background: url(#{$scene}car.png) no-repeat;
     background-size: 100% 100%;
-    animation: car1 2s linear infinite;
+    animation-duration: 2s;
+    animation-timing-function: linear;
     animation-fill-mode: forwards;
   }
-
   .car1.ani {
-    // top: 41.3rem;
-    // left: 4.4rem;
+    animation-name: car1;
   }
-  
   .car2.ani {
     animation-name: car2;
-    animation-delay: 1s;
-    // top: 37.3rem;
-    // left: 4.4rem;
-    // animation: car2 2s linear infinite;
-    // animation-fill-mode: forwards;
   }
   @keyframes car1 {
     from {
@@ -848,8 +845,8 @@ $scene: "../../images/scene/";
     }
 
     to {
-      top: 42.8rem;
-      left: -.4rem;
+      top: 43.2rem;
+      left: -2.2rem;
     }
   }
 
@@ -860,8 +857,8 @@ $scene: "../../images/scene/";
     }
 
     to {
-      top: 40.3rem;
-      left: -.4rem;
+      top: 41.3rem;
+      left: -2.4rem;
     }
   }
   .meijia{
@@ -922,7 +919,7 @@ $scene: "../../images/scene/";
     background-size: 100% 100%;
     transform: scale(1.1);
     &.ani {
-      animation: biycle 5s linear infinite;
+      animation: biycle 3.5s linear;
       animation-fill-mode: forwards;
     }
 
@@ -935,8 +932,8 @@ $scene: "../../images/scene/";
       to {
         // top: 33.6rem;
         // left: -.7rem;
-        top: 32.6rem;
-        left: .5rem;
+        top: 33.6rem;
+        left: 0rem;
       }
     }
   }
@@ -1021,7 +1018,7 @@ $scene: "../../images/scene/";
     background-size: 100% 100%;
 
     &.ani {
-      animation: moonUp 3s infinite;
+      animation: moonUp 3s;
       animation-fill-mode: forwards;
     }
 
@@ -1059,7 +1056,7 @@ $scene: "../../images/scene/";
     transform: rotate(-4deg);
 
     &.ani {
-      animation: train 3s infinite;
+      animation: train 3s;
       animation-fill-mode: forwards;
     }
 
@@ -1129,7 +1126,7 @@ $scene: "../../images/scene/";
 
       li {
         width: 4.26rem;
-        margin-bottom: 0.14rem;
+        margin-bottom: 0.24rem;
         padding: .22rem .3rem;
         line-height: .34rem;
         font-size: .24rem;
@@ -1150,4 +1147,57 @@ $scene: "../../images/scene/";
   }
 }
 
+.page4{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s;
+  &.show{
+    opacity: 1;
+    visibility: visible;
+  }
+  .page4-main{
+    height: 100%;
+    background: #2B333D;
+    color: #fff;
+    padding-top: .34rem;
+  }
+  .card{
+    height: 11.38rem;
+    position: relative;
+  }
+  .canvas3{
+    width: 6.4rem;
+    height: 100%;
+    // margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -3.2rem;
+    background: #fff;
+  }
+  .page4-btns{
+    text-align: center;
+    margin-top: .3rem;
+    div{
+      display: inline-block;
+      width: 2.62rem;
+      height: .94rem;
+      text-indent: -9999px;
+    }
+  }
+  .reload{
+    margin-right: 1.3rem;
+    background: url('../../images/result/btn_replay.png') no-repeat;
+    background-size: 100% 100%;
+  }
+  .about{
+    background: url('../../images/result/btn_entry.png') no-repeat;
+    background-size: 100% 100%;
+  }
+}
 @media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {}

@@ -195,6 +195,8 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
 
 * 在安卓中，可以使用canvas的drawImage()方法绘制视频，虽然不如原生视频的效果流畅，但是终究能够解决不要控件的这个硬性问题。毕竟这种一镜到底的动画，当用户暂停了视频，后边的工作就白做了。
 
+### video不支持时换成canvas播放
+
 ## music的各种问题
 ### 背景音乐的init预加载和后期多段交互音乐的预加载
     他这个找不到音乐资源的加载，但是按开关还能暂停/播放音乐。不知如何处理的？
@@ -248,16 +250,25 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
   而我平时的分开切图的方法是，能够快速解决层级问题，而不用特别精确的定位。
 
   但是缺点不知道文件体积会不会变大,也就是房子有可能加载慢，只能看到光秃秃的马路和汽车。
-
-## canvas序列帧制作动画
+##canvas
+### css设置居中不起作用
+```css
+.canvas2{
+    width: 6.4rem;
+    height: 100%;
+    margin: 0 auto;//没起作用
+    background: #fff;
+  }
+```
+### canvas序列帧制作动画
 【动画就是将物体的运动以每秒24格的时间分格法逐一分解、绘制并拍摄记录成序列图片，再以每秒24格的播放速度播放出来，利用人的“视觉暂留”原理产生连续运动的视觉效果】
 
 简单来说，就是通过一直切换一张一张不同的序列图片连续交替出现，让静止的图像看上去像是播放的动态影像。
 
-### 实现关键：就是定时器```setInterval```和```setTimeout```或者更强大的```window.requestAnimationFrame```
+#### 实现关键：就是定时器```setInterval```和```setTimeout```或者更强大的```window.requestAnimationFrame```
 推荐两篇偶像的深入剖析文：[定时器](https://www.cnblogs.com/xiaohuochai/p/5773183.html)和[requestAnimationFrame](https://www.cnblogs.com/xiaohuochai/p/5777186.html)
 
-### 封装的requestAnimationFrame：
+#### 封装的requestAnimationFrame：
 ```js
 window.requestAnimFrame = (function() {
 	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
@@ -271,7 +282,7 @@ window.requestAnimFrame = (function() {
 ### canvas.drawImage()方法绘制图像
 [这一页就够用了](http://www.w3school.com.cn/html5/canvas_drawimage.asp)
 
-### 思路代码：
+#### 思路代码：
 ```js
   var canvas1Img = [],
     timer1 = null,
@@ -303,6 +314,7 @@ window.requestAnimFrame = (function() {
     console.log(canvas1Img[_i]);
   }, 100);
 ```
+
 ### 序列帧优化（雪碧图）
   因为需要切换多张不同的图片达到序列帧效果，那势必要多次去请求图像。为了优化，当图像尺寸比较小时可以考虑制作成雪碧图样式。
 
@@ -414,7 +426,7 @@ window.requestAnimFrame = (function() {
 
 5、 人物走路的合成图也是，点击选择了人物才加载指定人物的背影图
 
-## 拥有很多名单的json文件
+## 拥有很多名单的json文件【敏感词库】
 这个是一个过滤清单，在这个清单里，是用户不能输入的文案。在用户输入名字的地方使用。
 具体用法就是拿到用户输入的名字信息，去json文件中进行查找，如果找到了就提示含有敏感词，并将input输入框清空让其重新输入。
 初步做法，我是用的arr.indexOf(内容) > -1
@@ -423,24 +435,40 @@ window.requestAnimFrame = (function() {
 比如“数组”是敏感词，但是我输入“数组1”就不算敏感词了，显然这种判断是不行的。（因为indexOf使用===严格等于）
 
 # 最后提炼原作的js，研究大神的处理方式，对比与自己不同的地方，总结优缺点、拓宽新思路和新编程风格。
+## js源码中很多值得学习的思路,一定要研究
+## 其他问题之 - 第三部分选题时，动态填充结构的原因？
+  ### 学了浏览器里边的页面渲染顺序，你看看能不能理解他们用js填充dom结构的思路了？
+  ### 通过network面板观察，像page3这样的section结构不是js动态填充的，而是一个类似scene.html的页面：
+  [scene.html的页面](http://static.adcode.cn/20180508-zhihu-young/asset/tpl/scene.html)。
+  
+  打开看源码便知。不是普通的html页面，因为没有doctype等标签。但是是什么技术加载到主页面中的呢？
+## 其他问题之 - 链接为“https://hm.baidu.com/hm.gif?”的hm.gif文件是啥？
+  ### 完整链接[点击查看](https://hm.baidu.com/hm.gif?cc=0&ck=1&cl=24-bit&ds=375x667&vl=667&et=0&ja=0&ln=zh-cn&lo=0&lt=1543370299&rnd=1798447143&si=2462e2d1c4859883c428e8da7b3b4b18&su=http%3A%2F%2Fstatic.adcode.cn%2F20180508-zhihu-young%2Findex.html%3Ffrom%3Dsinglemessage%26isappinstalled%3D0&v=1.2.34&lv=3&api=4_0&ct=!!&u=http%3A%2F%2Fstatic.adcode.cn%2Fscene&tt=平行世界的你&sn=6339)
+
 
 # 接下来还有的任务大致步骤
+## 流程
 【X】改bug，首页btn延迟出现
 【X】视频1播放时 第二阶段图片预加载(预加载可以不做了，因为css提前做了)
 【x】但是第二阶段的女孩子图片，因为是添加类名后才会有背景图样式加载，也就是背景图才会加载，所以也需要预加载。
 【x】点击人物追光时，加载行走人物背影图
-第三部分动态填充结构的方式
-    学了浏览器里边的页面渲染顺序，你看看能不能理解他们用js填充dom结构的思路了？
-第三部分图片预加载
-确定按钮做敏感词判断（重做名字输入时的敏感词判断）
-有规律的分屏上移动画（以点击屏幕为触发事件）
-分屏中汽车等动的动画执行
-分屏中人物上移动画
-人物移动完毕的题目加载
-点击题目切屏
-最后一题完毕切换video播放（音乐预加载在选好人物开始做题时）
-加载总的背景音乐
-切屏加载音效
-视频2播放，计算结果、加载html2canvas所需图片
-制作结果页面
-html2canvas转成图片效果
+【X】第三部分图片预加载
+【X】确定按钮做敏感词判断（重做名字输入时的敏感词判断）
+【X】有规律的分屏上移动画（以点击屏幕为触发事件）
+【X】分屏中汽车等动的动画执行
+【X】分屏中人物上移动画
+【X】人物移动完毕的题目加载
+【X】点击题目切屏
+【X】最后一题完毕切换video播放（音乐预加载在选好人物开始做题时）
+【】加载总的背景音乐
+【】制作结果页面
+【】视频2播放，计算结果、加载html2canvas所需图片
+【】html2canvas转成图片效果
+【】背景音乐播放、开关控制
+【】切屏加载音效
+
+## 适配
+【】video不支持时换成canvas播放
+
+## 优化
+  输入名字支持按回车，执行确定功能
