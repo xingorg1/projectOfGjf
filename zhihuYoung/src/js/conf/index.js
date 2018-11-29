@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-05 09:35:14 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-29 20:06:46
+ * @Last Modified time: 2018-11-29 20:09:23
  */
 
 /* global $ */
@@ -84,7 +84,7 @@ $(function () {
     $('.page1 .txt').addClass('show');
     $('.page2').show();
     $('.page3').remove();
-    // $('.page4').addClass('show');
+    $('.page4').addClass('show');
   }
 
   function initPreLoad() {
