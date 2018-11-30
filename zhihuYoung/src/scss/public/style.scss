@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-29 20:05:49
+ * @Last Modified time: 2018-11-30 18:26:02
  */
 @import './common';
 $assets: "../../images/assets/";
@@ -1169,6 +1169,11 @@ $scene: "../../images/scene/";
   .card{
     height: 11.38rem;
     position: relative;
+    text-align: center;
+    img{
+      opacity: 0;
+      display: inline-block;
+    }
   }
   .canvas3{
     width: 6.4rem;

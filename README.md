@@ -250,7 +250,25 @@ orientation(方向，定向): 监听输出设备的可是宽度是否大于或�
   而我平时的分开切图的方法是，能够快速解决层级问题，而不用特别精确的定位。
 
   但是缺点不知道文件体积会不会变大,也就是房子有可能加载慢，只能看到光秃秃的马路和汽车。
+### 怎么监听css里animation的动画结束？
+  不能全部用setTimeout设置定时器触发动画结束后的程序吧。
+
+两种写法，原理都是监听animationend事件：
+```css
+$('.page3 .bus').on('animationend',function(){
+  console.log('动画完毕')
+})
+document.getElementsByClassName('bus')[0].addEventListener('animationend',function(){
+  console.log(this)
+})
+```
+然后比较low一点的方法，就是setTimeout设置定时器。
+
+但是这种方法比较好点的地方就是，可以设置的时间是早于动画或者动画播完后等一会再执行的。
+
+
 ##canvas
+
 ### css设置居中不起作用
 ```css
 .canvas2{
@@ -329,6 +347,101 @@ window.requestAnimFrame = (function() {
 这里，原作使用transform：matrix()改变最后两个参数实现的。主要原理就是translateY的位移。
 但是我用递归实现不了，一开始是不小心写死循环，后来是实现了位移但是人物图像却没有了。
 实际人物上移和镜头上移，都使用了js的逐渐趋近计算（专业名词要看大鱼成长游戏）。
+### 最后截图 - 不用html2canvas，只用原生canvas的api
+以前用html2canvas的时候，截图出来文字糊，可以新建canvas放大两倍再当参数穿进去，
+
+现在截图的话，直接用canvas画布怎么处理？
+### drawImage()
+#### 1、 报错：
+```
+Uncaught TypeError: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The provided value is not of type '(CSSImageValue or HTMLImageElement or SVGImageElement or HTMLVideoElement or HTMLCanvasElement or ImageBitmap or OffscreenCanvas)'
+```
+原因是传入的第一个参数不是image对象。因为用了arr[0],但是此时调试模式，将很多代码关掉了，导致arr还是个空数组，所以传入的是undefined而不是存了多个img图像的
+
+#### 2、截图空白
+还是因为测试的原因，（因为正常流程会做图片预加载，）测试时将图片加载和canvas画图流程凑到了一起，导致绘制图片空白。
+
+改成img.loaded后再绘图就好了。所以切记，绘图前一定要确保图片加载完了。
+
+**两种方案：**
+
+1是dom中插入隐藏的img标签，然后window.onload后画图就没问题
+
+2是监听图片的load事件。
+
+#### 连续绘制
+canvas连续draw图片的时候,需要一定间隔,这个问题是在IOS发现的,使用Android没有问题,IOS有时会出现之后draw没有绘制成功的问题,加间隔后解决
+
+### canvas.toDataURL() 
+注意：
+
+1书写方式，大写，最后三个字母是大写。
+
+2参数：第一个为图片格式-字符串格式。第二个为图片质量-数字格式。
+
+
+### 末尾截图的“偷梁换柱”功能：
+
+看上去的canvas里边有“长按存图”的文案
+
+但是实际截图出来的没有那句话
+
+实现效果上，那句话是一个图片盖住了话后边的二维码，
+
+我猜测他是截图时过滤掉写着“长按存图”的图片，进而截出最终效果。
+
+但具体怎么执行toDataURL的时候，隐藏/过滤其中一个drawImage呢？
+
+
+#### 灵机一动
+后来想到一个方法，虽然dom结构中看上去只有一个canvas
+
+但是js中可以新建一个canvas，然后处理这个canvas成为base后的图片啊！
+
+最后实现：
+```js
+var newCan = document.createElement('canvas'),
+        newCanCont = newCan.getContext('2d');
+    newCan.style.width = can3Ow// * scale + "px";
+    newCan.style.height = can3Oh// * scale + "px";
+    newCan.width = can3Ow// * scale; //定义canvas3 宽度
+    newCan.height = can3Oh// * scale; //定义canvas3高度
+    newCanCont.drawImage(canvas3Img[0], 0, 0, can3Ow, can3Oh);
+
+    var img = new Image();
+    img.src = newCan.toDataURL(['jpg', 0.9]);
+    $('.card').append(img)
+```
+### canvas字体绘制
+
+#### 特殊字体： content.[font](http://www.w3school.com.cn/html5/canvas_font.asp)属性
+普通电脑自带的字体这样设置：加粗、字号、字体。
+```js
+context.font = "600 40px Arial";
+```
+特殊字体怎么设置？
+
+#### 文字绘制： content.[fillText()](http://www.w3school.com.cn/html5/canvas_filltext.asp)方法
+api:
+```js
+context.fillText('文案',x,y,maxwidth)
+```
+#### 文字颜色修改 content.fillStyle
+```js
+context3.fillStyle = "#2B333D";
+```
+### 长按存图是另一张图片：
+这里保存的另一张图片置顶，盖在可视canvas的上边，透明度为0就可以了
+
+(可以设置为0.01,设置为0时在有些机器下有bug)[微信中如何长按图片保存的是另一张图片](https://blog.csdn.net/w20101310/article/details/60580241)
+
+
+## 特殊字体
+  特殊字体文件的预加载
+
+  css中应用特殊字体
+
+  canvas中应用特殊字体
 
 ## css里某些效果的特殊处理思路
 
@@ -460,12 +573,15 @@ window.requestAnimFrame = (function() {
 【X】人物移动完毕的题目加载
 【X】点击题目切屏
 【X】最后一题完毕切换video播放（音乐预加载在选好人物开始做题时）
-【】加载总的背景音乐
+【X】视频2播放，
+【X】加载html2canvas所需图片
 【】制作结果页面
-【】视频2播放，计算结果、加载html2canvas所需图片
-【】html2canvas转成图片效果
+【】计算做题结果,绘制结果页canvas - 本来需要算法、通过不同的选择得到不同的答案，这里偷懒用了随机数随机出现文案吧。
+【】html2canvas转成图片效果(这里作者直接画的canvas，然后base成图片的)。
+【】加载总的背景音乐
 【】背景音乐播放、开关控制
 【】切屏加载音效
+【】特殊字体
 
 ## 适配
 【】video不支持时换成canvas播放

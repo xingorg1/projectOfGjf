@@ -3,7 +3,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-02 11:25:34 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-29 20:05:49
+ * @Last Modified time: 2018-11-30 18:26:02
  */
 /*
  * @Author: @Guojufeng 
@@ -1202,7 +1202,11 @@ ul, li {
     padding-top: .34rem; }
   .page4 .card {
     height: 11.38rem;
-    position: relative; }
+    position: relative;
+    text-align: center; }
+    .page4 .card img {
+      opacity: 0;
+      display: inline-block; }
   .page4 .canvas3 {
     width: 6.4rem;
     height: 100%;

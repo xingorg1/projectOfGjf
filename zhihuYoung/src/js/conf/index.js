@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-05 09:35:14 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-29 20:09:23
+ * @Last Modified time: 2018-11-30 19:49:42
  */
 
 /* global $ */
@@ -57,7 +57,9 @@ $(function () {
     questionNum = 0,//当前题号
     questionLen = question.data.length,//题目个数
     userSex = 0, //用户选择性别，0男1女
-    userName = ''; //用户姓名
+    userName = '', //用户姓名
+    userImg = null, //用户所选任务形象图
+    canvas3Img = [];
   function filterFun(value) {
     //遍历敏感词数组filter.data
     let len = filter.data.length;
@@ -85,6 +87,22 @@ $(function () {
     $('.page2').show();
     $('.page3').remove();
     $('.page4').addClass('show');
+    userImg = new Image();
+    userImg.src = '../../images/choose/boy_0.png';
+    function getRandom(){
+      return parseInt(Math.random() * 3);
+    }
+    var canImgArr = ['save_bg.jpg','bg/'+ getRandom() +'.png','animal/'+getRandom()+'.png','music/'+getRandom()+'.png','tips.jpg','activity.jpg','btn_entry.png','btn_replay.png'],
+        canImgArrLen = canImgArr.length;
+    for (let i = 0; i < canImgArrLen; i++) {
+      canvas3Img[i] = new Image();
+      canvas3Img[i].src = '../../images/result/' + canImgArr[i];
+    }
+    userName = '郭菊锋_xing.org1^';
+    setTimeout(function(){
+      drawCan3()
+    }, 3000);
+
   }
 
   function initPreLoad() {
@@ -198,9 +216,10 @@ $(function () {
       window.requestAnimFrame(frameAni);
     }
     frameAni(); */
+    let canvasImgLen = canvas1Img.length;
     timer1 = setInterval(() => {
       _i++;
-      if (_i >= canvas1Img.length) {
+      if (_i >= canvasImgLen) {
         _i = 0;
       }
       context1.clearRect(0, 0, utils.oW, utils.oH);
@@ -350,7 +369,10 @@ $(function () {
       } else {
         /* 存入名字 */
         userName = name;
-        console.log(userName);
+        /* 存入任务形象图 */
+        userImg = new Image();
+        userImg.src = '../../images/choose/boy_0.png';
+        console.log('userName: '+userName);
         /* 进入下一环节 */
         page3();
       }
@@ -380,10 +402,20 @@ $(function () {
     // 2.人物行走
     walk(page3Obj.context2,Iw,Ih);
     upup(page3Obj.startTarget[questionNum],page3Obj.walkTarget[questionNum]);
+    /* 预加载截图canvas要用的图片 */
+    function getRandom(){
+      return parseInt(Math.random() * 3);
+    }
+    var canImgArr = ['save_bg.jpg','bg/'+ getRandom() +'.png','animal/'+getRandom()+'.png','music/'+getRandom()+'.png','tips.jpg','activity.jpg','btn_entry.png','btn_replay.png'],
+        canImgArrLen = canImgArr.length;
+    for (let i = 0; i < canImgArrLen; i++) {
+      // let img = new Image();
+      // img.src = '../../images/result' + canImgArr[i]
+      // canvas3Img.push(img)
+      canvas3Img[i] = new Image();
+      canvas3Img[i].src = '../../images/result/' + canImgArr[i];
+    }
   }
-  // function pepol(){
-
-  // }
   /* 人物原地行走 */
   function walk(context2,Iw,Ih) {
     let w = true;
@@ -421,7 +453,6 @@ $(function () {
     $('.page3-question').removeClass('show');
     /* 题号加一 */
     questionNum ++;
-    console.log(questionL)
     setTimeout(function(){
       screenToTop();
     },1000)
@@ -489,6 +520,9 @@ $(function () {
                 myVideo2.play(); //开始播放、paused暂停播放
                 $('.main').append('<section class="page4"><div class="page4-main"><div class="card"><canvas id="canvas3" class="canvas3">您的浏览器不支持canvas</canvas></div><div class="page4-btns"><div class="reload">重回平行世界</div><div class="about">新知青年说</div></div></div></section>');
               }
+              /* 计算做题结果 - 随便random吧 */
+              // 画canvas
+              drawCan3();
             },500)
             $('.video').on('ended', function () {
               /* run.mp4播放完毕 */
@@ -496,7 +530,6 @@ $(function () {
               $('.video2').remove();
               $('.page4').addClass('show');
               // 执行canvas画图
-              
             });
           },2500);
         }else{
@@ -504,5 +537,60 @@ $(function () {
         }
       }
     },2000)
+  }
+  
+  function drawCan3(){
+    let canvas3 = document.getElementById('canvas3'),
+        newCan = document.createElement('canvas'),
+        scale = 2, //定义任意放大倍数 支持小数
+        can3Ow = 640,
+        can3Oh = 1138,
+        userImgOw = userImg.width,
+        userImgOh = userImg.height,
+        context3 = canvas3.getContext('2d'),
+        newCanCont = newCan.getContext('2d');
+    // canvas3.style.width = can3Ow// * scale + "px";
+    // canvas3.style.height = can3Oh// * scale + "px";
+    canvas3.width = can3Ow// * scale; //定义canvas3 宽度
+    canvas3.height = can3Oh// * scale; //定义canvas3高度
+    newCan.style.width = can3Ow + "px";
+    newCan.style.height = can3Oh + "px";
+    newCan.width = can3Ow;
+    newCan.height = can3Oh;
+    /* 连续绘制底图 */
+    for (let i = 0; i < 4; i++) {
+      context3.drawImage(canvas3Img[i], 0, 0, can3Ow, can3Oh);
+      newCanCont.drawImage(canvas3Img[i], 0, 0, can3Ow, can3Oh);
+    }
+    newCanCont.drawImage(userImg, can3Ow / 2 - userImgOw / 2, can3Oh / 2 - userImgOh / 2 - 100, userImgOw, userImgOh);
+    context3.drawImage(userImg, can3Ow / 2 - userImgOw / 2, can3Oh / 2 - userImgOh / 2 - 100, userImgOw, userImgOh);
+
+    /* 绘制文案 */
+    let txtNum = result['question_'+parseInt(Math.random() * 4)][parseInt(Math.random() * 3)]
+    
+    drawName(context3);
+    drawName(newCanCont);
+    function drawName(canvas){
+      // 绘制姓名
+      canvas.fillStyle = "#6e737b";
+      canvas.save();
+      canvas.font="600 40px Arial";
+      canvas.fillText(userName, 48*2, 60*2);
+      canvas.restore();
+      // 绘制总结语言
+      canvas.font="24px Arial";
+      canvas.textAlign="center";
+      canvas.fillStyle = "#2B333D";
+      canvas.fillText(txtNum[0], can3Ow / 2, 12 * 2 + 430 * 2);
+      canvas.fillText(txtNum[1], can3Ow / 2, 12 * 5.5 + 430 * 2);
+      canvas.fillText(txtNum[2], can3Ow / 2, 12 * 9 + 430 * 2);
+    }
+    
+    /* 长按保存图片绘制 */
+    context3.drawImage(canvas3Img[4], 0, can3Oh - canvas3Img[4].height, canvas3Img[4].width, canvas3Img[4].height);
+    /* 图片base64 */
+    var img = new Image();
+    img.src = newCan.toDataURL(['jpg', 0.9]);
+    $('.card').append(img)
   }
 });
