@@ -25,6 +25,7 @@ $(function () {
   }
   /* begin 预加载 */
   var deBug = false, //是否是开发时快速查看测试的效果
+    links = 'https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/',
     canvas1Img = [],//绘制首页的canvas
     timer1 = null,//以备停止 - 绘制首页的canvas
     musicAss = [],//音乐资源 - 放musicArr缓存的音乐资源
@@ -93,7 +94,7 @@ $(function () {
     $('.loading').hide();
     $('.video1').hide();
     $('.loading-end-btn').show();
-    let imgUrl = '../../images/begin/bg/',
+    let imgUrl = links + 'begin/bg/',
       imgArr = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 117, 120, 123, 126, 129, 132, 135, 138, 141, 144, 147];
     canvas1Img = utils.prestrain(imgArr, imgUrl, 'jpg', function () {});
     $('.title').addClass('show');
@@ -103,7 +104,7 @@ $(function () {
     // $('.page3').remove();
     // $('.page4').addClass('show');
     userImg = new Image();
-    userImg.src = '../../images/choose/boy_0.png';
+    userImg.src = links + 'choose/boy_0.png';
     function getRandom(){
       return parseInt(Math.random() * 3);
     }
@@ -111,7 +112,7 @@ $(function () {
         canImgArrLen = canImgArr.length;
     for (let i = 0; i < canImgArrLen; i++) {
       canvas3Img[i] = new Image();
-      canvas3Img[i].src = '../../images/result/' + canImgArr[i];
+      canvas3Img[i].src = links + 'result/' + canImgArr[i];
     }
     userName = '郭菊锋_xing.org1^';
     // setTimeout(function(){
@@ -124,9 +125,9 @@ $(function () {
     /* 使用javascript对图片进行预加载 */
     let num = 0,
       progress = 0; //预备变量、预加载page1所需的图片
-    let imgUrl = '../../images/begin/bg/',
+    let imgUrl = links + 'begin/bg/',
       imgArr = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 117, 120, 123, 126, 129, 132, 135, 138, 141, 144, 147],
-      musicUrl = '../../images/assets/',
+      musicUrl = links + 'assets/',
       musicArr = ['click', 'choose', 'walk', 'cat', 'fly', 'bird', 'car', 'bicycle', 'stage', 'train', 'bg'],
       countNum = musicArr.length + imgArr.length;
 
@@ -184,7 +185,7 @@ $(function () {
     /* 加载第二部分10个女孩子的正面图片 */
     for (let i = 0; i < 10; i++) {
       let img = new Image();
-      img.src = '../../images/choose/girl_' + i + '.png'
+      img.src = links + 'choose/girl_' + i + '.png'
     }
     /* 加载第三部分需要的图片 */
     let imgArr3_jpg = ['bg_0', 'bg_1', 'bg_2', 'bg_3', 'bg_4'];
@@ -195,7 +196,7 @@ $(function () {
     preLoad(imgArr3_gif, 'gif');
 
     function preLoad(arr, format) {
-      let imgUrl3 = '../../images/scene/';
+      let imgUrl3 = links + 'scene/';
       let len = arr.length;
       for (let i = 0; i < len; i++) {
         var img = new Image();
@@ -346,7 +347,7 @@ $(function () {
     musicAss[1] && musicAss[1].play();
     // 预加载走动人物的背影
     var _index = $(this).attr('data-id');
-    var imgUrl = '../../images/choose/'
+    var imgUrl = links + 'choose/'
     page3Obj.img1 = new Image();
     page3Obj.img2 = new Image();
     if (userSex == 0) {
@@ -359,7 +360,7 @@ $(function () {
       page3Obj.img2.src = imgUrl + 'girl/' + _index + '/1.png';
     }
     /* 存入结构页面绘制canvas时的人物形象图 */
-    userImg.src = `../../images/choose/${userSex==0?'boy':'girl'}_${_index}.png`;
+    userImg.src = links + `choose/${userSex==0?'boy':'girl'}_${_index}.png`;
     console.log('人物形象图',userImg)
     // 清空上一次填过的内容
     $('.choose-input').find('input').val("");
@@ -454,10 +455,10 @@ $(function () {
         canImgArrLen = canImgArr.length;
     for (let i = 0; i < canImgArrLen; i++) {
       // let img = new Image();
-      // img.src = '../../images/result' + canImgArr[i]
+      // img.src = links + 'result' + canImgArr[i]
       // canvas3Img.push(img)
       canvas3Img[i] = new Image();
-      canvas3Img[i].src = '../../images/result/' + canImgArr[i];
+      canvas3Img[i].src = links + 'result/' + canImgArr[i];
     }
   }
   /* 人物原地行走 */

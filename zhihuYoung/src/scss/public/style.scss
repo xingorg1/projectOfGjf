@@ -6,14 +6,15 @@
  * @Last Modified time: 2018-11-30 18:26:02
  */
 @import './common';
-$assets: "../../images/assets/";
-$begin: "../../images/begin/";
-$bg: "../../images/begin/bg/";
-$choose: "../../images/choose/";
-$common: "../../images/common/";
-$loading: "../../images/loading/";
-$result: "../../images/result/";
-$scene: "../../images/scene/";
+$link: 'https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/';
+$assets: $link + "assets/";
+$begin: $link + "begin/";
+$bg: $link + "begin/bg/";
+$choose: $link + "choose/";
+$common: $link + "common/";
+$loading: $link + "loading/";
+$result: $link + "result/";
+$scene: $link + "scene/";
 
 .fillScreen {
   // 全屏覆盖

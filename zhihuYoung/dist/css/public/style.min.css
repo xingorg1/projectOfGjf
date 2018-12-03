@@ -70,7 +70,7 @@ ul, li {
   width: 1rem;
   height: 1.63rem;
   margin-bottom: .2rem;
-  background: url(../../images/common/iphone.png) no-repeat;
+  background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/common/iphone.png) no-repeat;
   background-size: 100% 100%;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
@@ -119,7 +119,7 @@ ul, li {
     width: 2rem;
     height: 2rem;
     margin: 0 auto;
-    background: url(../../images/loading/loading.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/loading/loading.gif) no-repeat;
     background-size: 100% 100%; }
   .loading .loading-progress {
     display: inline-block;
@@ -150,7 +150,7 @@ ul, li {
     width: 1.42rem;
     height: .56rem;
     margin: 0.1rem auto;
-    background: url(../../images/loading/btn.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/loading/btn.png) no-repeat;
     background-size: 100% 100%; }
 
 @-webkit-keyframes loadingDot {
@@ -206,14 +206,14 @@ ul, li {
   z-index: 1;
   width: 1rem;
   height: 1rem;
-  background: url(../../images/common/music_on.png) center no-repeat;
+  background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/common/music_on.png) center no-repeat;
   background-size: .4rem .4rem;
   -webkit-animation: musicRotate 3s linear infinite;
           animation: musicRotate 3s linear infinite; }
   .music-btn.off {
     -webkit-animation: none;
             animation: none;
-    background-image: url(../../images/common/music_off.png); }
+    background-image: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/common/music_off.png); }
 
 @-webkit-keyframes musicRotate {
   from {
@@ -262,42 +262,42 @@ ul, li {
   .page1 .title-png01 {
     -webkit-transition-delay: 0.6s;
             transition-delay: 0.6s;
-    background: url(../../images/begin/1.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/begin/1.png) center no-repeat;
     background-size: 100% 100%; }
   .page1 .title-png02 {
     -webkit-transition-delay: 0.7s;
             transition-delay: 0.7s;
-    background: url(../../images/begin/2.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/begin/2.png) center no-repeat;
     background-size: 100% 100%; }
   .page1 .title-png03 {
     -webkit-transition-delay: 0.8s;
             transition-delay: 0.8s;
-    background: url(../../images/begin/3.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/begin/3.png) center no-repeat;
     background-size: 100% 100%; }
   .page1 .title-png04 {
     -webkit-transition-delay: 0.9s;
             transition-delay: 0.9s;
-    background: url(../../images/begin/4.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/begin/4.png) center no-repeat;
     background-size: 100% 100%; }
   .page1 .title-png05 {
     -webkit-transition-delay: 1s;
             transition-delay: 1s;
-    background: url(../../images/begin/5.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/begin/5.png) center no-repeat;
     background-size: 100% 100%; }
   .page1 .title-png06 {
     -webkit-transition-delay: 1.1s;
             transition-delay: 1.1s;
-    background: url(../../images/begin/6.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/begin/6.png) center no-repeat;
     background-size: 100% 100%; }
   .page1 .title-png07 {
     -webkit-transition-delay: 1.2s;
             transition-delay: 1.2s;
-    background: url(../../images/begin/7.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/begin/7.png) center no-repeat;
     background-size: 100% 100%; }
   .page1 .txt {
     width: 5.13rem;
     height: 0.8rem;
-    background: url(../../images/begin/btn.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/begin/btn.png) center no-repeat;
     background-size: 100% 100%;
     position: absolute;
     left: 50%;
@@ -334,7 +334,7 @@ ul, li {
       transition: all .5s;
       margin-bottom: .14rem; }
     .page2 .sex-box .bg {
-      background: url(../../images/choose/sex_box.png) no-repeat;
+      background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/sex_box.png) no-repeat;
       background-size: 100% 100%;
       -webkit-transform: scale(0.92);
               transform: scale(0.92);
@@ -344,7 +344,7 @@ ul, li {
     .page2 .sex-box .icon {
       width: 3.59rem;
       height: 3.98rem;
-      background: url(../../images/choose/boy.png) center no-repeat;
+      background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy.png) center no-repeat;
       background-size: 100% 100%;
       position: absolute;
       left: 50%;
@@ -361,7 +361,7 @@ ul, li {
         position: absolute;
         width: 3.59rem;
         height: 3.98rem;
-        background: url(../../images/choose/boy_shadow.png) center no-repeat;
+        background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_shadow.png) center no-repeat;
         background-size: 100% 100%;
         -webkit-animation: shadowTwinkle 1s linear infinite alternate;
                 animation: shadowTwinkle 1s linear infinite alternate; }
@@ -370,7 +370,7 @@ ul, li {
       .page2 .sex-box .female .icon {
         width: 3.56rem;
         height: 3.84rem;
-        background: url(../../images/choose/girl.png) center no-repeat;
+        background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl.png) center no-repeat;
         background-size: 100% 100%;
         margin-left: -1.98rem;
         margin-top: -1.92rem;
@@ -378,7 +378,7 @@ ul, li {
         .page2 .sex-box .female .icon::before {
           width: 3.56rem;
           height: 3.84rem;
-          background: url(../../images/choose/girl_shadow.png) center no-repeat;
+          background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_shadow.png) center no-repeat;
           background-size: 100% 100%;
           animation-direction: alternate-reverse; }
     .page2 .sex-box .cur .bg {
@@ -403,7 +403,7 @@ ul, li {
   .choose-scroll .bg {
     width: 1rem;
     height: 32.09rem;
-    background: url(../../images/choose/bg.jpg) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/bg.jpg) center no-repeat;
     background-size: 100% 100%;
     width: 100%; }
   .choose-scroll .user-list {
@@ -456,64 +456,64 @@ ul, li {
     left: 4.65rem;
     top: 26.06rem; }
   .choose-scroll .male .user-list0 {
-    background: url(../../images/choose/boy_0.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_0.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list0 {
-    background: url(../../images/choose/girl_0.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_0.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list1 {
-    background: url(../../images/choose/boy_1.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_1.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list1 {
-    background: url(../../images/choose/girl_1.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_1.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list2 {
-    background: url(../../images/choose/boy_2.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_2.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list2 {
-    background: url(../../images/choose/girl_2.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_2.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list3 {
-    background: url(../../images/choose/boy_3.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_3.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list3 {
-    background: url(../../images/choose/girl_3.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_3.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list4 {
-    background: url(../../images/choose/boy_4.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_4.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list4 {
-    background: url(../../images/choose/girl_4.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_4.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list5 {
-    background: url(../../images/choose/boy_5.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_5.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list5 {
-    background: url(../../images/choose/girl_5.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_5.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list6 {
-    background: url(../../images/choose/boy_6.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_6.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list6 {
-    background: url(../../images/choose/girl_6.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_6.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list7 {
-    background: url(../../images/choose/boy_7.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_7.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list7 {
-    background: url(../../images/choose/girl_7.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_7.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list8 {
-    background: url(../../images/choose/boy_8.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_8.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list8 {
-    background: url(../../images/choose/girl_8.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_8.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .male .user-list9 {
-    background: url(../../images/choose/boy_9.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/boy_9.png) no-repeat;
     background-size: 100% 100%; }
   .choose-scroll .female .user-list9 {
-    background: url(../../images/choose/girl_9.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/girl_9.png) no-repeat;
     background-size: 100% 100%; }
 
 .spotlight {
@@ -553,7 +553,7 @@ ul, li {
             filter: brightness(500%);
     width: 0.41rem;
     height: 0.19rem;
-    background: url(../../images/choose/arrow.png) center no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/arrow.png) center no-repeat;
     background-size: 100% 100%;
     -webkit-animation: arrow .5s linear infinite alternate;
             animation: arrow .5s linear infinite alternate; }
@@ -614,11 +614,11 @@ ul, li {
   .choose-fill-form .choose-btn1 {
     float: left;
     margin-right: .2rem;
-    background: url(../../images/choose/btn_repeat.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/btn_repeat.png) no-repeat;
     background-size: 100% 100%; }
   .choose-fill-form .choose-btn2 {
     float: right;
-    background: url(../../images/choose/btn_success.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/choose/btn_success.png) no-repeat;
     background-size: 100% 100%; }
 
 @-webkit-keyframes filter {
@@ -680,19 +680,19 @@ ul, li {
     -webkit-transition: all 1s;
     transition: all 1s; }
     .page3 .bg .bg0 {
-      background: url(../../images/scene/bg_0.jpg) no-repeat;
+      background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bg_0.jpg) no-repeat;
       background-size: 100% 100%; }
     .page3 .bg .bg1 {
-      background: url(../../images/scene/bg_1.jpg) no-repeat;
+      background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bg_1.jpg) no-repeat;
       background-size: 100% 100%; }
     .page3 .bg .bg2 {
-      background: url(../../images/scene/bg_2.jpg) no-repeat;
+      background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bg_2.jpg) no-repeat;
       background-size: 100% 100%; }
     .page3 .bg .bg3 {
-      background: url(../../images/scene/bg_3.jpg) no-repeat;
+      background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bg_3.jpg) no-repeat;
       background-size: 100% 100%; }
     .page3 .bg .bg4 {
-      background: url(../../images/scene/bg_4.jpg) no-repeat;
+      background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bg_4.jpg) no-repeat;
       background-size: 100% 100%; }
     .page3 .bg div {
       height: 19.34rem; }
@@ -718,7 +718,7 @@ ul, li {
     top: 92.79rem;
     width: 100%;
     height: 3.91rem;
-    background: url(../../images/scene/wire_2.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/wire_2.png) no-repeat;
     background-size: 100% 100%; }
   .page3 .birds {
     position: absolute;
@@ -726,7 +726,7 @@ ul, li {
     top: 94.3rem;
     width: 3.33rem;
     height: 1.54rem;
-    background: url(../../images/scene/bird_3.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bird_3.gif) no-repeat;
     background-size: 100% 100%;
     -webkit-transform: scaleX(1.2);
             transform: scaleX(1.2); }
@@ -736,7 +736,7 @@ ul, li {
     top: 88.05rem;
     width: 2.2rem;
     height: 2.31rem;
-    background: url(../../images/scene/guitar.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/guitar.gif) no-repeat;
     background-size: 100% 100%; }
   .page3 .traffic-light {
     position: absolute;
@@ -744,7 +744,7 @@ ul, li {
     top: 84.65rem;
     width: 2.8rem;
     height: 7.2rem;
-    background: url(../../images/scene/lamp_0.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/lamp_0.gif) no-repeat;
     background-size: 100% 100%; }
   .page3 .cat1 {
     position: absolute;
@@ -752,7 +752,7 @@ ul, li {
     top: 78.5rem;
     width: 1.23rem;
     height: 1.85rem;
-    background: url(../../images/scene/cat_0.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/cat_0.gif) no-repeat;
     background-size: 100% 100%; }
   .page3 .zoo {
     position: absolute;
@@ -760,13 +760,13 @@ ul, li {
     top: 71.98rem;
     width: 3.46rem;
     height: 5.28rem;
-    background: url(../../images/scene/zoo.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/zoo.gif) no-repeat;
     background-size: 100% 100%; }
   .page3 .bus {
     position: absolute;
     width: 5.01rem;
     height: 4.8rem;
-    background: url(../../images/scene/bus.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bus.png) no-repeat;
     background-size: 100% 100%; }
     .page3 .bus.ani {
       -webkit-animation: bus 2s ease-out;
@@ -795,7 +795,7 @@ ul, li {
     top: 46.54rem;
     width: 4.48rem;
     height: 6rem;
-    background: url(../../images/scene/buildingFix_1.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/buildingFix_1.png) no-repeat;
     background-size: 100% 100%;
     -webkit-transform: scaleX(1.18);
             transform: scaleX(1.18); }
@@ -805,7 +805,7 @@ ul, li {
     top: 48rem;
     width: 2.46rem;
     height: 2.05rem;
-    background: url(../../images/scene/bird_1.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bird_1.png) no-repeat;
     background-size: 100% 100%;
     -webkit-animation: pigeon1 2s linear infinite alternate;
             animation: pigeon1 2s linear infinite alternate;
@@ -833,7 +833,7 @@ ul, li {
     top: 53.7rem;
     width: 1.32rem;
     height: 1.86rem;
-    background: url(../../images/scene/leaflet.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/leaflet.gif) no-repeat;
     background-size: 100% 100%; }
     .page3 .bear::after {
       content: "";
@@ -854,7 +854,7 @@ ul, li {
     top: 51.8rem;
     width: 1.52rem;
     height: 2.83rem;
-    background: url(../../images/scene/signal.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/signal.gif) no-repeat;
     background-size: 100% 100%; }
   .page3 .pigeon1-2 {
     position: absolute;
@@ -862,7 +862,7 @@ ul, li {
     top: 57.5rem;
     width: 1.79rem;
     height: 2.54rem;
-    background: url(../../images/scene/bird_2.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bird_2.gif) no-repeat;
     background-size: 100% 100%; }
   .page3 .traffic-light2 {
     position: absolute;
@@ -870,7 +870,7 @@ ul, li {
     top: 59.8rem;
     width: 2.88rem;
     height: 4rem;
-    background: url(../../images/scene/lamp_1.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/lamp_1.gif) no-repeat;
     background-size: 100% 100%; }
   .page3 .car1,
   .page3 .car2 {
@@ -878,7 +878,7 @@ ul, li {
     left: 3.1rem;
     width: 2.24rem;
     height: 1.78rem;
-    background: url(../../images/scene/car.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/car.png) no-repeat;
     background-size: 100% 100%;
     -webkit-animation-duration: 2s;
             animation-duration: 2s;
@@ -932,7 +932,7 @@ ul, li {
     height: 6rem; */
     width: 2.54rem;
     height: 8.85rem;
-    background: url(../../images/scene/buildingFix_0.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/buildingFix_0.png) no-repeat;
     background-size: 100% 100%;
     -webkit-transform: scale(1.25, 1);
             transform: scale(1.25, 1); }
@@ -942,7 +942,7 @@ ul, li {
     left: .1rem;
     width: 1.32rem;
     height: 1.86rem;
-    background: url(../../images/scene/liu.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/liu.gif) no-repeat;
     background-size: 100% 100%; }
   .page3 .pigeon2 {
     position: absolute;
@@ -950,7 +950,7 @@ ul, li {
     left: .8rem;
     width: 2.25rem;
     height: 2.01rem;
-    background: url(../../images/scene/bird_0.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bird_0.png) no-repeat;
     background-size: 100% 100%;
     -webkit-animation: pigeon2 1s linear infinite alternate;
             animation: pigeon2 1s linear infinite alternate; }
@@ -976,7 +976,7 @@ ul, li {
     position: absolute;
     width: 1.6rem;
     height: 2.41rem;
-    background: url(../../images/scene/bicycle_0.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/bicycle_0.png) no-repeat;
     background-size: 100% 100%;
     -webkit-transform: scale(1.1);
             transform: scale(1.1); }
@@ -1007,7 +1007,7 @@ ul, li {
     left: .198rem;
     width: 2.18rem;
     height: 3.45rem;
-    background: url(../../images/scene/buildingFix_2.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/buildingFix_2.png) no-repeat;
     background-size: 100% 100%;
     -webkit-transform: scale(1.1) rotate(-2deg);
             transform: scale(1.1) rotate(-2deg); }
@@ -1017,7 +1017,7 @@ ul, li {
     left: -.5rem;
     width: 2.2rem;
     height: 2.21rem;
-    background: url(../../images/scene/cat_1.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/cat_1.png) no-repeat;
     background-size: 100% 100%;
     -webkit-transform: scale(1.1);
             transform: scale(1.1); }
@@ -1028,7 +1028,7 @@ ul, li {
       right: 0;
       bottom: 0;
       left: 0;
-      background: url(../../images/scene/cat_1_flash.png) no-repeat;
+      background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/cat_1_flash.png) no-repeat;
       background-size: 100% 100%;
       -webkit-animation: flash 1s ease-in-out infinite alternate;
               animation: flash 1s ease-in-out infinite alternate; }
@@ -1039,7 +1039,7 @@ ul, li {
     right: 0;
     z-index: 1;
     height: 6.63rem;
-    background: url(../../images/scene/stage.gif) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/stage.gif) no-repeat;
     background-size: 100% 100%; }
     .page3 .stage::before {
       content: "";
@@ -1072,7 +1072,7 @@ ul, li {
     left: 1.5rem;
     width: 3.93rem;
     height: 3.86rem;
-    background: url(../../images/scene/moon.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/moon.png) no-repeat;
     background-size: 100% 100%; }
     .page3 .moon.ani {
       -webkit-animation: moonUp 4s;
@@ -1101,13 +1101,13 @@ ul, li {
     left: 0;
     right: 0;
     height: 7.1rem;
-    background: url(../../images/scene/buildingFix_3.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/buildingFix_3.png) no-repeat;
     background-size: 100% 100%; }
   .page3 .train {
     position: absolute;
     width: 12rem;
     height: 8.4rem;
-    background: url(../../images/scene/train.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/scene/train.png) no-repeat;
     background-size: 100% 100%;
     -webkit-transform: rotate(-4deg);
             transform: rotate(-4deg); }
@@ -1230,10 +1230,10 @@ ul, li {
       text-indent: -99.99rem; }
   .page4 .reload {
     margin-right: 1.3rem;
-    background: url(../../images/result/btn_replay.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/result/btn_replay.png) no-repeat;
     background-size: 100% 100%; }
   .page4 .about {
-    background: url(../../images/result/btn_entry.png) no-repeat;
+    background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/result/btn_entry.png) no-repeat;
     background-size: 100% 100%; }
 
 .page5 {
@@ -1241,7 +1241,7 @@ ul, li {
   visibility: hidden;
   -webkit-transition: all 1s .35s;
   transition: all 1s .35s;
-  background: url(../../images/result/activity.jpg) no-repeat;
+  background: url(https://xingorg1.github.io/projectOfGjf/zhihuYoung/dist/images/result/activity.jpg) no-repeat;
   background-size: 100% 100%; }
   .page5.show {
     opacity: 1;
