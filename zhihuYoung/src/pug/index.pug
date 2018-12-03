@@ -3,6 +3,7 @@ block pugConfig
   -const pugConfig={titleText:`高仿知乎h5活动页面 - 平行世界的你`, cssName:`style`, confName:`index`, isNotSpa: false, column:'1', bodyClassName:[''], hrefUrl:'../'};
 block mainLeft
   .main
+    // loading
     .loading
       .loading-box
         i.icon.icon-loading
@@ -50,68 +51,72 @@ block mainLeft
           .choose-btn
             .choose-btn1 重新选择
             .choose-btn2 确定
-    section.page3
-      .page3-ani
-        //- 背景
-        .bg
-          .bg0
-          .bg1
-          .bg2
-          .bg3
-          .bg4
-        //- 行走人物
-        .you
-        //- 第一页
-        .telegraph
-        .birds
-        .busker
-        .traffic-light
-        //- 第二页
-        .cat1
-        .zoo
-        //- 第三页
-        .bus.ani
-        .bus-house
-        .pigeon1
-        .bear
-        .traffic-light1
-        .pigeon1-2
-        .traffic-light2
-        //- 第四页
-        .car1.ani
-        .car2.ani
-        .meijia
-        .pigeon2
-        .pig
-        //- 4-5页
-        .biycle.ani
-        .biycle-house
-        //- 第五页
-        .cat2
-          //- 欢呼人物
-        .stage
-        //- 第六页-结束页
-        //- .huozhe
-        .moon.ani
-        .mountain
-        .train.ani
-        //- 问题
-      .page3-question
-        .question
-          h3 问题标题
-          ul.question-list
-            li(data-id="A").cur A.
-            li(data-id="A") B.
-            li(data-id="A") C.
-    secion.page4
-      .page4-main
-        .card
-          canvas#canvas3.canvas3 您的浏览器不支持canvas
-        .page4-btns
-          .reload 重回平行世界
-          .about  新知青年说
+    // 横屏检测            
     .orientation
       .orient-txt
         i.icon.icon-orient-iphone
         span.orient-text 为了更好的体验，请使用竖屏锁屏浏览
-    .music-btn.hide
+    // 音乐按钮
+    .music-btn.hide       
+    //- 测试用结构
+    //- section.page3
+    //-   .page3-ani
+    //-     //- 背景
+    //-     .bg
+    //-       .bg0
+    //-       .bg1
+    //-       .bg2
+    //-       .bg3
+    //-       .bg4
+    //-     //- 行走人物
+    //-     .you
+    //-     //- 第一页
+    //-     .telegraph
+    //-     .birds
+    //-     .busker
+    //-     .traffic-light
+    //-     //- 第二页
+    //-     .cat1
+    //-     .zoo
+    //-     //- 第三页
+    //-     .bus.ani
+    //-     .bus-house
+    //-     .pigeon1
+    //-     .bear
+    //-     .traffic-light1
+    //-     .pigeon1-2
+    //-     .traffic-light2
+    //-     //- 第四页
+    //-     .car1.ani
+    //-     .car2.ani
+    //-     .meijia
+    //-     .pigeon2
+    //-     .pig
+    //-     //- 4-5页
+    //-     .biycle.ani
+    //-     .biycle-house
+    //-     //- 第五页
+    //-     .cat2
+    //-       //- 欢呼人物
+    //-     .stage
+    //-     //- 第六页-结束页
+    //-     //- .huozhe
+    //-     .moon.ani
+    //-     .mountain
+    //-     .train.ani
+    //-     //- 问题
+    //-   .page3-question
+    //-     .question
+    //-       h3 问题标题
+    //-       ul.question-list
+    //-         li(data-id="A").cur A.
+    //-         li(data-id="A") B.
+    //-         li(data-id="A") C.
+    //- secion.page4
+    //-   .page4-main
+    //-     .card
+    //-       canvas#canvas3.canvas3 您的浏览器不支持canvas
+    //-     .page4-btns
+    //-       .reload 重回平行世界
+    //-       .about  新知青年说
+    

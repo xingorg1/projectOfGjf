@@ -175,10 +175,19 @@ $scene: "../../images/scene/";
   width: 100%;
   height: 100%;
   transition: all 1s ease-in-out;
-
   &.hide {
     visibility: hidden;
     opacity: 0;
+  }
+}
+.video2{
+  @extend .fillScreen;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1s;
+  &.show{
+    visibility: visible;
+    opacity: 1;
   }
 }
 
@@ -619,6 +628,7 @@ $scene: "../../images/scene/";
 .page3 {
   // display: none;
   transition: all 1s;
+  background: #fff;
   &.remove{
     opacity: 0;
     visibility: hidden;
@@ -1018,7 +1028,7 @@ $scene: "../../images/scene/";
     background-size: 100% 100%;
 
     &.ani {
-      animation: moonUp 3s;
+      animation: moonUp 4s;
       animation-fill-mode: forwards;
     }
 
@@ -1054,9 +1064,8 @@ $scene: "../../images/scene/";
     background: url(#{$scene}train.png) no-repeat;
     background-size: 100% 100%;
     transform: rotate(-4deg);
-
     &.ani {
-      animation: train 3s;
+      animation: train 4s;
       animation-fill-mode: forwards;
     }
 
@@ -1148,11 +1157,7 @@ $scene: "../../images/scene/";
 }
 
 .page4{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  @extend .fillScreen;
   opacity: 0;
   visibility: hidden;
   transition: all 1s;
@@ -1197,12 +1202,24 @@ $scene: "../../images/scene/";
   }
   .reload{
     margin-right: 1.3rem;
-    background: url('../../images/result/btn_replay.png') no-repeat;
+    background: url(#{$result}btn_replay.png) no-repeat;
     background-size: 100% 100%;
   }
   .about{
-    background: url('../../images/result/btn_entry.png') no-repeat;
+    background: url(#{$result}btn_entry.png) no-repeat;
     background-size: 100% 100%;
+  }
+}
+.page5{
+  @extend .fillScreen;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s .35s;
+  background: url(#{$result}activity.jpg) no-repeat;
+  background-size: 100% 100%;
+  &.show{
+    opacity: 1;
+    visibility: visible;
   }
 }
 @media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {}

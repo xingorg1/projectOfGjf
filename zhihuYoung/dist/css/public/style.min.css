@@ -42,7 +42,7 @@ ul, li {
   display: inline-block;
   vertical-align: middle; }
 
-.fillScreen, .orientation, .loading, .page2 .sex-box .bg, .spotlight {
+.fillScreen, .orientation, .loading, .video2, .page2 .sex-box .bg, .spotlight, .page4, .page5 {
   position: absolute;
   top: 0;
   right: 0;
@@ -184,6 +184,15 @@ ul, li {
   .video.hide {
     visibility: hidden;
     opacity: 0; }
+
+.video2 {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 1s;
+  transition: all 1s; }
+  .video2.show {
+    visibility: visible;
+    opacity: 1; }
 
 /* 音频 */
 .music-btn {
@@ -651,7 +660,8 @@ ul, li {
 /* page3 */
 .page3 {
   -webkit-transition: all 1s;
-  transition: all 1s; }
+  transition: all 1s;
+  background: #fff; }
   .page3.remove {
     opacity: 0;
     visibility: hidden; }
@@ -1065,8 +1075,8 @@ ul, li {
     background: url(../../images/scene/moon.png) no-repeat;
     background-size: 100% 100%; }
     .page3 .moon.ani {
-      -webkit-animation: moonUp 3s;
-              animation: moonUp 3s;
+      -webkit-animation: moonUp 4s;
+              animation: moonUp 4s;
       -webkit-animation-fill-mode: forwards;
               animation-fill-mode: forwards; }
 
@@ -1102,8 +1112,8 @@ ul, li {
     -webkit-transform: rotate(-4deg);
             transform: rotate(-4deg); }
     .page3 .train.ani {
-      -webkit-animation: train 3s;
-              animation: train 3s;
+      -webkit-animation: train 4s;
+              animation: train 4s;
       -webkit-animation-fill-mode: forwards;
               animation-fill-mode: forwards; }
 
@@ -1183,11 +1193,6 @@ ul, li {
                   filter: brightness(180%); }
 
 .page4 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 1s;
@@ -1225,8 +1230,19 @@ ul, li {
       text-indent: -99.99rem; }
   .page4 .reload {
     margin-right: 1.3rem;
-    background: url("../../images/result/btn_replay.png") no-repeat;
+    background: url(../../images/result/btn_replay.png) no-repeat;
     background-size: 100% 100%; }
   .page4 .about {
-    background: url("../../images/result/btn_entry.png") no-repeat;
+    background: url(../../images/result/btn_entry.png) no-repeat;
     background-size: 100% 100%; }
+
+.page5 {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 1s .35s;
+  transition: all 1s .35s;
+  background: url(../../images/result/activity.jpg) no-repeat;
+  background-size: 100% 100%; }
+  .page5.show {
+    opacity: 1;
+    visibility: visible; }
