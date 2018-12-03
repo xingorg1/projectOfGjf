@@ -18,6 +18,8 @@ window.requestAnimFrame = (function () {
 import filter from './plugings/filter.json';
 import question from './plugings/question.json';
 import result from './plugings/result.json';
+let VConsole = require('../../node_modules/vconsole/dist/vconsole.min');//路径根据项目自己找
+let vConsole = new VConsole();
 $(function () {
   /* 判断并提示微信环境打开 */
   if (!window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) === 'micromessenger') {
