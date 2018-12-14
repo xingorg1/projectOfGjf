@@ -1,0 +1,33 @@
+/*
+ * @Author: @Guojufeng 
+ * @Date: 2018-12-14 17:05:11 
+ * @Last Modified by: @Guojufeng
+ * @Last Modified time: 2018-12-14 17:26:46
+ */
+html,body{
+  height: 100%;
+  margin: 30px;
+  padding: 0;
+}
+.all_bg{
+  width: 800px;
+  height: 600px;
+  margin: 0;
+  position: relative;
+}
+.allcanvas{
+ /* width: 800px;
+ height: 600px;
+ margin: 0; */
+}
+.canvas1,.canvas2{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.canvas1{
+  z-index: 1;
+}
+.canvas2{
+  z-index: 0;
+}

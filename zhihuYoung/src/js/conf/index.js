@@ -21,6 +21,7 @@ import result from './plugings/result.json';
 let VConsole = require('../../node_modules/vconsole/dist/vconsole.min');//路径根据项目自己找
 let vConsole = new VConsole();
 $(function () {
+  console.log('缓存这么严重吗？？/*  */')
   /* 判断并提示微信环境打开 */
   if (!window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) === 'micromessenger') {
     alert('添加微信观看提示');
@@ -31,7 +32,6 @@ $(function () {
     canvas1Img = [],//绘制首页的canvas
     timer1 = null,//以备停止 - 绘制首页的canvas
     musicAss = [],//音乐资源 - 放musicArr缓存的音乐资源
-    musicOn = false,
     /* 
       'click': 0
       'choose': 1
@@ -156,12 +156,16 @@ $(function () {
         }
       })
     }
+    /* 预加载图片资源 */
     canvas1Img = utils.prestrain(imgArr, imgUrl, 'jpg', function () {
       num++;
       loadAni(num);
     });
-    musicAss = utils.prestrain(musicArr, musicUrl, 'mp3', function () {
+    /* 预加载音乐资源 */
+    musicAss = utils.prestrain(musicArr, musicUrl, 'mp3', function (a) {
+      console.log(a)
       num++;
+      console.log('audio',num,'总数',countNum)
       loadAni(num);
     });
   }
@@ -178,7 +182,8 @@ $(function () {
       */
      
     /* 插入video并开始播放 */
-    if (myVideo && myVideo.readyState) {
+    console.log(myVideo,myVideo.readyState)
+    if (myVideo && myVideo.readyState) {      
       myVideo.play(); //开始播放、paused暂停播放
     } else {
       /* 视频下载0失败，执行重新加载 */
@@ -206,7 +211,9 @@ $(function () {
       }
     }
   });
-
+  $('.video1').on('canplay', function () {
+    alert('canplay')
+  });
   $('.video1').on('error', function () {
     alert('视频加载失败，请刷新重试')
   });
@@ -255,14 +262,12 @@ $(function () {
   /* 背景音乐控制 */
 
   $('.music-btn').on('click',function(){
-    if(musicOn){
-      $('.music-btn').addClass('off');
-      musicAss[10].pause();
-      musicOn = false;
-    }else{
+    if(musicAss[10].paused){
       $('.music-btn').removeClass('off');
       musicAss[10].play();
-      musicOn = true;
+    }else{
+      $('.music-btn').addClass('off');
+      musicAss[10].pause();
     }
   });
   $('.page1 .txt').on('click', () => {
