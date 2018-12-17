@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-12-14 17:30:12 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-12-14 19:29:45
+ * @Last Modified time: 2018-12-17 11:45:52
  */
 /* 绘制海葵 */
 var aneObj = function () {
@@ -13,7 +13,7 @@ aneObj.prototype.num = 80;
 aneObj.prototype.init = function () {
   /* 初始化，确定海葵的位置 */
   for (let i = 0; i < this.num; i++) {
-    this.x[i] = i * 9 + Math.random() * 7; //位置随机
+    this.x[i] = i * 10 + Math.random() * 9; //位置随机
     this.len[i] = 200 + Math.random() * 50; //高度随机
   }
 }

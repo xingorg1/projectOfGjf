@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-12-14 17:05:04 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-12-14 19:12:51
+ * @Last Modified time: 2018-12-17 12:03:18
  */
 
 /* 定义 */
@@ -15,8 +15,11 @@ var mx,my,//鼠标信息
     canH,
     lastTime,
     deltaTime,
-    ane,
-    food;
+    ane,// 海藻
+    food,
+    babyTail = [],//小鱼尾巴序列帧
+    babyEye = [];//小鱼眼睛眨眼图片数组
+    babyBody = [];//小鱼身体变白序列帧
 console.log(window.requestAnimFrame)
 var bgPic = new Image();
 /* 执行 */
@@ -44,6 +47,22 @@ function init(){
 
   mx = canW * 0.5;
   my = canH * 0.5;
+  // 序列帧加载
+  for (let i = 0; i < 8; i++) {
+   /*  var img = new Image();
+    img.src = './images/babyTail'+ i +'.png';
+    babyTail.push(img); */
+    babyTail[i] = new Image();
+    babyTail[i].src = './images/babyTail'+ i +'.png';
+  } 
+  for (let i = 0; i < 2; i++) {
+    babyEye[i] = new Image();
+    babyEye[i].src = './images/babyEye'+ i +'.png';
+  }
+  for (let i = 0; i < 20; i++) {
+    babyBody[i] = new Image();
+    babyBody[i].src = './images/babyFade'+ i +'.png';
+  }
   /* 海葵 */
   ane = new aneObj();
   ane.init();
@@ -78,8 +97,10 @@ function gameloop(){
   // ctx1.clearRect(0,0,canW,canH)
   mom.draw();
   baby.draw();
-  /* 吃 */
+  /* 大鱼吃食 */
   monFoodCollision();
+  /* 喂小鱼 */
+  monBabyCollision();
 }
 
 /* 获取鼠标位置 */
