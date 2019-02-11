@@ -13,7 +13,7 @@ function calLength2(x1, y1, x2, y2) {
 }
 
 
-function randomColor() {
+function randomColor(alpha) {
 	var col = [0, 1, 2];
 	col[0] = Math.random() * 100 + 155;
 	col[0] = col[0].toFixed();
@@ -23,7 +23,7 @@ function randomColor() {
 	col[2] = col[2].toFixed();
 	var num = Math.floor(Math.random() * 3);
 	col[num] = 0;
-	return "rgba(" + col[0] + "," + col[1] + "," + col[2] + ",";
+	return "rgba(" + col[0] + "," + col[1] + "," + col[2] + "," + alpha + ")";
 }
 
 
