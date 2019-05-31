@@ -1,0 +1,392 @@
+/*
+ * @Author: @Guojufeng 
+ * @Date: 2019-12-13 13:16:06 
+ * @Last Modified by: @Guojufeng
+ * @Last Modified time: 2019-02-01 18:47:16
+ */
+html,
+body,
+.main {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  text-align: center;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+body {
+  /* 阻止浏览器双击默认事件-----双击选中 */
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+.hide {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.start,
+.header,
+.layer {
+  position: absolute;
+}
+
+.start,
+.layer {
+  top: 50%;
+  left: 50%;
+}
+
+/* start */
+.start {
+  width: 150px;
+  /* line-height: 56px; */
+  padding: 13px 0 16px;
+  margin-top: -27px;
+  margin-left: -75px;
+  /* padding设置百分比值是根据 */
+  color: #ebf5ff;
+  /* padding-bottom: 4px; */
+  font-size: 24px;
+  opacity: 1;
+  visibility: visible;
+  background: #60afff;
+  border-radius: 30px;
+  box-shadow: 3px 4px 20px 0px #bfd0e0;
+  cursor: pointer;
+  /* transition: all .35s linear; */
+  animation: glint 1s linear infinite alternate;
+}
+
+@keyframes glint {
+  0% {
+    color: #ebf5ff;
+    transform: scale(1);
+    background: #60afff;
+    box-shadow: 3px 4px 20px 0px #bfd0e0;
+  }
+
+  100% {
+    color: #eff7ff;
+    transform: scale(1.03);
+    /* background: #198cff; */
+    background: #ff05ff;
+    box-shadow: 3px 4px 20px 0px #e0bfdc;
+  }
+}
+
+.start:hover {
+  color: #eff7ff;
+  background: #198cff;
+  box-shadow: 3px 4px 20px 0px #a8d5ff;
+  animation: none;
+}
+
+
+/* count-down */
+.count-down {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  font-size: 160px;
+  color: red;
+}
+
+.count-down.ani {
+  -webkit-animation: countDown 1s linear infinite forwards;
+  animation: countDown 1s linear infinite forwards;
+}
+
+@-webkit-keyframes countDown {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  50%,
+  85% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes countDown {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  50%,
+  85% {
+    transform: translate(-50%, -50%) scale(1);
+
+  }
+}
+
+/* header */
+.header {
+  left: 0;
+  right: 0;
+  padding: 10px;
+  color: #60afff;
+  z-index: 1;
+  /* background: rgba(0,0,0,.45); */
+}
+
+.header .score {
+  margin: 0;
+}
+
+.pause-btn {
+  position: absolute;
+  top: 14px;
+  left: 40px;
+  width: 0;
+  height: 0;
+  text-indent: -999px;
+
+  border-style: solid;
+  cursor: pointer;
+}
+
+.pause-btn.off {
+  border-width: 15px;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.pause-btn.on {
+  border-left-width: 9px;
+  border-right-width: 9px;
+  height: 28px;
+  border-top: 0;
+  border-bottom: 0;
+  width: 10px;
+}
+
+.pause-btn:hover,
+.pause-btn.active {
+  color: #198cff;
+}
+
+/* content */
+.content {
+  height: 100%;
+  background: url('../img/bg.png') repeat;
+  background-size: 10px 10px;
+}
+
+/* snake */
+.snake-box {
+  /* position: absolute;
+  top: 30%;
+  left: 30%; */
+  font-size: 0;
+}
+
+.snake-box div {
+  position: absolute;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff8f00;
+  vertical-align: middle;
+  text-align: center;
+}
+.snake-box.dead div{
+  animation: dead .5s linear forwards;
+}
+@keyframes dead{
+  0%{
+    opacity: 1;
+  }
+  25%,100%{
+    opacity: 0;
+  }
+  50%,75%{
+    opacity: 0.5;
+  }
+}
+.snake-box .head {
+  transition: transform .5s linear;
+}
+.snake-box .head.top {
+  transform: rotate(0deg);
+}
+.snake-box .head.right {
+  transform: rotate(90deg);
+}
+.snake-box .head.bottom {
+  transform: rotate(-180deg);
+}
+.snake-box .head.left {
+  transform: rotate(-90deg);
+}
+
+.mouth {
+  width: 5px;
+  height: 4px;
+  margin: 0 auto -4px;
+}
+
+.eyes {
+  display: block;
+  overflow: hidden;
+}
+
+.eye {
+  float: left;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background: #000;
+  border: 3px solid #ecffff;
+}
+
+/* .snake-box .body {
+  width: 15px;
+  height: 15px;
+} */
+
+.food {
+  position: absolute;
+  /* left: 30%;
+  top: 34%; */
+  width: 20px;
+  height: 20px;
+  transition: all .35s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.food.show {
+  opacity: 1;
+  visibility: visible;
+}
+/* .food:after, */
+.food:before{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.food::before {
+  border: 2px solid #333;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+  margin-left: 7px;
+  margin-top: -10px;
+  /* z-index: -1; */
+}
+/* .food:after, */
+.food-body {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  /* z-index: 1; */
+  /* background: red; */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+
+
+/* layer */
+.layer {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, .45);
+}
+
+.end-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  padding: 30px 45px;
+  border-radius: 20px;
+  transform: translate(-50%, -65%);
+  background: #fff;
+  box-shadow: 1px 1px 20px 0px #847b7b;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  padding: 0 1px 2px;
+  cursor: pointer;
+  border: 2px solid;
+  border-radius: 50%;
+  color: #999;
+}
+
+.close:hover {
+  color: red;
+}
+.game-over{
+  color: tomato;
+}
+.txt {
+  font-size: 36px;
+  font-weight: bolder;
+  margin: 30px 0 50px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #666;
+}
+
+.reload {
+  width: 100%;
+  line-height: 54px;
+  color: #ffffff;
+  padding-bottom: 3px;
+  font-size: 24px;
+  background: #ffa352;
+  border-radius: 25px;
+  box-shadow: 3px 4px 20px 0px #ead6bc;
+  cursor: pointer;
+}
+
+.reload:hover {
+  color: #f8f2ea;
+  background: #ff8f00;
+}
+
+/* footer */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 10px;
+  color: #afafaf;
+}

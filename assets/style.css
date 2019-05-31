@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-11-09 10:01:28 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2018-11-09 10:42:46
+ * @Last Modified time: 2019-05-31 14:07:50
  */
 
 *{
@@ -78,6 +78,9 @@ a:hover{
   text-decoration: none;
   color: #02c3ff;
 }
+.no-dec{
+  text-decoration: none;
+}
 b{
   cursor: pointer;
 }
@@ -109,7 +112,10 @@ strong{
   flex: 1;
   padding: .2rem .1rem;
 }
-
+.time{
+  color: #333;
+  font-size: 12px;
+}
 @media screen and (max-width: 480px){
   .item-box{
     display: block;

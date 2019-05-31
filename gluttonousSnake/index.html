@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="xing.org1^">
+  <title>xing.org1^牌贪吃蛇小游戏</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div class="main">
+    <!-- header -->
+    <div class="header">
+      <div class="pause-btn off" id="pause">开始</div>
+      <!-- <div class="pause-btn on active">暂停</div> -->
+      <h2 class="score">
+        分数：
+        <span class="playing-score" id="score">0</span>
+      </h2>
+    </div>
+    <!-- 游戏区 -->
+    <div class="content" id="cont">
+      <!-- 食物 -->
+      <div class="food" id="food">
+        <span id="foodBody" class="food-body"></span>
+      </div>
+      <!-- 蛇 -->
+      <div class="snake-box" id="snake">
+        <!-- <div class="head right">
+          <span class="eyes">
+            <span class="eye eye-left"></span>
+            <span class="eye eye-right"></span>
+          </span>
+        </div>
+        <div class="body"></div>
+        <div class="body"></div>
+        <div class="body"></div> -->
+      </div>
+
+    </div>
+    <!-- 开始按钮 -->
+    <div class="start" id="start">
+      开始游戏
+    </div>
+    <!-- 倒计时效果 -->
+    <div class="count-down" id="countDownBox">
+      3
+    </div>
+    <!-- 计分板蒙层 -->
+    <div class="layer hide" id="layer">
+      <div class="end-layer">
+        <!-- <span class="close">X</span> -->
+        <h2 class="game-over">
+          Game Over!!
+        </h2>
+        <div class="txt" id="txt">
+          0分
+          <p class="desc" id="desc">
+            描述语！-你就是个天才！
+          </p>
+        </div>
+        <div class="reload" id='reload'>重新开始</div>
+      </div>
+    </div>
+    <!-- footer -->
+    <footer>
+      copyright @xing.org1^ guojufeng 20181213-20181215-20190201
+    </footer>
+  </div>
+  <script src="./js/pluging.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
