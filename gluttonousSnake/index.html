@@ -45,6 +45,13 @@
     <div class="start" id="start">
       开始游戏
     </div>
+    <!-- 方向手柄 -->
+    <div class="direction" id="direction">
+      <span class="left" data-dir='37'></span>
+      <span class="top" data-dir='38'></span>
+      <span class="right" data-dir='39'></span>
+      <span class="bottom" data-dir='40'></span>
+    </div>
     <!-- 倒计时效果 -->
     <div class="count-down" id="countDownBox">
       3
@@ -57,17 +64,18 @@
           Game Over!!
         </h2>
         <div class="txt" id="txt">
-          0分
+          <p class="count"><span id="count">0</span>分</p>
           <p class="desc" id="desc">
-            描述语！-你就是个天才！
+            你就是个天才！
           </p>
         </div>
-        <div class="reload" id='reload'>重新开始</div>
+        <div class="reload" id='reload'>再来一局</div>
+        <p class="max-count" id="maxCountParent">历史最高<span id="maxCount">45</span>分</p>
       </div>
     </div>
     <!-- footer -->
     <footer>
-      copyright @xing.org1^ guojufeng 20181213-20181215-20190201
+      copyright @xing.org1^ guojufeng <br/>20181213-20181215-20190201-20190608
     </footer>
   </div>
   <script src="./js/pluging.js"></script>

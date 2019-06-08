@@ -2,11 +2,12 @@
  * @Author: @Guojufeng 
  * @Date: 2019-12-13 13:16:06 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2019-02-01 18:47:16
+ * @Last Modified time: 2019-06-08 17:00:06
  */
 html,
 body,
 .main {
+  position: relative;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -23,6 +24,9 @@ body {
   -ms-user-select: none;
   -khtml-user-select: none;
   user-select: none;
+}
+p{
+  margin: 0;
 }
 
 .hide {
@@ -104,6 +108,16 @@ body {
   transform: translate(-50%, -50%);
   font-size: 160px;
   color: red;
+  /* font-size: 50px; */
+}
+
+.count-down {
+  width: 130px;
+  height: 130px;
+  line-height: 130px;
+  font-size: 40px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
 }
 
 .count-down.ani {
@@ -210,32 +224,43 @@ body {
   vertical-align: middle;
   text-align: center;
 }
-.snake-box.dead div{
+
+.snake-box.dead div {
   animation: dead .5s linear forwards;
 }
-@keyframes dead{
-  0%{
+
+@keyframes dead {
+  0% {
     opacity: 1;
   }
-  25%,100%{
+
+  25%,
+  100% {
     opacity: 0;
   }
-  50%,75%{
+
+  50%,
+  75% {
     opacity: 0.5;
   }
 }
+
 .snake-box .head {
   transition: transform .5s linear;
 }
+
 .snake-box .head.top {
   transform: rotate(0deg);
 }
+
 .snake-box .head.right {
   transform: rotate(90deg);
 }
+
 .snake-box .head.bottom {
   transform: rotate(-180deg);
 }
+
 .snake-box .head.left {
   transform: rotate(-90deg);
 }
@@ -271,7 +296,7 @@ body {
   top: 34%; */
   width: 20px;
   height: 20px;
-  transition: all .35s;
+  transition: opacity .35s;
   opacity: 0;
   visibility: hidden;
 }
@@ -280,14 +305,16 @@ body {
   opacity: 1;
   visibility: visible;
 }
+
 /* .food:after, */
-.food:before{
+.food:before {
   content: "";
   display: inline-block;
   width: 20px;
   height: 20px;
   border-radius: 50%;
 }
+
 .food::before {
   border: 2px solid #333;
   border-right-color: transparent;
@@ -297,6 +324,7 @@ body {
   margin-top: -10px;
   /* z-index: -1; */
 }
+
 /* .food:after, */
 .food-body {
   position: absolute;
@@ -307,6 +335,108 @@ body {
   width: 20px;
   height: 20px;
   border-radius: 50%;
+}
+
+/* direction */
+.direction {
+  position: fixed;
+  z-index: 1;
+  bottom: 2%;
+  right: 2%;
+  width: 130px;
+  height: 130px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+
+}
+
+.direction::after,
+.direction::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0);
+  width: 25px;
+  border-top: 1px solid #fff;
+}
+
+.direction::after {
+  transform: translate(-50%, -50%) rotate(90deg) translateZ(0);
+}
+
+.direction span {
+  position: absolute;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.direction .left,
+.direction .right {
+  top: 50%;
+  transform: translateY(-50%) translateZ(0);
+}
+
+.direction .top,
+.direction .bottom {
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+}
+
+
+.direction .left {
+  left: 10px;
+}
+
+.direction .top {
+  top: 10px;
+}
+
+.direction .bottom {
+  bottom: 10px;
+}
+
+.direction .right {
+  right: 10px;
+}
+
+.direction span::before {
+  content: "";
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 6px;
+}
+
+.direction .right::before {
+  right: 3px;
+  transform: rotate(45deg) translateZ(0);
+}
+
+.direction .top::before {
+  top: 9px;
+  transform: rotate(-45deg) translateZ(0);
+}
+
+.direction .bottom::before {
+  top: 3px;
+  transform: rotate(135deg) translateZ(0);
+}
+
+.direction .left::before {
+  left: 3px;
+  transform: rotate(-135deg) translateZ(0);
+
 }
 
 
@@ -350,16 +480,30 @@ body {
 .close:hover {
   color: red;
 }
-.game-over{
+
+.game-over {
   color: tomato;
 }
+
 .txt {
   font-size: 36px;
   font-weight: bolder;
-  margin: 30px 0 50px;
+  margin: 30px 0 40px;
 }
+.count{
+  margin-bottom: 20px;
+}
+#count{
+  color: tomato;
+  font-size: 64px;
+  line-height: 64px;
+  vertical-align: bottom;
+}
+.desc{
+  margin: 10px 0;
 
-.desc {
+}
+.desc,.max-count {
   font-size: 14px;
   color: #666;
 }
@@ -369,16 +513,30 @@ body {
   line-height: 54px;
   color: #ffffff;
   padding-bottom: 3px;
+  margin-bottom: 15px;
   font-size: 24px;
   background: #ffa352;
   border-radius: 25px;
   box-shadow: 3px 4px 20px 0px #ead6bc;
   cursor: pointer;
+  animation: reloadGlint .75s infinite alternate;
 }
 
 .reload:hover {
   color: #f8f2ea;
   background: #ff8f00;
+}
+
+@keyframes reloadGlint {
+  0% {
+    transform: scale(1);
+
+  }
+
+  100% {
+    transform: scale(1.03);
+
+  }
 }
 
 /* footer */
@@ -387,6 +545,47 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px 10px;
+  padding: 20px 10px 5px;
   color: #afafaf;
+}
+
+/* @media screen and (max-width: 300px) */
+@media screen and (max-width: 780px) {
+  .start {
+    font-size: 22px;
+  }
+
+  .end-layer {
+    width: 180px;
+    padding: 20px 45px 30px;
+    font-size: 14px;
+    transform: translate(-50%, -50%) translateZ(0);
+  }
+  .game-over{
+    margin: 5px 0 0;
+  }
+
+  .txt {
+    margin: 15px 0 20px;
+    font-size: 32px;
+  }
+
+  .count{
+    margin-bottom: 0px;
+  }
+  #count{
+    font-size: 64px;
+  }
+  .desc{
+    margin-top: 3px;
+  }
+  .reload {
+    width: 94%;
+    line-height: 48px;
+    margin: 0 auto 12px;
+    font-size: 20px;
+  }
+  .direction{
+    display: none;
+  }
 }
