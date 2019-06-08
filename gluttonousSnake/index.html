@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="xing.org1^">
-  <title>xing.org1^牌贪吃蛇小游戏</title>
+  <title>小石头的贪吃蛇</title>
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -16,6 +16,7 @@
     <div class="header">
       <div class="pause-btn off" id="pause">开始</div>
       <!-- <div class="pause-btn on active">暂停</div> -->
+      <div class="help" id="help"></div>
       <h2 class="score">
         分数：
         <span class="playing-score" id="score">0</span>
@@ -71,6 +72,18 @@
         </div>
         <div class="reload" id='reload'>再来一局</div>
         <p class="max-count" id="maxCountParent">历史最高<span id="maxCount">45</span>分</p>
+      </div>
+    </div>
+    <!-- 游戏说明 -->
+    <div class="layer info hide" id="helpLayer">
+      <div class="info-box end-layer">
+        <ul>
+          <li>点击“开始游戏”，倒计时结束后操纵蛇头，使蛇头和食物发生碰撞，就算吃到食物，计1分;</li>
+          <li>分数越高，蛇的运动速度越快;</li>
+          <li>可点击右下角的方向键操控蛇头移动方向;</li>
+          <li>电脑端可用上下左右键控制蛇头的移动方向;</li>
+          <li>手机端可用手势滑动控制蛇头的移动方向;</li>
+        </ul>
       </div>
     </div>
     <!-- footer -->

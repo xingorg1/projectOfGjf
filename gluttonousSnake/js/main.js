@@ -2,14 +2,14 @@
  * @Author: @Guojufeng 
  * @Date: 2018-12-13 14:55:22 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2019-06-08 17:46:33
+ * @Last Modified time: 2019-06-08 18:47:29
  * +移动端
  */
 
 (function () {
   var debug = false,
     isPhone = xingorg1Utils.isPhone();
-  startX = 0,
+    startX = 0,
     startY = 0,
     pauseDom = document.getElementById('pause'), //暂停|开始按钮
     foodDom = document.getElementById('food'), // 食物
@@ -17,8 +17,10 @@
     snakeDom = document.getElementById('snake'), //蛇
     dirDom = document.getElementById('direction'), //方向手柄
     dirDomSpans = dirDom.getElementsByTagName('span'),
+    helpBtn = document.getElementById('help'),//查看游戏说明
+    helpLayer= document.getElementById('helpLayer'),
+    showHelp = false;
     layerDom = document.getElementById('layer'); //计分板
-
 
   function SnakeGame() {
     var contDom = document.getElementById('cont');
@@ -469,11 +471,25 @@
       console.log('支持localStorage，并且第一次打开游戏没有最高分记录')
      xingorg1Utils.wls.setItem('maxCount','0');
     }
-
     /* // 第二种写法 - if的这两种写法，第二种没有加大括号的，if条件不成立时，setItem的函数调用也执行了啊。自己给自己留的坑
     if(window.localStorage && ls.getItem('maxCount') === null)
       ls.setItem('maxCount','0'); */
   
+    /* 添加help */
+    helpBtn.onclick = function(){
+      if(showHelp){
+        helpLayer.className = 'layer hide'
+        showHelp = false;
+      }else{
+        helpLayer.className = 'layer'
+        showHelp = true;
+      }
+    }
+    helpLayer.onclick = function(){
+      helpLayer.className = 'layer hide'
+      showHelp = false;
+    }
+    
   }
 
 
