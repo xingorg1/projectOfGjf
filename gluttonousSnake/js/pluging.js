@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-12-14 16:22:28 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2019-06-08 17:29:58
+ * @Last Modified time: 2019-06-08 17:35:19
  */
 var xingorg1Utils = {
   /* 记录最高分 */

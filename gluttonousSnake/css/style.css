@@ -2,12 +2,13 @@
  * @Author: @Guojufeng 
  * @Date: 2019-12-13 13:16:06 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2019-06-08 17:00:06
+ * @Last Modified time: 2019-06-08 17:53:01
  */
 html,
 body,
 .main {
   position: relative;
+  width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -15,6 +16,13 @@ body,
   text-align: center;
   font-family: sans-serif;
   overflow: hidden;
+}
+.main{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 body {
@@ -107,7 +115,7 @@ p{
   z-index: 1;
   transform: translate(-50%, -50%);
   font-size: 160px;
-  color: red;
+  color: tomato;
   /* font-size: 50px; */
 }
 
@@ -586,6 +594,6 @@ footer {
     font-size: 20px;
   }
   .direction{
-    display: none;
+    /* display: none; */
   }
 }

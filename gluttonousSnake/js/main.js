@@ -2,7 +2,7 @@
  * @Author: @Guojufeng 
  * @Date: 2018-12-13 14:55:22 
  * @Last Modified by: @Guojufeng
- * @Last Modified time: 2019-06-08 17:30:21
+ * @Last Modified time: 2019-06-08 17:46:33
  * +移动端
  */
 
@@ -139,7 +139,7 @@
         } else {
           countDown.className = 'count-down ani';
           countDown.innerText = count;
-          countDown.style.color = xingorg1Utils.getRandomColor(); //文字随机换色
+          // countDown.style.color = xingorg1Utils.getRandomColor(); //文字随机换色
           countDown.style.fontSize = '80px';
           count--;
         }
